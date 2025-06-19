@@ -1,0 +1,43 @@
+# Ignorar cachés de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+.mypy_cache/
+.pytest_cache/
+
+# Ignorar entornos virtuales
+.venv/
+venv/
+env/
+*/env/*
+
+# Ignorar configuraciones de editores y entornos de desarrollo
+.vscode/
+.idea/
+*.env
+*.env.local
+!.env.example
+
+# Ignorar archivos de control de versiones
+#.git/
+#.gitignore
+#.gitattributes
+
+# Ignorar archivos generados o temporales
+*.log
+*.tmp
+*.swp
+*.bak
+*.csv
+*.json
+*.xlsx
+*.pdf
+*.png
+
+# Ignorar configuraciones de Docker
+#.dockerignore
+#Dockerfile
+#docker-compose.yml
+
