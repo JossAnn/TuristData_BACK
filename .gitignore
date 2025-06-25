@@ -19,6 +19,7 @@ env/
 *.env
 *.env.local
 !.env.example
+.env.test
 
 # Ignorar archivos de control de versiones
 #.git/
@@ -26,6 +27,7 @@ env/
 #.gitattributes
 
 # Ignorar archivos generados o temporales
+*__init__.py
 *.log
 *.tmp
 *.swp
