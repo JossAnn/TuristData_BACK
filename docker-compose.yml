@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: python_app
+    container_name: turistdata_app
     environment:
       - PYTHONUNBUFFERED=1
       - HOST_PORT_BACKEND

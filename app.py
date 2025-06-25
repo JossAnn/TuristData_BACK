@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from flask_cors import CORS
 from dotenv import load_dotenv
+from src.Project.Infrastructure.Routes.register import register_blueprints
 
 load_dotenv()
 
@@ -27,15 +28,14 @@ def create_app():
         },
     )
 
-    #Registrar blueprints
-    #app.register_blueprint(api)
-    #app.register_blueprint(auth)
+    register_blueprints(application)
 
     return application
 
+
 if __name__ == "__main__":
     app = create_app()
-    port = int(os.getenv("PORT"))  # ("PORT", 9000)
+    port = int(os.getenv("PORT"))  # Default 5000
     host = os.getenv("HOST", "127.0.0.1")
     debug_mode = os.getenv("FLASK_DEBUG", "False").lower() == "true"
     app.run(debug=debug_mode, port=port, host=host)
