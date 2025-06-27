@@ -12,6 +12,7 @@ __pycache__/
 venv/
 env/
 */env/*
+.env
 
 # Ignorar configuraciones de editores y entornos de desarrollo
 .vscode/
