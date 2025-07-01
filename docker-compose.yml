@@ -2,10 +2,8 @@ version: '3.8'
 
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
     container_name: turistdata_app
+    image: "${DOCKERIMAGE}"
     environment:
       - PYTHONUNBUFFERED=1
       - HOST_PORT_BACKEND
