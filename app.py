@@ -27,15 +27,20 @@ def create_app():
             }
         },
     )
+    
 
     register_blueprints(application)
 
     return application
 
 
+
 if __name__ == "__main__":
     app = create_app()
     port = int(os.getenv("PORT"))  # Default 5000
-    host = os.getenv("HOST", "127.0.0.1")
+    host = os.getenv("HOST", "0.0.0.0")
     debug_mode = os.getenv("FLASK_DEBUG", "False").lower() == "true"
+    print("CORS_ORIGIN-pao:", os.getenv("CORS_ORIGIN"))
     app.run(debug=debug_mode, port=port, host=host)
+    
+
