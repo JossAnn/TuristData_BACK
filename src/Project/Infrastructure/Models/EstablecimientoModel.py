@@ -4,6 +4,7 @@ from src.DataBases.MySQL import Base
 
 class EstablecimientoModel(Base):
     __tablename__ = "alta_establecimiento"
+    __table_args__ = {'extend_existing': True}
 
     idalta_establecimiento = Column(Integer, primary_key=True, autoincrement=True)
     nombre = Column(String(45), nullable=False)

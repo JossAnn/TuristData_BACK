@@ -3,11 +3,19 @@ from src.DataBases.MySQL import Base
 
 
 class TuristModel(Base):
-    __tablename__ = "alta_establecimiento"
+    __tablename__ = "turista"
+    
+    id_usuario = Column(Integer, primary_key=True)
+    nombre = Column(String)
+    correo = Column(String)
+    password = Column(String)
+    id_rol = Column(Integer)
 
-    idusuario = Column(Integer, primary_key=True, autoincrement=True)
-    nombre = Column(String(45), nullable=False)
-    correo = Column(String(45), nullable=False)
-    password = Column(String(45), nullable=False)
-    id_rol = Column(Integer, ForeignKey("Rol.id_rol"))
-
+    def to_dict(self):
+        return {
+            "id_usuario": self.id_usuario,
+            "nombre": self.nombre,
+            "correo": self.correo,
+            "password": self.password,
+            "id_rol": self.id_rol
+        }
