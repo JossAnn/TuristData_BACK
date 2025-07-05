@@ -14,6 +14,7 @@ class EstablecimientoModel(Base):
     horario = Column(Time)
     precio = Column(String(45))
     imagen = Column(Text)
+    id_administrador = Column(Integer, ForeignKey("administrador.id_administrador"))
     
     def to_dict(self):
         return {
@@ -24,7 +25,8 @@ class EstablecimientoModel(Base):
             "id_tipo": self.id_tipo,
             "horario": str(self.horario) if self.horario else None,
             "precio": self.precio,
-            "imagen": self.imagen
+            "imagen": self.imagen,
+            "id_administrador": self.id_administrador
         }
 
     """import uuid

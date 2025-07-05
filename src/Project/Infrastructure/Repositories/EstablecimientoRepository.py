@@ -33,7 +33,8 @@ class EstablecimientoRepository(IEstablecimientoRepository):
             id_tipo=establecimiento.id_tipo,
             horario=establecimiento.horario,
             precio=establecimiento.precio,
-            imagen=establecimiento.imagen
+            imagen=establecimiento.imagen,
+            id_administrador=establecimiento.id_administrador,
         )
         self.db.add(nuevo)
         self.db.commit()

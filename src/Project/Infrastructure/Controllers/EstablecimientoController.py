@@ -37,7 +37,8 @@ def registrar_establecimiento():
             data["id_tipo"],
             data["horario"],
             data["precio"],
-            data["imagen"]
+            data["imagen"],
+            data["id_administrador"]
         )
         return jsonify(nuevo_establecimiento.__dict__), 201
     except Exception as e:
