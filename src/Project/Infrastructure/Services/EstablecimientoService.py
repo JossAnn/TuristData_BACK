@@ -7,3 +7,6 @@ class EstablecimientoService:
 
     def obtener(self, id_):
         return self.use_case.execute_by_id(id_)
+    
+    def register(self, id_,nombre,direccion,ciudad,id_tipo,horario,precio,imagen):
+        return self.use_case.register_establecimiento(id_,nombre,direccion,ciudad,id_tipo,horario,precio,imagen)  

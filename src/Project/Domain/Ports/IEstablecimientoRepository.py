@@ -13,3 +13,7 @@ class IEstablecimientoRepository(ABC):
     @abstractmethod
     def create(self, establecimiento):
         pass
+    
+    @abstractmethod
+    def register(self, establecimiento):
+        pass

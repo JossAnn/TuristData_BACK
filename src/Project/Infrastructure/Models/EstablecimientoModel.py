@@ -14,6 +14,18 @@ class EstablecimientoModel(Base):
     horario = Column(Time)
     precio = Column(String(45))
     imagen = Column(Text)
+    
+    def to_dict(self):
+        return {
+            "idalta_establecimiento": self.idalta_establecimiento,
+            "nombre": self.nombre,
+            "direccion": self.direccion,
+            "ciudad": self.ciudad,
+            "id_tipo": self.id_tipo,
+            "horario": str(self.horario) if self.horario else None,
+            "precio": self.precio,
+            "imagen": self.imagen
+        }
 
     """import uuid
 from sqlalchemy.dialects.mysql import CHAR

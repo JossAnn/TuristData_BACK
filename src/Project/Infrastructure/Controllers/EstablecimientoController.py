@@ -21,3 +21,24 @@ def listar_establecimientos():
 def obtener_establecimiento(id_):
     est = service.obtener(id_)
     return jsonify(est.__dict__) if est else ("Not Found", 404)
+
+@bp_establecimiento.route("/establecimientos/rg", methods=["POST"])
+def registrar_establecimiento():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    try:
+        nuevo_establecimiento = service.register(
+            data["idalta_establecimiento"],
+            data["nombre"],
+            data["direccion"],
+            data["ciudad"],
+            data["id_tipo"],
+            data["horario"],
+            data["precio"],
+            data["imagen"]
+        )
+        return jsonify(nuevo_establecimiento.__dict__), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
