@@ -9,6 +9,8 @@ from src.Project.Infrastructure.Services.AdministradorService import (
     AdministradorService,
 )
 
+from src.Project.Infrastructure.Utils.jwt_utils import crear_token
+
 
 bp_administrador = Blueprint("administrador", __name__)
 service = AdministradorService(CreateAdministrador(AdministradorRepository()),LoginAdministrador(AdministradorRepository()))
@@ -54,12 +56,12 @@ def login_administrador():
 
     try:
         admin = service.login(data["correo"], data["password"])
-        print("Login exitoso - ControllerLoginAdmin:", admin)
+
+        token = crear_token(admin.id_administrador, admin.correo)
 
         return jsonify({
             "message": "Inicio de sesión exitoso",
-            "correo": admin.correo,
-            "password": admin.password  # ⚠️ Solo para pruebas. NUNCA en producción.
+            "token": token
         }), 200
 
     except ValueError as e:
