@@ -17,3 +17,7 @@ class AdministradorRepository(IAdminRepository):
         self.db.commit()
         self.db.refresh(nuevo)
         return nuevo
+    def login_correo_password(self, correo, password):
+        # Buscar al administrador por correo
+        admin = self.db.query(AdministradorModel).filter_by(correo=correo).first()
+        return admin 
