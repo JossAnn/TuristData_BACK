@@ -2,20 +2,18 @@ from sqlalchemy import Column, Integer, String, Time, Text, ForeignKey
 from src.DataBases.MySQL import Base
 
 
-class TuristModel(Base):
-    __tablename__ = "turista"
+class AdministradorModel(Base):
+    __tablename__ = "administrador"
     
-    id_usuario = Column(Integer, primary_key=True)
+    id_administrador = Column(Integer, primary_key=True)
     nombre = Column(String)
     correo = Column(String)
     password = Column(String)
-    id_rol = Column(Integer)
 
     def to_dict(self):
         return {
-            "id_usuario": self.id_usuario,
+            "id_administrador": self.id_administrador,
             "nombre": self.nombre,
             "correo": self.correo,
-            "password": self.password,
-            "id_rol": self.id_rol
+            "password": self.password
         }
