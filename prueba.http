@@ -1,7 +1,10 @@
+#-----------RUTA PARA OBTENER TURISTA POR ID-----------
 ###
 GET http://localhost:8000/api/turistas/1 HTTP/1.1
 Accept: application/json
 
+
+#-----------RUTA PARA AGREGAR ADMINISTRADOR-----------
 ###
 POST http://localhost:8000/api/administrador HTTP/1.1
 Content-Type: application/json
@@ -12,6 +15,8 @@ Content-Type: application/json
     "password": "summer"
 }
 
+
+#-----------RUTA PARA INICIAR SESION DE ADMINISTRADOR-----------
 ###
 POST http://localhost:8000/api/administrador/login HTTP/1.1
 Content-Type: application/json
@@ -21,3 +26,19 @@ Content-Type: application/json
     "password": "summer"
 }
 
+#-----------RUTA PARA AGREGAR ESTABLECIMIENTO-----------
+###
+POST http://localhost:8000/api/establecimientos/rg HTTP/1.1
+Content-Type: application/json
+Authorization: <token>
+
+{
+    "idalta_establecimiento": 1,
+    "nombre": "Restaurante del Mar",
+    "direccion": "Calle del Sol, 123",
+    "ciudad": "Marina",
+    "tipo": "Restaurante",
+    "horario": "12:00-22:00",
+    "precio": "256",
+    "imagen": "fondo-Spiderman.jpg"
+}

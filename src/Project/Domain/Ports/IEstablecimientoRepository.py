@@ -14,6 +14,6 @@ class IEstablecimientoRepository(ABC):
     def create(self, establecimiento):
         pass
     
-    @abstractmethod
-    def register(self, establecimiento):
-        pass
+    # @abstractmethod
+    # def register(self, establecimiento):
+    #     pass

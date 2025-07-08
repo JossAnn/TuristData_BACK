@@ -17,20 +17,20 @@ class EstablecimientoRepository(IEstablecimientoRepository):
             .first()
         )
 
-    def create(self, data):
-        nuevo = EstablecimientoModel(**data)
-        self.db.add(nuevo)
-        self.db.commit()
-        self.db.refresh(nuevo)
-        return nuevo
+    # def create(self, data):
+    #     nuevo = EstablecimientoModel(**data)
+    #     self.db.add(nuevo)
+    #     self.db.commit()
+    #     self.db.refresh(nuevo)
+    #     return nuevo
 
-    def register(self, establecimiento):
+    def create(self, establecimiento):
         nuevo = EstablecimientoModel(
             idalta_establecimiento=establecimiento.idalta_establecimiento,
             nombre=establecimiento.nombre,
             direccion=establecimiento.direccion,
             ciudad=establecimiento.ciudad,
-            id_tipo=establecimiento.id_tipo,
+            tipo=establecimiento.tipo,
             horario=establecimiento.horario,
             precio=establecimiento.precio,
             imagen=establecimiento.imagen,
