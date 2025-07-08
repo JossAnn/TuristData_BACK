@@ -10,7 +10,7 @@ class EstablecimientoModel(Base):
     nombre = Column(String(45), nullable=False)
     direccion = Column(String(45), nullable=False)
     ciudad = Column(String(45), nullable=False)
-    id_tipo = Column(Integer, ForeignKey("Tipo.id_tipo"))
+    tipo = Column(String(45))
     horario = Column(Time)
     precio = Column(String(45))
     imagen = Column(Text)
@@ -22,11 +22,11 @@ class EstablecimientoModel(Base):
             "nombre": self.nombre,
             "direccion": self.direccion,
             "ciudad": self.ciudad,
-            "id_tipo": self.id_tipo,
+            "tipo": self.tipo,
             "horario": str(self.horario) if self.horario else None,
             "precio": self.precio,
             "imagen": self.imagen,
-            "id_administrador": self.id_administrador
+            # "id_administrador": self.id_administrador
         }
 
     """import uuid

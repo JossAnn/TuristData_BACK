@@ -7,6 +7,6 @@ class IAdminRepository(ABC):
     def create(self, nombre, correo, password):
         pass
     
-    # @abstractmethod
-    # def login_correo_password(self, correo, password):
-    #     pass
+    @abstractmethod
+    def login_correo_password(self, correo, password):
+        pass
