@@ -6,10 +6,10 @@ from src.DataBases.MySQL import SessionLocal
 class TuristRepository(IturistRepository):
     def __init__(self):
         self.db = SessionLocal()
-    def get_by_id(self, id_):
+    def get_user_by_id(self, id_):
         return (
             self.db.query(TuristModel)
-            .filter_by(idalta_establecimiento=id_)
+            .filter_by(id_usuario=id_)
             .first()
         )
 
