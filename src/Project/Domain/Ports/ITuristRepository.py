@@ -7,5 +7,5 @@ class IturistRepository(ABC):
         pass
 
     @abstractmethod
-    def create(self, establecimiento):
+    def create(self, turista):
         pass

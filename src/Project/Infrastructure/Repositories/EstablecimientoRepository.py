@@ -24,17 +24,34 @@ class EstablecimientoRepository(IEstablecimientoRepository):
     #     self.db.refresh(nuevo)
     #     return nuevo
 
-    def create(self, establecimiento):
+    # def create(self, establecimiento):
+    #     nuevo = EstablecimientoModel(
+    #         idalta_establecimiento=establecimiento.idalta_establecimiento,
+    #         nombre=establecimiento.nombre,
+    #         direccion=establecimiento.direccion,
+    #         ciudad=establecimiento.ciudad,
+    #         tipo=establecimiento.tipo,
+    #         horario=establecimiento.horario,
+    #         precio=establecimiento.precio,
+    #         imagen=establecimiento.imagen,
+    #         id_administrador=establecimiento.id_administrador,
+    #     )
+    #     self.db.add(nuevo)
+    #     self.db.commit()
+    #     self.db.refresh(nuevo)
+    #     return nuevo
+    
+    def create(self, id_, nombre, direccion, ciudad, tipo, horario, precio, imagen, id_administrador):
         nuevo = EstablecimientoModel(
-            idalta_establecimiento=establecimiento.idalta_establecimiento,
-            nombre=establecimiento.nombre,
-            direccion=establecimiento.direccion,
-            ciudad=establecimiento.ciudad,
-            tipo=establecimiento.tipo,
-            horario=establecimiento.horario,
-            precio=establecimiento.precio,
-            imagen=establecimiento.imagen,
-            id_administrador=establecimiento.id_administrador,
+            idalta_establecimiento=id_,
+            nombre=nombre,
+            direccion=direccion,
+            ciudad=ciudad,
+            tipo=tipo,
+            horario=horario,
+            precio=precio,
+            imagen=imagen,
+            id_administrador=id_administrador
         )
         self.db.add(nuevo)
         self.db.commit()
