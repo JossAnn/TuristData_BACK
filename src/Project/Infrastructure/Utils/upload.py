@@ -3,6 +3,8 @@ from werkzeug.utils import secure_filename
 import os
 from src.Project.Infrastructure.Utils.jwt_utils import verificar_token
 
+from src.Project.Infrastructure.Utils.jwt_utils import token_requerido
+
 from flask import g
 
 bp_upload = Blueprint("upload", __name__)
@@ -11,7 +13,9 @@ UPLOAD_FOLDER = "uploads"
 
 @bp_upload.route('/upload-image', methods=['POST'])
 def upload_image():
+    token_requerido
     auth_header = g.get("Authorization")
+    print("Token archivo upload", auth_header)
     if not auth_header or not auth_header.startswith("Bearer "):
         return jsonify({"error": "Token no proporcionado"}), 401
 

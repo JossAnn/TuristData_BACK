@@ -1,23 +1,31 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, g
 from src.Project.Infrastructure.Repositories.EstablecimientoRepository import (
     EstablecimientoRepository,
 )
 from src.Project.Aplication.EstablecimientoUseCases.GetEstablecimiemto import GetEstablecimientos
+from src.Project.Aplication.EstablecimientoUseCases.CreateEstablecimiento import CreateEstablecimiento
+from src.Project.Aplication.EstablecimientoUseCases.DeleteEstablecimiento import DeleteEstablecimiento
+
+from src.Project.Aplication.EstablecimientoUseCases.PutEstablecimiento import PutEstablecimiento
+
 from src.Project.Infrastructure.Services.EstablecimientoService import (
     EstablecimientoService,
 )
+from src.Project.Infrastructure.Utils.jwt_utils import token_requerido
 
 bp_establecimiento = Blueprint("establecimiento", __name__)
-service = EstablecimientoService(GetEstablecimientos(EstablecimientoRepository()))
-from flask import g
 
-from src.Project.Infrastructure.Utils.jwt_utils import token_requerido
+# 👇 Aquí está la corrección
+getter = GetEstablecimientos(EstablecimientoRepository())
+creator = CreateEstablecimiento(EstablecimientoRepository())
+delette= DeleteEstablecimiento(EstablecimientoRepository())
+putter= PutEstablecimiento(EstablecimientoRepository())
+service = EstablecimientoService(getter, creator, delette,putter)
 
 @bp_establecimiento.route("/establecimientos", methods=["GET"])
 def listar_establecimientos():
     ests = service.listar()
     return jsonify([e.__dict__ for e in ests])
-
 
 @bp_establecimiento.route("/establecimientos/<int:id_>", methods=["GET"])
 def obtener_establecimiento(id_):
@@ -41,8 +49,45 @@ def create_establecimiento():
             data["horario"],
             data["precio"],
             data["imagen"],
-            g.id_administrador  # 🔐 ¡aquí va tu relación con el administrador!
+            request.id_administrador
         )
-        return jsonify(nuevo_establecimiento.__dict__), 201
+        #return jsonify(nuevo_establecimiento.__dict__), 201
+        return jsonify(nuevo_establecimiento.to_dict()), 201
+
     except Exception as e:
         return jsonify({"error en controller": str(e)}), 500
+
+
+@bp_establecimiento.route("/establecimientos/<int:id_>", methods=["DELETE"])
+@token_requerido
+def eliminar_establecimiento(id_):
+    est = service.delete(id_)
+    if est:
+        return jsonify({"mensaje": "Establecimiento eliminado correctamente", "establecimiento": est.__dict__})
+    else:
+        return jsonify({"error": "No se encontró el establecimiento"}), 404
+    
+
+@bp_establecimiento.route("/establecimientos/<int:id_>", methods=["PUT"])
+@token_requerido
+def actualizar_establecimiento(id_):  # recibe el parámetro de la URL
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    try:
+        nuevo_establecimiento = service.put(
+            id_,
+            data["nombre"],
+            data["direccion"],
+            data["ciudad"],
+            data["tipo"],
+            data["horario"],
+            data["precio"],
+            data["imagen"]
+        )
+        return jsonify(nuevo_establecimiento.to_dict()), 200 if nuevo_establecimiento else (jsonify({"error": "No encontrado"}), 404)
+
+    except Exception as e:
+        return jsonify({"error en controller": str(e)}), 500
+
