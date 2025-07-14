@@ -13,8 +13,12 @@ class TuristRepository(IturistRepository):
             .first()
         )
 
-    def create(self, data):
-        nuevo = TuristModel(**data)
+    def create(self, turista):
+        nuevo = TuristModel(            
+            nombre=turista["nombre"],
+            correo=turista["correo"],
+            password=turista["password"]
+        )
         self.db.add(nuevo)
         self.db.commit()
         self.db.refresh(nuevo)

@@ -9,13 +9,11 @@ class TuristModel(Base):
     nombre = Column(String)
     correo = Column(String)
     password = Column(String)
-    id_rol = Column(Integer)
 
     def to_dict(self):
         return {
             "id_usuario": self.id_usuario,
             "nombre": self.nombre,
             "correo": self.correo,
-            "password": self.password,
-            "id_rol": self.id_rol
+            "password": self.password
         }
