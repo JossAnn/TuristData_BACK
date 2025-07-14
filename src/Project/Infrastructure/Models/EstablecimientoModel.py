@@ -11,10 +11,24 @@ class EstablecimientoModel(Base):
     direccion = Column(String(45), nullable=False)
     ciudad = Column(String(45), nullable=False)
     tipo = Column(String(45))
-    horario = Column(Time)
+    horario = Column(String(45))
     precio = Column(String(45))
     imagen = Column(Text)
     id_administrador = Column(Integer, ForeignKey("administrador.id_administrador"))
+    
+    # def to_dict(self):
+    #     return {
+    #         "idalta_establecimiento": self.idalta_establecimiento,
+    #         "nombre": self.nombre,
+    #         "direccion": self.direccion,
+    #         "ciudad": self.ciudad,
+    #         "tipo": self.tipo,
+    #        # "horario": str(self.horario) if self.horario else None,
+    #         "horario":self.horario,
+    #         "precio": self.precio,
+    #         "imagen": self.imagen,
+    #         # "id_administrador": self.id_administrador
+    #     }
     
     def to_dict(self):
         return {
@@ -23,10 +37,10 @@ class EstablecimientoModel(Base):
             "direccion": self.direccion,
             "ciudad": self.ciudad,
             "tipo": self.tipo,
-            "horario": str(self.horario) if self.horario else None,
+            "horario":self.horario,
             "precio": self.precio,
             "imagen": self.imagen,
-            # "id_administrador": self.id_administrador
+            #"id_administrador": self.id_administrador
         }
 
     """import uuid

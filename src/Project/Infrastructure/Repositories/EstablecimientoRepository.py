@@ -16,27 +16,43 @@ class EstablecimientoRepository(IEstablecimientoRepository):
             .filter_by(idalta_establecimiento=id_)
             .first()
         )
-
-    # def create(self, data):
-    #     nuevo = EstablecimientoModel(**data)
-    #     self.db.add(nuevo)
-    #     self.db.commit()
-    #     self.db.refresh(nuevo)
-    #     return nuevo
-
-    def create(self, establecimiento):
+    
+    def create(self, id_, nombre, direccion, ciudad, tipo, horario, precio, imagen, id_administrador):
         nuevo = EstablecimientoModel(
-            idalta_establecimiento=establecimiento.idalta_establecimiento,
-            nombre=establecimiento.nombre,
-            direccion=establecimiento.direccion,
-            ciudad=establecimiento.ciudad,
-            tipo=establecimiento.tipo,
-            horario=establecimiento.horario,
-            precio=establecimiento.precio,
-            imagen=establecimiento.imagen,
-            id_administrador=establecimiento.id_administrador,
+            idalta_establecimiento=id_,
+            nombre=nombre,
+            direccion=direccion,
+            ciudad=ciudad,
+            tipo=tipo,
+            horario=horario,
+            precio=precio,
+            imagen=imagen,
+            id_administrador=id_administrador
         )
         self.db.add(nuevo)
         self.db.commit()
         self.db.refresh(nuevo)
         return nuevo
+
+    def delete(self, id_):
+        obj = self.db.query(EstablecimientoModel).filter_by(idalta_establecimiento=id_).first()
+        if obj:
+            self.db.delete(obj)
+            self.db.commit()
+            return obj  # opcionalmente puedes devolver el objeto eliminado
+        return None
+    
+    def put(self, id_, nombre, direccion, ciudad, tipo, horario, precio, imagen):
+        obj = self.db.query(EstablecimientoModel).filter_by(idalta_establecimiento=id_).first()
+        if obj:
+            obj.nombre = nombre
+            obj.direccion = direccion
+            obj.ciudad = ciudad
+            obj.tipo = tipo
+            obj.horario = horario
+            obj.precio = precio
+            obj.imagen = imagen
+            self.db.commit()
+            self.db.refresh(obj)
+            return obj
+        return None
