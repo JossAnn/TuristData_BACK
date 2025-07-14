@@ -21,3 +21,4 @@ class AdministradorRepository(IAdminRepository):
         # Buscar al administrador por correo
         admin = self.db.query(AdministradorModel).filter_by(correo=correo).first()
         return admin 
+    

@@ -41,3 +41,18 @@ class EstablecimientoRepository(IEstablecimientoRepository):
             self.db.commit()
             return obj  # opcionalmente puedes devolver el objeto eliminado
         return None
+    
+    def put(self, id_, nombre, direccion, ciudad, tipo, horario, precio, imagen):
+        obj = self.db.query(EstablecimientoModel).filter_by(idalta_establecimiento=id_).first()
+        if obj:
+            obj.nombre = nombre
+            obj.direccion = direccion
+            obj.ciudad = ciudad
+            obj.tipo = tipo
+            obj.horario = horario
+            obj.precio = precio
+            obj.imagen = imagen
+            self.db.commit()
+            self.db.refresh(obj)
+            return obj
+        return None

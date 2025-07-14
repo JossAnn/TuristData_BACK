@@ -45,7 +45,7 @@ Authorization: Bearer
 
 #-----------RUTA PARA ELIMINAR ESTABLECIMIENTO-----------por hacer
 ###
-DELETE http://localhost:8000/api/establecimientos/1 HTTP/1.1
+DELETE http://localhost:8000/api/establecimientos/4 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer 
 
