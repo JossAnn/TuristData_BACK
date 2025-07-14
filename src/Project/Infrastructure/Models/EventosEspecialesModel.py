@@ -11,7 +11,7 @@ class EventosEspecialesModel(Base):
     fecha_final = Column(String)
     descripcion = Column(String)
     estado_afectado = Column(String)
-    id_destino = Column(String)
+    id_destino = Column(Integer, ForeignKey("destinos.id_destinos"))
     id_temporada = Column(Integer, ForeignKey("temporadas.id_temporadas"))
     def to_dict(self):
         return {
