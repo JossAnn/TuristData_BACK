@@ -4,6 +4,8 @@ from src.Project.Infrastructure.Repositories.EstablecimientoRepository import (
 )
 from src.Project.Aplication.EstablecimientoUseCases.GetEstablecimiemto import GetEstablecimientos
 from src.Project.Aplication.EstablecimientoUseCases.CreateEstablecimiento import CreateEstablecimiento
+from src.Project.Aplication.EstablecimientoUseCases.DeleteEstablecimiento import DeleteEstablecimiento
+
 from src.Project.Infrastructure.Services.EstablecimientoService import (
     EstablecimientoService,
 )
@@ -14,7 +16,8 @@ bp_establecimiento = Blueprint("establecimiento", __name__)
 # 👇 Aquí está la corrección
 getter = GetEstablecimientos(EstablecimientoRepository())
 creator = CreateEstablecimiento(EstablecimientoRepository())
-service = EstablecimientoService(getter, creator)
+delette= DeleteEstablecimiento(EstablecimientoRepository())
+service = EstablecimientoService(getter, creator, delette)
 
 @bp_establecimiento.route("/establecimientos", methods=["GET"])
 def listar_establecimientos():
@@ -50,3 +53,12 @@ def create_establecimiento():
 
     except Exception as e:
         return jsonify({"error en controller": str(e)}), 500
+
+
+@bp_establecimiento.route("/establecimientos/<int:id_>", methods=["DELETE"])
+def eliminar_establecimiento(id_):
+    est = service.delete(id_)
+    if est:
+        return jsonify({"mensaje": "Establecimiento eliminado correctamente", "establecimiento": est.__dict__})
+    else:
+        return jsonify({"error": "No se encontró el establecimiento"}), 404

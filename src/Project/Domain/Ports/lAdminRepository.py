@@ -10,3 +10,7 @@ class IAdminRepository(ABC):
     @abstractmethod
     def login_correo_password(self, correo, password):
         pass
+    
+    @abstractmethod
+    def delete(self, correo, password):
+        pass
