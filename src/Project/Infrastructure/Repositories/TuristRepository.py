@@ -23,3 +23,9 @@ class TuristRepository(IturistRepository):
         self.db.commit()
         self.db.refresh(nuevo)
         return nuevo
+    
+    def login_turist_correo_password(self, correo, password):
+        # Buscar al turista por correo
+        turist = self.db.query(TuristModel).filter_by(correo=correo).first()
+        return turist 
+    
