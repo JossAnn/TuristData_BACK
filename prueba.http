@@ -1,3 +1,7 @@
+GET http://localhost:8000/api/health HTTP/1.1
+Accept: application/json
+
+
 #-----------RUTA PARA OBTENER TURISTA POR ID-----------
 ###
 GET http://localhost:8000/api/turistas/1 HTTP/1.1
