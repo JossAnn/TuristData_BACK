@@ -7,7 +7,7 @@ class TuristModel(Base):
     
     id_usuario = Column(Integer, primary_key=True)
     nombre = Column(String)
-    correo = Column(String)
+    correo = Column(String, nullable=True, unique=True)
     password = Column(String)
 
     def to_dict(self):
