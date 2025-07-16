@@ -18,7 +18,7 @@ engine = create_engine(
     DATABASE_URL,
     pool_size=40,
     max_overflow=80,
-    pool_timeout=30,
+    pool_timeout=60,
     # pool_pre_ping=True
 )
 Base = declarative_base()
