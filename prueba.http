@@ -94,3 +94,8 @@ Content-Type: application/json
     "correo": "turistapao@gmail.com",
     "password": "paopao"
 }
+
+#-----------RUTA PARA OBTENER TODOS LO ESTABLECIMIENTOS-----------
+###
+GET  http://localhost:8000/api/establecimientos  HTTP/1.1
+Content-Type: application/json

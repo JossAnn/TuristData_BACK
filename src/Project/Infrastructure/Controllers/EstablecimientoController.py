@@ -25,12 +25,14 @@ service = EstablecimientoService(getter, creator, delette,putter)
 @bp_establecimiento.route("/establecimientos", methods=["GET"])
 def listar_establecimientos():
     ests = service.listar()
-    return jsonify([e.__dict__ for e in ests])
+    return jsonify([e.to_dict() for e in ests])
 
 @bp_establecimiento.route("/establecimientos/<int:id_>", methods=["GET"])
 def obtener_establecimiento(id_):
     est = service.obtener(id_)
-    return jsonify(est.__dict__) if est else ("Not Found", 404)
+    #return jsonify(est.__dict__) if est else ("Not Found", 404)
+    return jsonify([e.to_dict() for e in est])
+
 
 @bp_establecimiento.route("/establecimientos/rg", methods=["POST"])
 @token_requerido
