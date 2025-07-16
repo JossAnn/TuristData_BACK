@@ -7,12 +7,13 @@ class EventosEspecialesModel(Base):
     
     idEventos_especiales = Column(Integer, primary_key=True)
     nombre = Column(String)
-    fecha_inicio = Column(String)
-    fecha_final = Column(String)
+    fecha_inicio = Column(DateTime)
+    fecha_final = Column(DateTime)
     descripcion = Column(String)
     estado_afectado = Column(String)
     id_destino = Column(Integer, ForeignKey("destinos.id_destinos"))
     id_temporada = Column(Integer, ForeignKey("temporadas.id_temporadas"))
+    id_administrador = Column(Integer, ForeignKey("temporadas.id_administrador"))
     def to_dict(self):
         return {
             "idEventos_especiales": self.idEventos_especiales,
