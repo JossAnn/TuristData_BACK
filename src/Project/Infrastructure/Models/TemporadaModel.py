@@ -1,15 +1,15 @@
-from sqlalchemy import Column, Integer, String, Time, Text, ForeignKey
+from sqlalchemy import Column, Integer, String, Time, Text, ForeignKey, Date
 from src.DataBases.MySQL import Base
 
 
 class TemporadaModel(Base):
     __tablename__ = "temporadas"
     
-    id_temporadas = Column(Integer, primary_key=True)
+    id_temporadas = Column(Integer, primary_key=True, autoincrement=True)
     nombre = Column(String)
-    fecha_inicio = Column(String)
-    fecha_fin = Column(String)
-    tipo_temporada = Column(Integer)
+    fecha_inicio = Column(Date)
+    fecha_fin = Column(Date)
+    tipo_temporada = Column(Integer, ForeignKey("visitas.id_visitas"))
     estatus = Column(Integer)
 
     def to_dict(self):
