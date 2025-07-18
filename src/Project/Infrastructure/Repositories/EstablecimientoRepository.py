@@ -17,9 +17,8 @@ class EstablecimientoRepository(IEstablecimientoRepository):
             .first()
         )
     
-    def create(self, id_, nombre, direccion, ciudad, tipo, horario, precio, imagen, id_administrador):
+    def create(self, nombre, direccion, ciudad, tipo, horario, precio, imagen, id_administrador):
         nuevo = EstablecimientoModel(
-            idalta_establecimiento=id_,
             nombre=nombre,
             direccion=direccion,
             ciudad=ciudad,
