@@ -92,12 +92,12 @@ class GeoapifyService:
                 estado = props.get("state") or props.get("country")
                 ciudad = props.get("city")
                 
-                # Debug: imprimir información del lugar
-                print(f"📍 Lugar: {nombre}")
-                print(f"   Estado: {estado}")
-                print(f"   Ciudad: {ciudad}")
-                print(f"   Coordenadas: {feature.get('geometry', {}).get('coordinates', [])}")
-                print("---")
+                # # Debug: imprimir información del lugar
+                # print(f"📍 Lugar: {nombre}")
+                # print(f"   Estado: {estado}")
+                # print(f"   Ciudad: {ciudad}")
+                # print(f"   Coordenadas: {feature.get('geometry', {}).get('coordinates', [])}")
+                # print("---")
                 
                 # Solo guardar si tiene nombre
                 if nombre:
@@ -122,89 +122,79 @@ class GeoapifyService:
         except Exception as e:
             print(f"❌ Error inesperado: {e}")
 
-    def test_api_connection(self):
-        """Método para probar la conexión con la API"""
-        try:
-            # Prueba con diferentes configuraciones
-            test_configs = [
-                {
-                    "name": "México - Bounding Box del Playground",
-                    "params": {
-                        "categories": "tourism.sights,tourism.attraction,building.historic",
-                        "filter": "rect:-101.89850683646785,17.61191599483738,-97.3307428601189,21.51172980180362",
-                        "lang": "es",
-                        "limit": 10,
-                        "apiKey": self.api_key
-                    }
-                },
-                {
-                    "name": "Ciudad de México - Círculo",
-                    "params": {
-                        "categories": "tourism.sights,tourism.attraction",
-                        "filter": "circle:-99.1332,19.4326,15000",  # Centro de CDMX con radio 15km
-                        "limit": 10,
-                        "apiKey": self.api_key
-                    }
-                },
-                {
-                    "name": "Estado de México - Más amplio",
-                    "params": {
-                        "categories": "tourism",
-                        "filter": "place:51b2b5e71159a359c05961094dd4d4e43840f00101f901da1e0400000000009203064d657869636f",
-                        "limit": 10,
-                        "apiKey": self.api_key
-                    }
-                },
-                {
-                    "name": "Sin filtro geográfico - Solo categorías",
-                    "params": {
-                        "categories": "tourism.sights,tourism.attraction",
-                        "text": "Mexico City",
-                        "limit": 10,
-                        "apiKey": self.api_key
-                    }
-                }
-            ]
+    # def test_api_connection(self):
+    #     """Método para probar la conexión con la API"""
+    #     try:
+    #         # Prueba con diferentes configuraciones
+    #         test_configs = [
+    #             {
+    #                 "name": "México - Bounding Box del Playground",
+    #                 "params": {
+    #                     "categories": "tourism.sights,tourism.attraction,building.historic",
+    #                     "filter": "rect:-101.89850683646785,17.61191599483738,-97.3307428601189,21.51172980180362",
+    #                     "lang": "es",
+    #                     "limit": 10,
+    #                     "apiKey": self.api_key
+    #                 }
+    #             },
+    #             {
+    #                 "name": "Ciudad de México - Círculo",
+    #                 "params": {
+    #                     "categories": "tourism.sights,tourism.attraction",
+    #                     "filter": "circle:-99.1332,19.4326,15000",  # Centro de CDMX con radio 15km
+    #                     "limit": 10,
+    #                     "apiKey": self.api_key
+    #                 }
+    #             },
+    #             {
+    #                 "name": "Estado de México - Más amplio",
+    #                 "params": {
+    #                     "categories": "tourism",
+    #                     "filter": "place:51b2b5e71159a359c05961094dd4d4e43840f00101f901da1e0400000000009203064d657869636f",
+    #                     "limit": 10,
+    #                     "apiKey": self.api_key
+    #                 }
+    #             },
+    #             {
+    #                 "name": "Sin filtro geográfico - Solo categorías",
+    #                 "params": {
+    #                     "categories": "tourism.sights,tourism.attraction",
+    #                     "text": "Mexico City",
+    #                     "limit": 10,
+    #                     "apiKey": self.api_key
+    #                 }
+    #             }
+    #         ]
             
-            for config in test_configs:
-                print(f"\n🧪 Probando: {config['name']}")
-                response = requests.get(self.url, params=config['params'])
+    #         for config in test_configs:
+    #             print(f"\n🧪 Probando: {config['name']}")
+    #             response = requests.get(self.url, params=config['params'])
                 
-                print(f"📡 Status Code: {response.status_code}")
-                print(f"📄 URL: {response.url}")
+    #             print(f"📡 Status Code: {response.status_code}")
+    #             print(f"📄 URL: {response.url}")
                 
-                if response.status_code == 200:
-                    data = response.json()
-                    features = data.get('features', [])
-                    print(f"✅ Lugares encontrados: {len(features)}")
+    #             if response.status_code == 200:
+    #                 data = response.json()
+    #                 features = data.get('features', [])
+    #                 print(f"✅ Lugares encontrados: {len(features)}")
                     
-                    # Mostrar algunos ejemplos
-                    for i, feature in enumerate(features[:3]):
-                        props = feature['properties']
-                        name = props.get('name', 'Sin nombre')
-                        city = props.get('city', '')
-                        country = props.get('country', '')
-                        print(f"  {i+1}. {name} - {city}, {country}")
+    #                 # Mostrar algunos ejemplos
+    #                 for i, feature in enumerate(features[:3]):
+    #                     props = feature['properties']
+    #                     name = props.get('name', 'Sin nombre')
+    #                     city = props.get('city', '')
+    #                     country = props.get('country', '')
+    #                     print(f"  {i+1}. {name} - {city}, {country}")
                     
-                    if features:
-                        print(f"🎯 Esta configuración funciona!")
-                        return config['params']  # Retorna los parámetros que funcionan
-                else:
-                    print(f"❌ Error: {response.text}")
+    #                 if features:
+    #                     print(f"🎯 Esta configuración funciona!")
+    #                     return config['params']  # Retorna los parámetros que funcionan
+    #             else:
+    #                 print(f"❌ Error: {response.text}")
             
-            print("\n⚠️  Ninguna configuración encontró lugares")
+    #         print("\n⚠️  Ninguna configuración encontró lugares")
             
-        except Exception as e:
-            print(f"❌ Error en test: {e}")
+    #     except Exception as e:
+    #         print(f"❌ Error en test: {e}")
             
-        return None
-
-# Ejemplo de uso
-if __name__ == "__main__":
-    service = GeoapifyService()
-    
-    # Primero prueba la conexión
-    service.test_api_connection()
-    
-    # Luego ejecuta el método principal
-    # service.obtener_y_guardar_lugares()
+    #     return None
