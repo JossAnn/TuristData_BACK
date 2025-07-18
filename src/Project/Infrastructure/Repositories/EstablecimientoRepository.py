@@ -4,34 +4,37 @@ from src.DataBases.MySQL import SessionLocal
 
 
 class EstablecimientoRepository(IEstablecimientoRepository):
-    def __init__(self):
-        self.db = SessionLocal()
+    # def __init__(self):
+    #     self.db = SessionLocal()
 
     def get_all(self):
-        return self.db.query(EstablecimientoModel).all()
+        with SessionLocal() as db:
+            return self.db.query(EstablecimientoModel).all()
 
     def get_by_id(self, id_):
-        return (
-            self.db.query(EstablecimientoModel)
-            .filter_by(idalta_establecimiento=id_)
-            .first()
-        )
+        with SessionLocal() as db:
+            return (
+                self.db.query(EstablecimientoModel)
+                .filter_by(idalta_establecimiento=id_)
+                .first()
+            )
     
     def create(self, nombre, direccion, ciudad, tipo, horario, precio, imagen, id_administrador):
-        nuevo = EstablecimientoModel(
-            nombre=nombre,
-            direccion=direccion,
-            ciudad=ciudad,
-            tipo=tipo,
-            horario=horario,
-            precio=precio,
-            imagen=imagen,
-            id_administrador=id_administrador
-        )
-        self.db.add(nuevo)
-        self.db.commit()
-        self.db.refresh(nuevo)
-        return nuevo
+        with SessionLocal() as db:
+            nuevo = EstablecimientoModel(
+                nombre=nombre,
+                direccion=direccion,
+                ciudad=ciudad,
+                tipo=tipo,
+                horario=horario,
+                precio=precio,
+                imagen=imagen,
+                id_administrador=id_administrador
+            )
+            self.db.add(nuevo)
+            self.db.commit()
+            self.db.refresh(nuevo)
+            return nuevo
 
     def delete(self, id_):
         obj = self.db.query(EstablecimientoModel).filter_by(idalta_establecimiento=id_).first()
