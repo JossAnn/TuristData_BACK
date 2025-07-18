@@ -9,7 +9,7 @@ class EstablecimientoRepository(IEstablecimientoRepository):
 
     def get_all(self):
         with SessionLocal() as db:
-            return self.db.query(EstablecimientoModel).all()
+            return db.query(EstablecimientoModel).all()
 
     def get_by_id(self, id_):
         with SessionLocal() as db:
