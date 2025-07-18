@@ -65,11 +65,6 @@ Authorization: Bearer
     "imagen": "fondo-Spiderman-modificado.jpg"
 }
 
-#-----------RUTA PARA MOSTRAR TODODS LOS ESTABLECIMIENTO - MÓVIL-----------por hacer
-###
-GET http://localhost:8000/api/establecimientos HTTP/1.1
-Accept: application/json
-
 #-----------RUTA PARA BUSCAR ESTABLECIMIENTOS POR LIGAR, FILTRAR POR ZONAS-----------por hacer
 
 
