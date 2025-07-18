@@ -6,6 +6,7 @@ Accept: application/json
 
 #-----------RUTA PARA AGREGAR ADMINISTRADOR-----------
 ###
+# POST http://localhost:8000/api/administrador HTTP/1.1
 POST http://localhost:8000/api/administrador HTTP/1.1
 Content-Type: application/json
 
@@ -33,7 +34,6 @@ Content-Type: application/json
 Authorization: Bearer 
 
 {
-    "idalta_establecimiento": 1,
     "nombre": "Restaurante del Mar",
     "direccion": "Calle del Sol, 123",
     "ciudad": "Marina",

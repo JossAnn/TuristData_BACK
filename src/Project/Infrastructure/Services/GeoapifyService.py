@@ -32,7 +32,7 @@ class GeoapifyService:
             "categories": "tourism.sights,tourism.attraction,building.historic",
             "filter": f"rect:{mexico_bbox}",
             "lang": "es",
-            "limit": 100,
+            "limit": 10,
             "apiKey": self.api_key
         }
 
@@ -60,7 +60,7 @@ class GeoapifyService:
             
             # Verificar si hay features
             features = data.get("features", [])
-            print(f"🔍 Lugares obtenidos: {len(features)}")
+            # print(f"🔍 Lugares obtenidos: {len(features)}")
             
             if not features:
                 print("⚠️  No se encontraron lugares. Intentando con parámetros alternativos...")

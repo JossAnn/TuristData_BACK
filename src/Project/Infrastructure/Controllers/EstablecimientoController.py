@@ -43,7 +43,6 @@ def create_establecimiento():
 
     try:
         nuevo_establecimiento = service.create(
-            data["idalta_establecimiento"],
             data["nombre"],
             data["direccion"],
             data["ciudad"],

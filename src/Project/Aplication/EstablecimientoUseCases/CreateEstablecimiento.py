@@ -9,7 +9,7 @@ class CreateEstablecimiento:
     def __init__(self, repository):
         self.repository = repository
 
-    def create_establecimiento(self, id_, nombre, direccion, ciudad, tipo, horario, precio, imagen, id_administrador):
+    def create_establecimiento(self, nombre, direccion, ciudad, tipo, horario, precio, imagen, id_administrador):
         return self.repository.create(
-            id_, nombre, direccion, ciudad, tipo, horario, precio, imagen, id_administrador
+            nombre, direccion, ciudad, tipo, horario, precio, imagen, id_administrador
         )
