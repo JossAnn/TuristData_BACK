@@ -19,7 +19,9 @@ class EventosEspecialesRepository(IEventosEspecialesRepository):
             descripcion=eventos_especiales["descripcion"],
             estado_afectado=eventos_especiales["estado_afectado"],
             id_destino=eventos_especiales["id_destino"],
-            id_temporada=eventos_especiales["id_temporada"]
+            id_temporada=eventos_especiales["id_temporada"],
+            id_administrador=eventos_especiales["id_administrador"]
+
         )
         self.db.add(nuevo)
         self.db.commit()

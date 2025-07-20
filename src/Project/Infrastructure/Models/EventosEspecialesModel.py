@@ -13,7 +13,8 @@ class EventosEspecialesModel(Base):
     estado_afectado = Column(String)
     id_destino = Column(Integer, ForeignKey("destinos.id_destinos"))
     id_temporada = Column(Integer, ForeignKey("temporadas.id_temporadas"))
-    id_administrador = Column(Integer, ForeignKey("temporadas.id_administrador"))
+    id_administrador = Column(Integer, ForeignKey("administrador.id_administrador"))  # ✅
+
     def to_dict(self):
         return {
             "idEventos_especiales": self.idEventos_especiales,
