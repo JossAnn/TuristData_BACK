@@ -6,5 +6,8 @@ class DestinosService:
     def listar(self):
         return self.getter.get_all()
 
+    # def create(self, data):
+        #     return self.creator.create(data) 
     def create(self, data):
-        return self.creator.create(data) 
+        return self.creator.execute(data)
+
