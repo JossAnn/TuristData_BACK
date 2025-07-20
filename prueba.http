@@ -102,14 +102,8 @@ Content-Type: application/json
 POST  http://localhost:8000/api/destino/rg  HTTP/1.1
 Content-Type: application/json
 {
-    "nombre": "Feria del Mango",
-    "fecha_inicio": "2025-07-20T10:00:00",
-    "fecha_final": "2025-07-25T18:00:00",
-    "descripcion": "Evento cultural y gastronómico regional",
-    "estado_afectado": "Chiapas",
-    "id_destino": 1,
-    "id_temporada": 1,
-    "id_administrador": 1
+    "nombre": "Lagos montebello",
+    "estado": "Chiapas"
 }
 
 #-----------RUTA PARA CREAR EVENTOS ESPECIALES-----------
