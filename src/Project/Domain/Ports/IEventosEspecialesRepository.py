@@ -6,6 +6,6 @@ class IEventosEspecialesRepository(ABC):
     def create(self, eventos_especiales):
         pass
     
-    # @abstractmethod
-    # def get_all(self):
-    #     pass
+    @abstractmethod
+    def get_all(self):
+        pass

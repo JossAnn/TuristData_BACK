@@ -9,8 +9,8 @@ load_dotenv()
 def create_app():
     application = Flask(__name__)
 
-    cors_origin = os.getenv("CORS_ORIGIN", "")
-    allowed_origins = "*"
+    # cors_origin = os.getenv("CORS_ORIGIN", "")
+    # allowed_origins = "*"
 
     CORS(
         application,
@@ -18,7 +18,6 @@ def create_app():
         resources={r"/*": {"origins": "*"}}
     )
 
-    
 
     register_blueprints(application)
 

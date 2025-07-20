@@ -9,7 +9,7 @@ class TemporadaModel(Base):
     nombre = Column(String)
     fecha_inicio = Column(Date)
     fecha_fin = Column(Date)
-    tipo_temporada = Column(Integer, ForeignKey("visitas.id_visitas"))
+    tipo_temporada = Column(String)
     estatus = Column(Integer)
 
     def to_dict(self):

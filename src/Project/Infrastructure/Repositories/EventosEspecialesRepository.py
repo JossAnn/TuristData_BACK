@@ -6,6 +6,10 @@ from src.DataBases.MySQL import SessionLocal
 class EventosEspecialesRepository(IEventosEspecialesRepository):
     def __init__(self):
         self.db = SessionLocal()
+        
+    def get_all(self):
+        with SessionLocal() as db:
+            return db.query(EventosEspecialesModel).all()
 
     def create(self, eventos_especiales):
         nuevo = EventosEspecialesModel(

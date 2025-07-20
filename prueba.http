@@ -124,3 +124,8 @@ Content-Type: application/json
     "tipo_temporada": 1,
     "estatus": 1
 }
+
+#-----------RUTA PARA VISUALIZAR EVENTOS ESPECIALES-----------
+###
+GET  http://localhost:8000/api/eventosespeciales  HTTP/1.1
+Content-Type: application/json
