@@ -14,7 +14,6 @@ class TemporadaModel(Base):
 
     def to_dict(self):
         return {
-            "id_temporadas": self.id_temporadas,
             "nombre": self.nombre,
             "fecha_inicio": self.fecha_inicio,
             "fecha_fin": self.fecha_fin,
