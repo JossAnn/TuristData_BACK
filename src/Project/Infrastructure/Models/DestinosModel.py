@@ -8,7 +8,7 @@ class DestinosModel(Base):
     id_destinos = Column(Integer, primary_key=True, autoincrement=True)
     nombre = Column(String)
     estado = Column(String)
-    id_turista = Column(Integer, ForeignKey("turista"))
+    id_turista = Column(Integer, ForeignKey("turista.id_usuario"))
 
     def to_dict(self):
         return {

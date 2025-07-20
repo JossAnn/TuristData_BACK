@@ -6,6 +6,7 @@ from src.Project.Infrastructure.Controllers.EventosEspecialesController import (
 )
 from src.Project.Infrastructure.Utils.upload import (bp_upload)
 from src.Project.Infrastructure.Controllers.TemporadaController import (bp_temporadas)
+from src.Project.Infrastructure.Controllers.DestinoController import (bp_destinos)
 
 def register_blueprints(app):
     app.register_blueprint(bp_establecimiento, url_prefix="/api")
@@ -14,3 +15,4 @@ def register_blueprints(app):
     app.register_blueprint(bp_upload, url_prefix="/api") 
     app.register_blueprint(bp_eventosespeciales, url_prefix="/api")
     app.register_blueprint(bp_temporadas, url_prefix="/api")
+    app.register_blueprint(bp_destinos, url_prefix="/api")
