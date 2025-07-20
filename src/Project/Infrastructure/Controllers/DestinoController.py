@@ -31,7 +31,7 @@ def create_destino():
 
     try:
         # Agrega los datos adicionales que no vienen en el JSON
-        data["id_turista"] = request.id_turista
+        data["id_turista"] = request.id_administrador
         nuevo_destino = service.create(data)
         return jsonify(nuevo_destino.to_dict()), 201
 
