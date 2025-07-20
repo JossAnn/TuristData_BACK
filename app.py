@@ -10,23 +10,14 @@ def create_app():
     application = Flask(__name__)
 
     cors_origin = os.getenv("CORS_ORIGIN", "")
-    allowed_origins = [
-        origin.strip().rstrip("/")
-        for origin in cors_origin.split(",")
-        if origin.strip()
-    ]
+    allowed_origins = "*"
 
     CORS(
         application,
         supports_credentials=True,
-        resources={
-            r"/*": {
-                "origins": allowed_origins,
-                "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-                "allow_headers": ["Content-Type", "Authorization"],
-            }
-        },
+        resources={r"/*": {"origins": "*"}}
     )
+
     
 
     register_blueprints(application)
