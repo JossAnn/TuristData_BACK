@@ -5,7 +5,7 @@ from src.DataBases.MySQL import Base
 class DestinosModel(Base):
     __tablename__ = "destinos"
     
-    id_destinos = Column(Integer, primary_key=True)
+    id_destinos = Column(Integer, primary_key=True, autoincrement=True)
     nombre = Column(String)
     estado = Column(String)
     id_turista = Column(Integer, ForeignKey("turista"))
