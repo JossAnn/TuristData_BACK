@@ -1,10 +1,10 @@
 class DestinosService:
-    def __init__(self, getter,creator):
-        self.creator = creator
+    def __init__(self, getter, creator):
         self.getter = getter
+        self.creator = creator
 
     def listar(self):
-        return self.getter.execute_all()
-    def create(self, evento_data: dict):
-        return self.creator.execute(evento_data)
+        return self.getter.get_all()
 
+    def create(self, data):
+        return self.creator.create(data) 
