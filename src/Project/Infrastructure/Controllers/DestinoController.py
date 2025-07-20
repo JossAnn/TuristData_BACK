@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request, g
 
 
 from src.Project.Infrastructure.Repositories.DestinoRepository import DestinosRepository
-from src.Project.Aplication.DestinoUseCases.CreateDesinos import CreateDesinos
+from src.Project.Aplication.DestinoUseCases.CreateDesinos import CreateDestinos
 from src.Project.Aplication.DestinoUseCases.GetDestinos import GetDestinos
 from src.Project.Infrastructure.Services.DestinoService import DestinosService
 
@@ -13,7 +13,7 @@ bp_destinos = Blueprint("destinos", __name__)
 
 # 👇 Aquí está la corrección
 getter = GetDestinos(DestinosRepository())
-creator = CreateDesinos(DestinosRepository())
+creator = CreateDestinos(DestinosRepository())
 service = DestinosService(getter,creator)
 
 
