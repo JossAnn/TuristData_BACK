@@ -99,7 +99,7 @@ Content-Type: application/json
 
 #-----------RUTA PARA CREAR DETINOS-----------
 ###
-POST  http://localhost:8000/api/destino/rg  HTTP/1.1
+POST  http://localhost:8000/api/destinos/rg  HTTP/1.1
 Content-Type: application/json
 {
     "nombre": "Lagos montebello",
