@@ -4,8 +4,6 @@ from src.DataBases.MySQL import SessionLocal
 
 
 class EstablecimientoRepository(IEstablecimientoRepository):
-    # def __init__(self):
-    #     self.db = SessionLocal()
 
     def get_all(self):
         with SessionLocal() as db:
@@ -13,11 +11,7 @@ class EstablecimientoRepository(IEstablecimientoRepository):
 
     def get_by_id(self, id_):
         with SessionLocal() as db:
-            return (
-                self.db.query(EstablecimientoModel)
-                .filter_by(idalta_establecimiento=id_)
-                .first()
-            )
+            return db.query(EstablecimientoModel).filter_by(idalta_establecimiento=id_).first()
     
     def create(self, nombre, direccion, ciudad, tipo, horario, precio, imagen, id_administrador):
         with SessionLocal() as db:
@@ -31,30 +25,33 @@ class EstablecimientoRepository(IEstablecimientoRepository):
                 imagen=imagen,
                 id_administrador=id_administrador
             )
-            self.db.add(nuevo)
-            self.db.commit()
-            self.db.refresh(nuevo)
+            db.add(nuevo)
+            db.commit()
+            db.refresh(nuevo)
             return nuevo
 
     def delete(self, id_):
-        obj = self.db.query(EstablecimientoModel).filter_by(idalta_establecimiento=id_).first()
-        if obj:
-            self.db.delete(obj)
-            self.db.commit()
-            return obj  # opcionalmente puedes devolver el objeto eliminado
-        return None
+        with SessionLocal() as db:
+            obj = db.query(EstablecimientoModel).filter_by(idalta_establecimiento=id_).first()
+            if obj:
+                db.delete(obj)
+                db.commit()
+                return obj
+            return None
     
     def put(self, id_, nombre, direccion, ciudad, tipo, horario, precio, imagen):
-        obj = self.db.query(EstablecimientoModel).filter_by(idalta_establecimiento=id_).first()
-        if obj:
-            obj.nombre = nombre
-            obj.direccion = direccion
-            obj.ciudad = ciudad
-            obj.tipo = tipo
-            obj.horario = horario
-            obj.precio = precio
-            obj.imagen = imagen
-            self.db.commit()
-            self.db.refresh(obj)
-            return obj
-        return None
+        with SessionLocal() as db:
+            obj = db.query(EstablecimientoModel).filter_by(idalta_establecimiento=id_).first()
+            if obj:
+                obj.nombre = nombre
+                obj.direccion = direccion
+                obj.ciudad = ciudad
+                obj.tipo = tipo
+                obj.horario = horario
+                obj.precio = precio
+                obj.imagen = imagen
+                db.commit()
+                db.refresh(obj)
+                return obj
+            return None
+

@@ -34,7 +34,7 @@ def create_eventosEspeciales():
         # Agrega los datos adicionales que no vienen en el JSON
         data["id_destino"] = request.id_destino
         data["id_temporada"] = request.id_temporada
-        data["id_administrador"] = request.iid_administrador
+        data["id_administrador"] = request.id_administrador
 
         nuevo_eventoespecial = service.create(data)
         return jsonify(nuevo_eventoespecial.to_dict()), 201
