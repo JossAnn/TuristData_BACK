@@ -17,7 +17,7 @@ class EventosEspecialesModel(Base):
 
     def to_dict(self):
         return {
-            "idEventos_especiales": self.idEventos_especiales,
+            # "idEventos_especiales": self.idEventos_especiales,
             "nombre": self.nombre,
             "fecha_inicio": self.fecha_inicio,
             "fecha_final": self.fecha_final,
