@@ -93,7 +93,7 @@ def upload_image():
 #     except Exception as e:
 #         return jsonify({"error en controller": str(e)}), 500
 
-@bp_establecimientos.route('/establecimientos', methods=['POST'])
+@bp_establecimiento.route('/establecimientos', methods=['POST'])
 def create_establecimiento():
     data = request.json
 
