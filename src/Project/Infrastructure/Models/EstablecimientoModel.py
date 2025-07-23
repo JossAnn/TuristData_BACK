@@ -26,6 +26,6 @@ class EstablecimientoModel(Base):
             "horario":self.horario,
             "precio": self.precio,
             "imagen": self.imagen,
-            #"id_administrador": self.id_administrador
+            "id_administrador": self.id_administrador
         }
 

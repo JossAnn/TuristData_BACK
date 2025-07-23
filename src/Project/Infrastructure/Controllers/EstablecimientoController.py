@@ -15,6 +15,7 @@ from src.Project.Infrastructure.Utils.jwt_utils import token_requerido
 
 bp_establecimiento = Blueprint("establecimiento", __name__)
 
+
 # 👇 Aquí está la corrección
 getter = GetEstablecimientos(EstablecimientoRepository())
 creator = CreateEstablecimiento(EstablecimientoRepository())
@@ -33,39 +34,91 @@ def obtener_establecimiento(id_):
     #return jsonify(est.__dict__) if est else ("Not Found", 404)
     return jsonify([e.to_dict() for e in est])
 
-
-@bp_establecimiento.route("/establecimientos/rg", methods=["POST"])
-@token_requerido
-def create_establecimiento():
+@bp_establecimiento.route('/upload-image', methods=['POST'])
+def upload_image():
     if 'imagen' not in request.files:
-        return jsonify({"error": "No se encontró la imagen"}), 400
+        return jsonify({'error': 'No se encontró la imagen en la solicitud'}), 400
 
     imagen = request.files['imagen']
-    nombre = request.form.get("nombre")
-    direccion = request.form.get("direccion")
-    ciudad = request.form.get("ciudad")
-    tipo = request.form.get("tipo")
-    horario = request.form.get("horario")
-    precio = request.form.get("precio")
+    id_administrador = request.form.get('id_administrador')
+    if not id_administrador:
+        return jsonify({'error': 'Falta el ID del administrador'}), 400
 
-    try:
-        # Aquí podrías guardar la imagen físicamente si lo deseas
-        # por ejemplo: imagen.save(os.path.join("ruta/a/uploads", imagen.filename))
+    # Crear la carpeta del administrador si no existe
+    ruta_carpeta = os.path.join("uploads", f"admin_{id_administrador}")
+    os.makedirs(ruta_carpeta, exist_ok=True)
 
-        nuevo_establecimiento = service.create(
-            nombre,
-            direccion,
-            ciudad,
-            tipo,
-            horario,
-            precio,
-            imagen.filename,  # o la ruta completa si decides guardarla
-            request.id_administrador
-        )
-        return jsonify(nuevo_establecimiento.to_dict()), 201
+    # Guardar la imagen en la carpeta
+    filename = imagen.filename
+    ruta_final = os.path.join(ruta_carpeta, filename)
+    imagen.save(ruta_final)
 
-    except Exception as e:
-        return jsonify({"error en controller": str(e)}), 500
+    # Crear URL pública para la imagen
+    url_base = "https://tu-dominio.com"  # 🔁 Reemplaza por tu dominio real
+    url_imagen = f"{url_base}/uploads/admin_{id_administrador}/{filename}"
+
+    return jsonify({'url_imagen': url_imagen})
+
+
+# @bp_establecimiento.route("/establecimientos/rg", methods=["POST"])
+# @token_requerido
+# def create_establecimiento():
+#     if 'imagen' not in request.files:
+#         return jsonify({"error": "No se encontró la imagen"}), 400
+
+#     imagen = request.files['imagen']
+#     nombre = request.form.get("nombre")
+#     direccion = request.form.get("direccion")
+#     ciudad = request.form.get("ciudad")
+#     tipo = request.form.get("tipo")
+#     horario = request.form.get("horario")
+#     precio = request.form.get("precio")
+
+#     try:
+#         # Aquí podrías guardar la imagen físicamente si lo deseas
+#         # por ejemplo: imagen.save(os.path.join("ruta/a/uploads", imagen.filename))
+
+#         nuevo_establecimiento = service.create(
+#             nombre,
+#             direccion,
+#             ciudad,
+#             tipo,
+#             horario,
+#             precio,
+#             imagen.filename,  # o la ruta completa si decides guardarla
+#             request.id_administrador
+#         )
+#         return jsonify(nuevo_establecimiento.to_dict()), 201
+
+#     except Exception as e:
+#         return jsonify({"error en controller": str(e)}), 500
+
+@bp_establecimientos.route('/establecimientos', methods=['POST'])
+def create_establecimiento():
+    data = request.json
+
+    nombre = data.get('nombre')
+    direccion = data.get('direccion')
+    ciudad = data.get('ciudad')
+    tipo = data.get('tipo')
+    horario = data.get('horario')
+    precio = data.get('precio')
+    imagen_url = data.get('imagen')  # Aquí esperas la URL generada previamente
+    id_administrador = data.get('id_administrador')
+
+    nuevo_establecimiento = service.create(
+        nombre,
+        direccion,
+        ciudad,
+        tipo,
+        horario,
+        precio,
+        imagen_url,
+        id_administrador
+    )
+
+    return jsonify(nuevo_establecimiento.to_dict()), 201
+
 
 
 @bp_establecimiento.route("/establecimientos/<int:id_>", methods=["DELETE"])
