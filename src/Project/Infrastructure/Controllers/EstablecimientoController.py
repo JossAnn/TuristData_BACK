@@ -64,31 +64,31 @@ def create_establecimiento():
     except Exception as e:
         return jsonify({"error en controller": str(e)}), 500
 
-@bp_establecimiento.route('/establecimientos', methods=['POST'])
-def create_establecimiento():
-    data = request.json
+# @bp_establecimiento.route('/establecimientos', methods=['POST'])
+# def create_establecimiento():
+#     data = request.json
 
-    nombre = data.get('nombre')
-    direccion = data.get('direccion')
-    ciudad = data.get('ciudad')
-    tipo = data.get('tipo')
-    horario = data.get('horario')
-    precio = data.get('precio')
-    imagen_url = data.get('imagen')  # Aquí esperas la URL generada previamente
-    id_administrador = data.get('id_administrador')
+#     nombre = data.get('nombre')
+#     direccion = data.get('direccion')
+#     ciudad = data.get('ciudad')
+#     tipo = data.get('tipo')
+#     horario = data.get('horario')
+#     precio = data.get('precio')
+#     imagen_url = data.get('imagen')  # Aquí esperas la URL generada previamente
+#     id_administrador = data.get('id_administrador')
 
-    nuevo_establecimiento = service.create(
-        nombre,
-        direccion,
-        ciudad,
-        tipo,
-        horario,
-        precio,
-        imagen_url,
-        id_administrador
-    )
+#     nuevo_establecimiento = service.create(
+#         nombre,
+#         direccion,
+#         ciudad,
+#         tipo,
+#         horario,
+#         precio,
+#         imagen_url,
+#         id_administrador
+#     )
 
-    return jsonify(nuevo_establecimiento.to_dict()), 201
+#     return jsonify(nuevo_establecimiento.to_dict()), 201
 
 
 
