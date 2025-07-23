@@ -9,28 +9,14 @@ load_dotenv()
 def create_app():
     application = Flask(__name__)
 
-    # cors_origin = os.getenv("CORS_ORIGIN", "")
-    # allowed_origins = "*"
-
-    # CORS(
-    #     application,
-    #     supports_credentials=True,
-    #     resources={r"/*": {"origins": "*"}}
-    # )
-    origins = [
-        "https://turistdata.netlify.app",
-        "http://localhost:3000"
-    ]
+    cors_origin = os.getenv("CORS_ORIGIN", "")
+    allowed_origins = "*"
 
     CORS(
         application,
         supports_credentials=True,
-        resources={r"/*": {"origins": origins}},
-        allow_headers=["Content-Type", "Authorization"],
-        methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+        resources={r"/*": {"origins": "*"}}
     )
-
-
 
     register_blueprints(application)
 

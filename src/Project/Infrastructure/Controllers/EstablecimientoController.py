@@ -34,73 +34,9 @@ def obtener_establecimiento(id_):
     #return jsonify(est.__dict__) if est else ("Not Found", 404)
     return jsonify([e.to_dict() for e in est])
 
-@bp_establecimiento.route('/upload-image', methods=['POST'])
-def upload_image():
-    if 'imagen' not in request.files:
-        return jsonify({'error': 'No se encontró la imagen en la solicitud'}), 400
-
-    imagen = request.files['imagen']
-    id_administrador = request.form.get('id_administrador')
-    if not id_administrador:
-        return jsonify({'error': 'Falta el ID del administrador'}), 400
-
-    # Crear la carpeta del administrador si no existe
-    ruta_carpeta = os.path.join("uploads", f"admin_{id_administrador}")
-    os.makedirs(ruta_carpeta, exist_ok=True)
-
-    # Guardar la imagen en la carpeta
-    filename = imagen.filename
-    ruta_final = os.path.join(ruta_carpeta, filename)
-    imagen.save(ruta_final)
-
-    # Crear URL pública para la imagen
-    url_base = "https://turistdata-back.onrender.com"  # 🔁 Reemplaza por tu dominio real
-    url_imagen = f"{url_base}/uploads/admin_{id_administrador}/{filename}"
-
-    return jsonify({'url_imagen': url_imagen})
-
-
-# @bp_establecimiento.route("/establecimientos/rg", methods=["POST"])
-# @token_requerido
-# def create_establecimiento():
-#     if 'imagen' not in request.files:
-#         return jsonify({"error": "No se encontró la imagen"}), 400
-
-#     imagen = request.files['imagen']
-#     nombre = request.form.get("nombre")
-#     direccion = request.form.get("direccion")
-#     ciudad = request.form.get("ciudad")
-#     tipo = request.form.get("tipo")
-#     horario = request.form.get("horario")
-#     precio = request.form.get("precio")
-
-#     try:
-#         # Aquí podrías guardar la imagen físicamente si lo deseas
-#         # por ejemplo: imagen.save(os.path.join("ruta/a/uploads", imagen.filename))
-
-#         nuevo_establecimiento = service.create(
-#             nombre,
-#             direccion,
-#             ciudad,
-#             tipo,
-#             horario,
-#             precio,
-#             imagen.filename,  # o la ruta completa si decides guardarla
-#             request.id_administrador
-#         )
-#         return jsonify(nuevo_establecimiento.to_dict()), 201
-
-#     except Exception as e:
-#         return jsonify({"error en controller": str(e)}), 500
-
-
-@bp_establecimiento.route("/establecimientos/rg", methods=["POST", "OPTIONS"])
+@bp_establecimiento.route("/establecimientos/rg", methods=["POST"])
 @token_requerido
 def create_establecimiento():
-    # Responder OK para preflight OPTIONS sin token
-    if request.method == "OPTIONS":
-        return '', 200
-
     if 'imagen' not in request.files:
         return jsonify({"error": "No se encontró la imagen"}), 400
 
@@ -113,9 +49,6 @@ def create_establecimiento():
     precio = request.form.get("precio")
 
     try:
-        # Guardar imagen físicamente aquí si quieres:
-        # imagen.save(os.path.join("ruta/uploads", imagen.filename))
-
         nuevo_establecimiento = service.create(
             nombre,
             direccion,
@@ -123,7 +56,7 @@ def create_establecimiento():
             tipo,
             horario,
             precio,
-            imagen.filename,
+            imagen.filename,  # o la ruta completa si decides guardarla
             request.id_administrador
         )
         return jsonify(nuevo_establecimiento.to_dict()), 201
