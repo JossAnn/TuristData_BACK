@@ -17,12 +17,16 @@ def create_app():
     #     supports_credentials=True,
     #     resources={r"/*": {"origins": "*"}}
     # )
+    origins = [
+        "https://turistdata.netlify.app",
+        "http://localhost:3000"
+    ]
+
     CORS(
         application,
         supports_credentials=True,
-        resources={r"/*": {"origins": "https://turistdata.netlify.app"}}
+        resources={r"/*": {"origins": origins}}
     )
-
 
 
     register_blueprints(application)
