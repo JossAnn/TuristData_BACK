@@ -55,3 +55,6 @@ class EstablecimientoRepository(IEstablecimientoRepository):
                 return obj
             return None
 
+    def get_by_administrador(self, id_administrador):
+        with SessionLocal() as db:
+            return db.query(EstablecimientoModel).filter_by(id_administrador=id_administrador).all()

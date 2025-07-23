@@ -95,7 +95,10 @@ Content-Type: application/json
 GET  http://localhost:8000/api/establecimientos  HTTP/1.1
 Content-Type: application/json
 
-#-----------RUTA PARA EL FILTRO DE BUSQUEDA-----------
+#-----------RUTA PARA OBTENER TODOS LOS ESTABLECIMIENTOS POR ADMINISTRADOR-----------
+###
+GET  http://localhost:8000/api/establecimientos/admin  HTTP/1.1
+Content-Type: application/json
 
 #-----------RUTA PARA CREAR DETINOS-----------
 ###

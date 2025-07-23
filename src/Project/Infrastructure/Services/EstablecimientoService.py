@@ -19,3 +19,5 @@ class EstablecimientoService:
     
     def put(self, id_, nombre, direccion, ciudad, tipo, horario, precio, imagen):
         return self.updater.Actualizar(id_, nombre, direccion, ciudad, tipo, horario, precio, imagen)
+    def listar_por_administrador(self, id_administrador):
+        return self.getter.obtener_por_administrador(id_administrador)

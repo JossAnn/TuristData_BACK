@@ -101,3 +101,10 @@ def actualizar_establecimiento(id_):  # recibe el parámetro de la URL
     except Exception as e:
         return jsonify({"error en controller": str(e)}), 500
 
+@bp_establecimiento.route("/establecimientos/admin", methods=["GET"])
+@token_requerido
+def obtener_establecimientos_por_admin():
+    id_admin = request.id_administrador
+    establecimientos = service.listar_por_administrador(id_admin)
+    
+    return jsonify([e.to_dict() for e in establecimientos]), 200

@@ -7,3 +7,5 @@ class GetEstablecimientos:
 
     def execute_by_id(self, id_):
         return self.repository.get_by_id(id_)
+    def obtener_por_administrador(self, id_administrador):
+        return self.repository.get_by_administrador(id_administrador)
