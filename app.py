@@ -12,11 +12,17 @@ def create_app():
     # cors_origin = os.getenv("CORS_ORIGIN", "")
     # allowed_origins = "*"
 
+    # CORS(
+    #     application,
+    #     supports_credentials=True,
+    #     resources={r"/*": {"origins": "*"}}
+    # )
     CORS(
         application,
         supports_credentials=True,
-        resources={r"/*": {"origins": "*"}}
+        resources={r"/*": {"origins": "https://turistdata.netlify.app"}}
     )
+
 
 
     register_blueprints(application)
