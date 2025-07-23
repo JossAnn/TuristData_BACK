@@ -54,7 +54,7 @@ def upload_image():
     imagen.save(ruta_final)
 
     # Crear URL pública para la imagen
-    url_base = "https://tu-dominio.com"  # 🔁 Reemplaza por tu dominio real
+    url_base = "https://turistdata-back.onrender.com"  # 🔁 Reemplaza por tu dominio real
     url_imagen = f"{url_base}/uploads/admin_{id_administrador}/{filename}"
 
     return jsonify({'url_imagen': url_imagen})
@@ -92,6 +92,44 @@ def upload_image():
 
 #     except Exception as e:
 #         return jsonify({"error en controller": str(e)}), 500
+
+
+@bp_establecimiento.route("/establecimientos/rg", methods=["POST", "OPTIONS"])
+@token_requerido
+def create_establecimiento():
+    # Responder OK para preflight OPTIONS sin token
+    if request.method == "OPTIONS":
+        return '', 200
+
+    if 'imagen' not in request.files:
+        return jsonify({"error": "No se encontró la imagen"}), 400
+
+    imagen = request.files['imagen']
+    nombre = request.form.get("nombre")
+    direccion = request.form.get("direccion")
+    ciudad = request.form.get("ciudad")
+    tipo = request.form.get("tipo")
+    horario = request.form.get("horario")
+    precio = request.form.get("precio")
+
+    try:
+        # Guardar imagen físicamente aquí si quieres:
+        # imagen.save(os.path.join("ruta/uploads", imagen.filename))
+
+        nuevo_establecimiento = service.create(
+            nombre,
+            direccion,
+            ciudad,
+            tipo,
+            horario,
+            precio,
+            imagen.filename,
+            request.id_administrador
+        )
+        return jsonify(nuevo_establecimiento.to_dict()), 201
+
+    except Exception as e:
+        return jsonify({"error en controller": str(e)}), 500
 
 @bp_establecimiento.route('/establecimientos', methods=['POST'])
 def create_establecimiento():
