@@ -37,22 +37,31 @@ def obtener_establecimiento(id_):
 @bp_establecimiento.route("/establecimientos/rg", methods=["POST"])
 @token_requerido
 def create_establecimiento():
-    data = request.get_json()
-    if not data:
-        return jsonify({"error": "No data provided"}), 400
+    if 'imagen' not in request.files:
+        return jsonify({"error": "No se encontró la imagen"}), 400
+
+    imagen = request.files['imagen']
+    nombre = request.form.get("nombre")
+    direccion = request.form.get("direccion")
+    ciudad = request.form.get("ciudad")
+    tipo = request.form.get("tipo")
+    horario = request.form.get("horario")
+    precio = request.form.get("precio")
 
     try:
+        # Aquí podrías guardar la imagen físicamente si lo deseas
+        # por ejemplo: imagen.save(os.path.join("ruta/a/uploads", imagen.filename))
+
         nuevo_establecimiento = service.create(
-            data["nombre"],
-            data["direccion"],
-            data["ciudad"],
-            data["tipo"],
-            data["horario"],
-            data["precio"],
-            data["imagen"],
+            nombre,
+            direccion,
+            ciudad,
+            tipo,
+            horario,
+            precio,
+            imagen.filename,  # o la ruta completa si decides guardarla
             request.id_administrador
         )
-        #return jsonify(nuevo_establecimiento.__dict__), 201
         return jsonify(nuevo_establecimiento.to_dict()), 201
 
     except Exception as e:
