@@ -10,6 +10,9 @@ from src.Project.Infrastructure.Controllers.DestinoController import (bp_destino
 
 from flask import send_from_directory
 
+from src.Project.Infrastructure.Routes.ServeUploadsController import bp_serve_uploads
+
+
 def register_blueprints(app):
     app.register_blueprint(bp_establecimiento, url_prefix="/api")
     app.register_blueprint(bp_turista, url_prefix="/api")
@@ -18,8 +21,7 @@ def register_blueprints(app):
     app.register_blueprint(bp_eventosespeciales, url_prefix="/api")
     app.register_blueprint(bp_temporadas, url_prefix="/api")
     app.register_blueprint(bp_destinos, url_prefix="/api")
+    app.register_blueprint(bp_serve_uploads)  # Sin prefijo para que funcione directo
 
 
-@app.route('/uploads/<path:filename>')
-def serve_uploads(filename):
-    return send_from_directory('uploads', filename)
+
