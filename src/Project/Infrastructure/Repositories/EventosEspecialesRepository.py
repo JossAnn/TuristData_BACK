@@ -18,7 +18,7 @@ class EventosEspecialesRepository(IEventosEspecialesRepository):
             fecha_final=eventos_especiales["fecha_final"],
             descripcion=eventos_especiales["descripcion"],
             estado_afectado=eventos_especiales["estado_afectado"],
-            id_destino=eventos_especiales["id_destino"],
+            id_lugar=eventos_especiales["id_lugar"],
             id_temporada=eventos_especiales["id_temporada"],
             id_administrador=eventos_especiales["id_administrador"]
 

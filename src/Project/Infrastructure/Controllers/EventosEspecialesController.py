@@ -32,7 +32,7 @@ def create_eventosEspeciales():
 
     try:
         # Agrega los datos adicionales que no vienen en el JSON
-        data["id_destino"] = request.json.get("id_destino")
+        data["id_lugar"] = request.json.get("id_lugar")
         data["id_temporada"] = request.id_temporada
         data["id_administrador"] = request.id_administrador
 
