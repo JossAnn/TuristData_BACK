@@ -59,3 +59,7 @@ class EstablecimientoRepository(IEstablecimientoRepository):
     def get_by_administrador(self, id_administrador):
         with SessionLocal() as db:
             return db.query(EstablecimientoModel).filter_by(id_administrador=id_administrador).all()
+
+    def get_by_estado(self, estado):
+        with SessionLocal() as db:
+            return db.query(EstablecimientoModel).filter_by(estado=estado).all()

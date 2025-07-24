@@ -9,3 +9,6 @@ class GetEstablecimientos:
         return self.repository.get_by_id(id_)
     def obtener_por_administrador(self, id_administrador):
         return self.repository.get_by_administrador(id_administrador)
+
+    def obtener_por_estado(self, estado):
+        return self.repository.get_by_estado(estado)

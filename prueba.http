@@ -76,7 +76,7 @@ Content-Type: application/json
 GET  http://localhost:8000/api/establecimientos/admin  HTTP/1.1
 Content-Type: application/json
 
-#-----------RUTA PARA BUSCAR ESTABLECIMIENTOS POR LIGAR, FILTRAR POR ZONAS-----------por hacer
+#-----------RUTA PARA TODAS LAS CONSULTAS DEL LADO DEL TURISTA-----------
 
 #-----------RUTA PARA AGREGAR TURISTA-----------
 ###
@@ -139,4 +139,9 @@ Content-Type: application/json
 #-----------RUTA PARA VISUALIZAR EVENTOS ESPECIALES-----------
 ###
 GET  http://localhost:8000/api/eventosespeciales  HTTP/1.1
+Content-Type: application/json
+
+#-----------RUTA PARA VISUALIZAR TODOS LOS ESTABLECIMIENTOS POR ESTAOD-----------
+###
+GET  http://localhost:8000/api/establecimientos/estado  HTTP/1.1
 Content-Type: application/json

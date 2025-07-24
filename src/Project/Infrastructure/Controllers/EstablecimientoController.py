@@ -134,3 +134,11 @@ def obtener_establecimientos_por_admin():
     establecimientos = service.listar_por_administrador(id_admin)
     
     return jsonify([e.to_dict() for e in establecimientos]), 200
+
+@bp_establecimiento.route("/establecimientos/estado", methods=["GET"])
+@token_requerido
+def obtener_establecimientos_por_estado():
+    estado = request.estado
+    establecimientos = service.listar_por_estado(estado)
+    
+    return jsonify([e.to_dict() for e in establecimientos]), 200
