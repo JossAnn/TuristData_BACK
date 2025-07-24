@@ -44,6 +44,7 @@ def create_establecimiento():
     nombre = request.form.get("nombre")
     direccion = request.form.get("direccion")
     ciudad = request.form.get("ciudad")
+    estado = request.form.get("estado")
     tipo = request.form.get("tipo")
     horario = request.form.get("horario")
     precio = request.form.get("precio")
@@ -53,6 +54,7 @@ def create_establecimiento():
             nombre,
             direccion,
             ciudad,
+            estado,
             tipo,
             horario,
             precio,

@@ -10,6 +10,7 @@ class EstablecimientoModel(Base):
     nombre = Column(String(45), nullable=False)
     direccion = Column(String(45), nullable=False)
     ciudad = Column(String(45), nullable=False)
+    estado = Column(String(45))
     tipo = Column(String(45))
     horario = Column(String(45))
     precio = Column(String(45))
@@ -22,6 +23,7 @@ class EstablecimientoModel(Base):
             "nombre": self.nombre,
             "direccion": self.direccion,
             "ciudad": self.ciudad,
+            "estado": self.estado,
             "tipo": self.tipo,
             "horario":self.horario,
             "precio": self.precio,

@@ -37,6 +37,7 @@ Authorization: Bearer
     "nombre": "Restaurante del Mar",
     "direccion": "Calle del Sol, 123",
     "ciudad": "Marina",
+    "estado":"Mexico",
     "tipo": "Restaurante",
     "horario": "12:00-22:00",
     "precio": "256",
@@ -65,9 +66,17 @@ Authorization: Bearer
     "imagen": "fondo-Spiderman-modificado.jpg"
 }
 
+#-----------RUTA PARA OBTENER TODOS LO ESTABLECIMIENTOS-----------
+###
+GET  http://localhost:8000/api/establecimientos  HTTP/1.1
+Content-Type: application/json
+
+#-----------RUTA PARA OBTENER TODOS LOS ESTABLECIMIENTOS POR ADMINISTRADOR-----------
+###
+GET  http://localhost:8000/api/establecimientos/admin  HTTP/1.1
+Content-Type: application/json
+
 #-----------RUTA PARA BUSCAR ESTABLECIMIENTOS POR LIGAR, FILTRAR POR ZONAS-----------por hacer
-
-
 
 #-----------RUTA PARA AGREGAR TURISTA-----------
 ###
@@ -89,16 +98,6 @@ Content-Type: application/json
     "correo": "turistapao@gmail.com",
     "password": "paopao"
 }
-
-#-----------RUTA PARA OBTENER TODOS LO ESTABLECIMIENTOS-----------
-###
-GET  http://localhost:8000/api/establecimientos  HTTP/1.1
-Content-Type: application/json
-
-#-----------RUTA PARA OBTENER TODOS LOS ESTABLECIMIENTOS POR ADMINISTRADOR-----------
-###
-GET  http://localhost:8000/api/establecimientos/admin  HTTP/1.1
-Content-Type: application/json
 
 #-----------RUTA PARA CREAR DETINOS-----------
 ###

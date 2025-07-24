@@ -13,12 +13,13 @@ class EstablecimientoRepository(IEstablecimientoRepository):
         with SessionLocal() as db:
             return db.query(EstablecimientoModel).filter_by(idalta_establecimiento=id_).first()
     
-    def create(self, nombre, direccion, ciudad, tipo, horario, precio, imagen, id_administrador):
+    def create(self, nombre, direccion, ciudad, estado, tipo, horario, precio, imagen, id_administrador):
         with SessionLocal() as db:
             nuevo = EstablecimientoModel(
                 nombre=nombre,
                 direccion=direccion,
                 ciudad=ciudad,
+                estado=estado,
                 tipo=tipo,
                 horario=horario,
                 precio=precio,
