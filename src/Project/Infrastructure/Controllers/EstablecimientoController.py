@@ -138,7 +138,10 @@ def obtener_establecimientos_por_admin():
 @bp_establecimiento.route("/establecimientos/estado", methods=["GET"])
 # @token_requerido
 def obtener_establecimientos_por_estado():
-    estado = request.estado
+    estado = request.args.get("estado")
     establecimientos = service.listar_por_estado(estado)
     
+    if not estado:
+        return jsonify({"error": "Falta el parámetro 'estado'"}), 400
+
     return jsonify([e.to_dict() for e in establecimientos]), 200
