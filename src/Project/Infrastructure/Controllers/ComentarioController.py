@@ -42,7 +42,7 @@ def crear_comentario():
         # Preparamos el diccionario con los nombres correctos
         comentario_data = {
             "comentario": comentario,
-            "estrellas_calificacion":estrellas_calificacion,
+            "estrellas_calificacion":int(request.json.get("estrellas_calificacion")),
             "id_usuario": id_turista,
             "idalta_establecimiento": id_establecimiento
         }
