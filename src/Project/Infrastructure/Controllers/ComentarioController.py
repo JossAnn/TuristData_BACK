@@ -32,17 +32,20 @@ def crear_comentario():
         data = request.json
 
         comentario = data.get("comentario")
-        estrellas_calificacion=data.get("estrellas_calificacion")
+        try:
+            estrellas_calificacion = int(data.get("estrellas_calificacion"))
+        except (TypeError, ValueError):
+            return jsonify({"error": "La calificación debe ser un número entero"}), 400
+
         id_establecimiento = data.get("id_establecimiento")
         id_turista = g.id_usuario
 
         if not comentario or not id_establecimiento:
             return jsonify({"error": "Faltan datos necesarios"}), 400
 
-        # Preparamos el diccionario con los nombres correctos
         comentario_data = {
             "comentario": comentario,
-            "estrellas_calificacion":int(request.json.get("estrellas_calificacion")),
+            "estrellas_calificacion": estrellas_calificacion,
             "id_usuario": id_turista,
             "idalta_establecimiento": id_establecimiento
         }
