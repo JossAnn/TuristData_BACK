@@ -9,6 +9,20 @@ load_dotenv()
 
 SECRET_KEY = os.getenv("SECRET_KEYJWT")
 
+def crear_token_turista(id_usuario, correo, id_establecimiento, id_administrador):
+    payload = {
+        "sub": id_usuario,
+        "correo": correo,
+        "rol": "turista",
+        "id_establecimiento": id_establecimiento,
+        "id_administrador": id_administrador,
+        "iat": datetime.datetime.utcnow(),
+        "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)
+    }
+    return jwt.encode(payload, SECRET_KEY, algorithm="HS256")
+
+
+#Token de administrador
 def crear_token(admin_id, correo):
     payload = {
         "sub": admin_id,
@@ -29,6 +43,58 @@ def verificar_token(token):
     except jwt.InvalidTokenError:
         raise ValueError("Token inválido")
 
+# def token_requerido(f):
+#     @wraps(f)
+#     def decorated(*args, **kwargs):
+#         print("=== DEBUG JWT ===")
+#         print(f"URL: {request.url}")
+#         print(f"Method: {request.method}")
+#         print(f"Headers completos: {dict(request.headers)}")
+        
+#         # Verificar si existe el header Authorization
+#         auth_header = request.headers.get("Authorization")
+#         print(f"Authorization header encontrado: {auth_header}")
+        
+#         if not auth_header:
+#             print("ERROR: Header Authorization no encontrado")
+#             return jsonify({"error": "Token no proporcionado - header Authorization faltante"}), 401
+        
+#         print(f"Longitud del header: {len(auth_header)}")
+#         print(f"Inicia con 'Bearer ': {auth_header.startswith('Bearer ')}")
+        
+#         if not auth_header.startswith("Bearer "):
+#             print(f"ERROR: Header no inicia con 'Bearer ': {repr(auth_header)}")
+#             return jsonify({"error": "Token no proporcionado - formato incorrecto"}), 401
+
+#         # Extraer el token
+#         try:
+#             token = auth_header.split(" ")[1]
+#             print(f"Token extraído (primeros 50 chars): {token[:50]}...")
+#             print(f"Longitud del token: {len(token)}")
+#         except IndexError:
+#             print("ERROR: No se pudo extraer el token del header")
+#             return jsonify({"error": "Token no proporcionado - error al extraer token"}), 401
+        
+#         if not token or token.strip() == "":
+#             print("ERROR: Token vacío")
+#             return jsonify({"error": "Token vacío"}), 401
+
+#         # Verificar el token
+#         try:
+#             print("Verificando token...")
+#             payload = verificar_token(token)
+#             print(f"Token válido. Payload: {payload}")
+#             request.id_administrador = payload.get("sub")
+#             print(f"ID administrador asignado: {request.id_administrador}")
+#         except ValueError as e:
+#             print(f"ERROR al verificar token: {str(e)}")
+#             return jsonify({"error jwt utils": str(e)}), 401
+
+#         print("=== FIN DEBUG JWT ===")
+#         return f(*args, **kwargs)
+
+#     return decorated
+
 def token_requerido(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -36,44 +102,40 @@ def token_requerido(f):
         print(f"URL: {request.url}")
         print(f"Method: {request.method}")
         print(f"Headers completos: {dict(request.headers)}")
-        
-        # Verificar si existe el header Authorization
+
         auth_header = request.headers.get("Authorization")
         print(f"Authorization header encontrado: {auth_header}")
-        
-        if not auth_header:
-            print("ERROR: Header Authorization no encontrado")
-            return jsonify({"error": "Token no proporcionado - header Authorization faltante"}), 401
-        
-        print(f"Longitud del header: {len(auth_header)}")
-        print(f"Inicia con 'Bearer ': {auth_header.startswith('Bearer ')}")
-        
-        if not auth_header.startswith("Bearer "):
-            print(f"ERROR: Header no inicia con 'Bearer ': {repr(auth_header)}")
-            return jsonify({"error": "Token no proporcionado - formato incorrecto"}), 401
 
-        # Extraer el token
+        if not auth_header:
+            return jsonify({"error": "Token no proporcionado"}), 401
+
+        if not auth_header.startswith("Bearer "):
+            return jsonify({"error": "Formato de token inválido"}), 401
+
         try:
             token = auth_header.split(" ")[1]
-            print(f"Token extraído (primeros 50 chars): {token[:50]}...")
-            print(f"Longitud del token: {len(token)}")
         except IndexError:
-            print("ERROR: No se pudo extraer el token del header")
-            return jsonify({"error": "Token no proporcionado - error al extraer token"}), 401
-        
+            return jsonify({"error": "Token malformado"}), 401
+
         if not token or token.strip() == "":
-            print("ERROR: Token vacío")
             return jsonify({"error": "Token vacío"}), 401
 
-        # Verificar el token
         try:
-            print("Verificando token...")
             payload = verificar_token(token)
             print(f"Token válido. Payload: {payload}")
-            request.id_administrador = payload.get("sub")
-            print(f"ID administrador asignado: {request.id_administrador}")
+
+            rol = payload.get("rol")
+            if rol == "turista":
+                request.id_usuario = payload.get("sub")
+                request.id_establecimiento = payload.get("id_establecimiento")
+                request.id_administrador = payload.get("id_administrador")
+                print(f"TURISTA -> id_usuario: {request.id_usuario}, id_establecimiento: {request.id_establecimiento}, id_administrador: {request.id_administrador}")
+            else:
+                # Por defecto si no hay rol o es admin
+                request.id_administrador = payload.get("sub")
+                print(f"ADMIN -> id_administrador: {request.id_administrador}")
+
         except ValueError as e:
-            print(f"ERROR al verificar token: {str(e)}")
             return jsonify({"error jwt utils": str(e)}), 401
 
         print("=== FIN DEBUG JWT ===")
