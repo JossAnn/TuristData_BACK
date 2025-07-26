@@ -31,16 +31,16 @@ def crear_comentario():
     try:
         data = request.json
 
-        contenido = data.get("contenido")
+        comentario = data.get("comentario")
         id_establecimiento = data.get("id_establecimiento")
         id_turista = g.id_usuario
 
-        if not contenido or not id_establecimiento:
+        if not comentario or not id_establecimiento:
             return jsonify({"error": "Faltan datos necesarios"}), 400
 
         # Preparamos el diccionario con los nombres correctos
         comentario_data = {
-            "comentario": contenido,
+            "comentario": comentario,
             "id_usuario": id_turista,
             "idalta_establecimiento": id_establecimiento
         }
