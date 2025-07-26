@@ -5,6 +5,9 @@ from src.Project.Aplication.ComentarioUseCases.CreateComentario import CreateCom
 from src.Project.Aplication.ComentarioUseCases.GetComentario import GetComentario
 from src.Project.Infrastructure.Services.ComentarioService import ComentarioService
 
+from src.Project.Infrastructure.Repositories.EstablecimientoRepository import EstablecimientoRepository
+establecimiento_repo = EstablecimientoRepository()
+
 from src.Project.Infrastructure.Utils.jwt_utils import token_requerido
 
 bp_comentario = Blueprint("comentarios", __name__)
@@ -20,6 +23,8 @@ def listar_comentario():
     ests = service.listar()
     return jsonify([e.to_dict() for e in ests])
 
+
+
 @bp_comentario.route("/comentario/rg", methods=["POST"])
 @token_requerido
 def create_comentario():
@@ -28,21 +33,22 @@ def create_comentario():
         return jsonify({"error": "No data provided"}), 400
 
     try:
-        # Validar si existen los atributos antes de asignarlos
-        if hasattr(g, 'id_usuario'):
-            data["id_usuario"] = g.id_usuario
-        else:
-            return jsonify({"error": "Token no contiene id_usuario"}), 400
+        data["id_usuario"] = g.id_usuario
 
-        if hasattr(g, 'id_establecimiento'):
-            data["idalta_establecimiento"] = g.id_establecimiento
+        if "idalta_establecimiento" not in data:
+            return jsonify({"error": "Debe enviar idalta_establecimiento"}), 400
 
-        if hasattr(g, 'id_administrador'):
-            data["id_administrador"] = g.id_administrador
+        id_establecimiento = data["idalta_establecimiento"]
+        id_administrador = establecimiento_repo.obtener_administrador_por_establecimiento(id_establecimiento)
 
-        nuevo_destino = service.create(data)
-        return jsonify(nuevo_destino.to_dict()), 201
+        if not id_administrador:
+            return jsonify({"error": "No se encontró administrador para ese establecimiento"}), 400
+
+        data["id_administrador"] = id_administrador
+
+        nuevo_comentario = service.create(data)
+        return jsonify(nuevo_comentario.to_dict()), 201
 
     except Exception as e:
         return jsonify({"error en controller": str(e)}), 500
-    
+

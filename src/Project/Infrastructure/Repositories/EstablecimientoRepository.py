@@ -63,3 +63,12 @@ class EstablecimientoRepository(IEstablecimientoRepository):
     def get_by_estado(self, estado):
         with SessionLocal() as db:
             return db.query(EstablecimientoModel).filter_by(estado=estado).all()
+        
+    def obtener_administrador_por_establecimiento(self, id_establecimiento):
+        with SessionLocal() as db:
+            establecimiento = db.query(EstablecimientoModel).filter(
+                EstablecimientoModel.idalta_establecimiento == id_establecimiento
+            ).first()
+            if establecimiento:
+                return establecimiento.id_administrador  # Aquí corriges a id_administrador, no fk_administrador
+            return None
