@@ -16,24 +16,33 @@ service = ComentarioService(getter,creator)
 
 
 @bp_comentario.route("/comentario", methods=["GET"])
-def listar_destinos():
+def listar_comentario():
     ests = service.listar()
     return jsonify([e.to_dict() for e in ests])
 
 @bp_comentario.route("/comentario/rg", methods=["POST"])
 @token_requerido
-def create_destino():
+def create_comentario():
     data = request.get_json()
     if not data:
         return jsonify({"error": "No data provided"}), 400
 
     try:
-        data["id_usuario"] = g.id_usuario
-        data["idalta_establecimiento"] = g.id_establecimiento
-        data["id_administrador"] = g.id_administrador
+        # Validar si existen los atributos antes de asignarlos
+        if hasattr(g, 'id_usuario'):
+            data["id_usuario"] = g.id_usuario
+        else:
+            return jsonify({"error": "Token no contiene id_usuario"}), 400
+
+        if hasattr(g, 'id_establecimiento'):
+            data["idalta_establecimiento"] = g.id_establecimiento
+
+        if hasattr(g, 'id_administrador'):
+            data["id_administrador"] = g.id_administrador
 
         nuevo_destino = service.create(data)
         return jsonify(nuevo_destino.to_dict()), 201
 
     except Exception as e:
         return jsonify({"error en controller": str(e)}), 500
+    
