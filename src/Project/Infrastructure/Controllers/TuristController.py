@@ -46,7 +46,7 @@ def login_turista():
     try:
         turist = service.login(data["correo"], data["password"])
 
-        token = crear_token_turista(turist.id_usuario, turist.correo)
+        token = crear_token_turista(turist.id_usuario, turist.correo,turist.id_establecimiento, turist.id_administrador)
 
         return jsonify({
             "message": "Inicio de sesión exitoso",
