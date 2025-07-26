@@ -145,3 +145,16 @@ Content-Type: application/json
 ###
 GET http://localhost:8000/api/establecimientos/estado  HTTP/1.1
 Content-Type: application/json
+
+#-----------RUTA PARA VER COMENTARIO-----------
+###
+GET http://localhost:8000/api/comentarios/comentario  HTTP/1.1
+Content-Type: application/json
+
+#-----------RUTA PARA AGREGAR COMENTARIO-----------
+###
+POST http://localhost:8000/api/comentarios/comentario/rg  HTTP/1.1
+Content-Type: application/json
+{
+    "comentario": "Buen servicio"
+}
