@@ -7,5 +7,6 @@ class ComentarioService:
         return self.getter.get_all()
 
     def create(self, data):
-        return self.creator.create(data)
+        return self.creator.create_comentario(data)
+
 
