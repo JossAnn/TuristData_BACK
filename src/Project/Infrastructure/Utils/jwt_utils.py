@@ -27,6 +27,7 @@ def crear_token(admin_id, correo):
     payload = {
         "sub": admin_id,
         "correo": correo,
+        "rol": "admin", 
         "iat": datetime.datetime.utcnow(),
         "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # token válido 1 hora
         
