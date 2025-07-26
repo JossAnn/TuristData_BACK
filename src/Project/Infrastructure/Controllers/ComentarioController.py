@@ -27,28 +27,27 @@ def listar_comentario():
 
 @bp_comentario.route("/comentario/rg", methods=["POST"])
 @token_requerido
-def create_comentario():
-    data = request.get_json()
-    if not data:
-        return jsonify({"error": "No data provided"}), 400
-
+def crear_comentario():
     try:
-        data["id_usuario"] = g.id_usuario
+        data = request.json
 
-        if "idalta_establecimiento" not in data:
-            return jsonify({"error": "Debe enviar idalta_establecimiento"}), 400
+        contenido = data.get("contenido")
+        id_establecimiento = data.get("id_establecimiento")
+        id_turista = g.id_usuario
 
-        id_establecimiento = data["idalta_establecimiento"]
-        id_administrador = establecimiento_repo.obtener_administrador_por_establecimiento(id_establecimiento)
+        if not contenido or not id_establecimiento:
+            return jsonify({"error": "Faltan datos necesarios"}), 400
 
-        if not id_administrador:
-            return jsonify({"error": "No se encontró administrador para ese establecimiento"}), 400
+        # Preparamos el diccionario con los nombres correctos
+        comentario_data = {
+            "comentario": contenido,
+            "id_usuario": id_turista,
+            "idalta_establecimiento": id_establecimiento
+        }
 
-        data["id_administrador"] = id_administrador
-
-        nuevo_comentario = service.create(data)
+        nuevo_comentario = service.create(comentario_data)
         return jsonify(nuevo_comentario.to_dict()), 201
 
     except Exception as e:
-        return jsonify({"error en controller": str(e)}), 500
+        return jsonify({"error": str(e)}), 500
 

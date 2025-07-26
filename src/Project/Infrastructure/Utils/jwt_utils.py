@@ -9,13 +9,11 @@ load_dotenv()
 
 SECRET_KEY = os.getenv("SECRET_KEYJWT")
 
-def crear_token_turista(id_usuario, correo, id_establecimiento, id_administrador):
+def crear_token_turista(id_usuario, correo):
     payload = {
         "sub": id_usuario,
         "correo": correo,
         "rol": "turista",
-        "id_establecimiento": id_establecimiento,
-        "id_administrador": id_administrador,
         "iat": datetime.datetime.utcnow(),
         "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)
     }
@@ -43,6 +41,35 @@ def verificar_token(token):
         raise ValueError("Token expirado")
     except jwt.InvalidTokenError:
         raise ValueError("Token inválido")
+
+
+def token_requerido(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth_header = request.headers.get("Authorization")
+
+        if not auth_header or not auth_header.startswith("Bearer "):
+            return jsonify({"error": "Token no proporcionado o formato inválido"}), 401
+
+        try:
+            token = auth_header.split(" ")[1]
+            payload = verificar_token(token)
+
+            rol = payload.get("rol")
+
+            if rol == "turista":
+                g.id_usuario = payload.get("sub")
+            else:
+                g.id_administrador = payload.get("sub")
+
+        except Exception as e:
+            return jsonify({"error jwt utils": str(e)}), 401
+
+        return f(*args, **kwargs)
+
+    return decorated
+
+
 
 # def token_requerido(f):
 #     @wraps(f)
@@ -95,34 +122,3 @@ def verificar_token(token):
 #         return f(*args, **kwargs)
 
 #     return decorated
-
-
-def token_requerido(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        auth_header = request.headers.get("Authorization")
-
-        if not auth_header or not auth_header.startswith("Bearer "):
-            return jsonify({"error": "Token no proporcionado o formato inválido"}), 401
-
-        try:
-            token = auth_header.split(" ")[1]
-            payload = verificar_token(token)
-
-            rol = payload.get("rol")
-
-            if rol == "turista":
-                g.id_usuario = payload.get("sub")
-                g.id_establecimiento = payload.get("id_establecimiento")
-                g.id_administrador = payload.get("id_administrador")
-            else:
-                g.id_administrador = payload.get("sub")
-
-        except Exception as e:
-            return jsonify({"error jwt utils": str(e)}), 401
-
-        return f(*args, **kwargs)
-
-    return decorated
-
-

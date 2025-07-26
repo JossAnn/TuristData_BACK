@@ -16,8 +16,7 @@ class ComentarioRepository(IComentario):
             nuevo = ComentarioModel(
                 comentario=comentario["comentario"],
                 fk_usuario=comentario["id_usuario"],
-                fk_establecimiento=comentario["idalta_establecimiento"],
-                fk_administrador=comentario["id_administrador"]
+                fk_establecimiento=comentario["idalta_establecimiento"]
             )
             db.add(nuevo)
             db.commit()
