@@ -21,6 +21,7 @@ def listar_destinos():
     return jsonify([e.to_dict() for e in ests])
 
 @bp_comentario.route("/comentario/rg", methods=["POST"])
+@token_requerido
 def create_destino():
     data = request.get_json()
     if not data:
