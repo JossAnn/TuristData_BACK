@@ -98,47 +98,29 @@ def verificar_token(token):
 def token_requerido(f):
     @wraps(f)
     def decorated(*args, **kwargs):
-        print("=== DEBUG JWT ===")
-        print(f"URL: {request.url}")
-        print(f"Method: {request.method}")
-        print(f"Headers completos: {dict(request.headers)}")
-
         auth_header = request.headers.get("Authorization")
-        print(f"Authorization header encontrado: {auth_header}")
 
-        if not auth_header:
-            return jsonify({"error": "Token no proporcionado"}), 401
-
-        if not auth_header.startswith("Bearer "):
-            return jsonify({"error": "Formato de token inválido"}), 401
+        if not auth_header or not auth_header.startswith("Bearer "):
+            return jsonify({"error": "Token no proporcionado o formato inválido"}), 401
 
         try:
             token = auth_header.split(" ")[1]
-        except IndexError:
-            return jsonify({"error": "Token malformado"}), 401
-
-        if not token or token.strip() == "":
-            return jsonify({"error": "Token vacío"}), 401
-
-        try:
             payload = verificar_token(token)
-            print(f"Token válido. Payload: {payload}")
 
+            # Detecta el rol para asignar los atributos correctos
             rol = payload.get("rol")
+
             if rol == "turista":
                 request.id_usuario = payload.get("sub")
                 request.id_establecimiento = payload.get("id_establecimiento")
                 request.id_administrador = payload.get("id_administrador")
-                print(f"TURISTA -> id_usuario: {request.id_usuario}, id_establecimiento: {request.id_establecimiento}, id_administrador: {request.id_administrador}")
-            else:
-                # Por defecto si no hay rol o es admin
+            else:  # Por defecto asumimos que es administrador
                 request.id_administrador = payload.get("sub")
-                print(f"ADMIN -> id_administrador: {request.id_administrador}")
 
-        except ValueError as e:
+        except Exception as e:
             return jsonify({"error jwt utils": str(e)}), 401
 
-        print("=== FIN DEBUG JWT ===")
         return f(*args, **kwargs)
 
     return decorated
+
