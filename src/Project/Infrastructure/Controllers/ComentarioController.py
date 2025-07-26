@@ -28,10 +28,10 @@ def create_destino():
         return jsonify({"error": "No data provided"}), 400
 
     try:
-        # Agrega los datos adicionales que no vienen en el JSON
-        data["id_usuario"] = request.id_usuario
-        data["idalta_establecimiento"] = request.id_establecimiento
-        data["id_administrador"] = request.id_administrador
+        data["id_usuario"] = g.id_usuario
+        data["idalta_establecimiento"] = g.id_establecimiento
+        data["id_administrador"] = g.id_administrador
+
         nuevo_destino = service.create(data)
         return jsonify(nuevo_destino.to_dict()), 201
 

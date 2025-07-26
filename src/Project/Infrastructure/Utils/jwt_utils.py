@@ -95,6 +95,7 @@ def verificar_token(token):
 
 #     return decorated
 
+
 def token_requerido(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -107,15 +108,14 @@ def token_requerido(f):
             token = auth_header.split(" ")[1]
             payload = verificar_token(token)
 
-            # Detecta el rol para asignar los atributos correctos
             rol = payload.get("rol")
 
             if rol == "turista":
-                request.id_usuario = payload.get("sub")
-                request.id_establecimiento = payload.get("id_establecimiento")
-                request.id_administrador = payload.get("id_administrador")
-            else:  # Por defecto asumimos que es administrador
-                request.id_administrador = payload.get("sub")
+                g.id_usuario = payload.get("sub")
+                g.id_establecimiento = payload.get("id_establecimiento")
+                g.id_administrador = payload.get("id_administrador")
+            else:
+                g.id_administrador = payload.get("sub")
 
         except Exception as e:
             return jsonify({"error jwt utils": str(e)}), 401
@@ -123,4 +123,5 @@ def token_requerido(f):
         return f(*args, **kwargs)
 
     return decorated
+
 
