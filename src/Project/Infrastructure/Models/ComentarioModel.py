@@ -7,6 +7,7 @@ class ComentarioModel(Base):
     
     id_comentarios = Column(Integer, primary_key=True, autoincrement=True)
     comentario = Column(String)
+    estrellas_calificacion=Column(Integer)
     fk_usuario = Column(Integer, ForeignKey("turista.id_usuario"))
     fk_establecimiento = Column(Integer, ForeignKey("alta_establecimiento.idalta_establecimiento"))
 
