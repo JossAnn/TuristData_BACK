@@ -8,7 +8,7 @@ from src.Project.Aplication.TuristUseCases.GetTurist import GetTurist
 from src.Project.Aplication.TuristUseCases.LoginTurista import LognTurista
 from src.Project.Infrastructure.Services.TuristService import (TuristService)
 
-from src.Project.Infrastructure.Utils.jwt_utils import crear_token
+from src.Project.Infrastructure.Utils.jwt_utils import crear_token_turista
 
 
 bp_turista = Blueprint("turistas", __name__)
@@ -46,7 +46,7 @@ def login_turista():
     try:
         turist = service.login(data["correo"], data["password"])
 
-        token = crear_token(turist.id_usuario, turist.correo)
+        token = crear_token_turista(turist.id_usuario, turist.correo)
 
         return jsonify({
             "message": "Inicio de sesión exitoso",
