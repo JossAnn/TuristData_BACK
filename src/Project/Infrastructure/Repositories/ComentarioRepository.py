@@ -2,6 +2,8 @@ from src.Project.Domain.Ports.IComentarioRepository import IComentario
 from src.Project.Infrastructure.Models.ComentarioModel import ComentarioModel
 from src.DataBases.MySQL import SessionLocal
 
+from sqlalchemy.orm import joinedload
+from src.Project.Infrastructure.Models.TuristModel import TuristModel 
 
 class ComentarioRepository(IComentario):
     def __init__(self):
@@ -13,10 +15,13 @@ class ComentarioRepository(IComentario):
         
     def get_by_establecimiento(self, id_establecimiento):
         with SessionLocal() as db:
-            return db.query(ComentarioModel).filter(
-                ComentarioModel.fk_establecimiento == id_establecimiento
-            ).all()
-
+            comentarios = (
+                db.query(ComentarioModel)
+                .options(joinedload(ComentarioModel.usuario))  # 👈 JOIN con turista
+                .filter(ComentarioModel.fk_establecimiento == id_establecimiento)
+                .all()
+            )
+            return [comentario.to_dict() for comentario in comentarios]
     def create(self, comentario):
         with SessionLocal() as db:
             nuevo = ComentarioModel(
