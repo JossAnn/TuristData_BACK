@@ -33,7 +33,7 @@ def listar_comentario_establecimiento():
 
     comentarios = service.get_by_establecimiento(id_establecimiento)
 
-    return jsonify([c.to_dict() for c in comentarios])
+    return jsonify(comentarios)
 
 
 @bp_comentario.route("/comentario/rg", methods=["POST"])
