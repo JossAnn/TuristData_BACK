@@ -15,7 +15,7 @@ class ComentarioRepository(IComentario):
         with SessionLocal() as db:
             nuevo = ComentarioModel(
                 comentario=comentario["comentario"],
-                estrellas_calificacion=["estrellas_calificacion"],
+                estrellas_calificacion=comentario["estrellas_calificacion"],
                 fk_usuario=comentario["id_usuario"],
                 fk_establecimiento=comentario["idalta_establecimiento"]
             )
