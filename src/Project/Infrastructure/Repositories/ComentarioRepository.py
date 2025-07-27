@@ -17,11 +17,23 @@ class ComentarioRepository(IComentario):
         with SessionLocal() as db:
             comentarios = (
                 db.query(ComentarioModel)
-                .options(joinedload(ComentarioModel.usuario))  # 👈 JOIN con turista
+                .options(joinedload(ComentarioModel.usuario))
                 .filter(ComentarioModel.fk_establecimiento == id_establecimiento)
                 .all()
             )
-            return [comentario.to_dict() for comentario in comentarios]
+
+            resultado = []
+            for comentario in comentarios:
+                c_dict = {
+                    "id_comentarios": comentario.id_comentarios,
+                    "estrellas_calificacion": comentario.estrellas_calificacion,
+                    "comentario": comentario.comentario,
+                    "nombre_usuario": comentario.usuario.nombre if comentario.usuario else None
+                }
+                resultado.append(c_dict)
+            return resultado
+
+        
     def create(self, comentario):
         with SessionLocal() as db:
             nuevo = ComentarioModel(
