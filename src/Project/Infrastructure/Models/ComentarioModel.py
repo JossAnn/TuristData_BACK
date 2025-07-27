@@ -14,5 +14,6 @@ class ComentarioModel(Base):
     def to_dict(self):
         return {
             "id_comentarios": self.id_comentarios,
+            "estrellas_calificacion":self.estrellas_calificacion,
             "comentario": self.comentario
         }
