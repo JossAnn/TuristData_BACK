@@ -24,6 +24,17 @@ def listar_comentario():
     return jsonify([e.to_dict() for e in ests])
 
 
+@bp_comentario.route("/comentario/establecimiento", methods=["GET"])
+def listar_comentario_establecimiento():
+    id_establecimiento = request.args.get("establecimiento_id", type=int)
+
+    if not id_establecimiento:
+        return jsonify({"error": "Debe especificar id del establecimiento"}), 400
+
+    comentarios = service.get_by_establecimiento(id_establecimiento)
+
+    return jsonify([c.to_dict() for c in comentarios])
+
 
 @bp_comentario.route("/comentario/rg", methods=["POST"])
 @token_requerido

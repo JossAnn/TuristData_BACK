@@ -10,6 +10,12 @@ class ComentarioRepository(IComentario):
     def get_all(self):
         with SessionLocal() as db:
             return db.query(ComentarioModel).all()
+        
+    def get_by_establecimiento(self, id_establecimiento):
+        with SessionLocal() as db:
+            return db.query(ComentarioModel).filter(
+                ComentarioModel.fk_establecimiento == id_establecimiento
+            ).all()
 
     def create(self, comentario):
         with SessionLocal() as db:
