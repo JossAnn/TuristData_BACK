@@ -26,7 +26,7 @@ def listar_comentario():
 
 
 @bp_comentario.route("/comentario/rg", methods=["POST"])
-# @token_requerido
+@token_requerido
 def crear_comentario():
     try:
         data = request.json
