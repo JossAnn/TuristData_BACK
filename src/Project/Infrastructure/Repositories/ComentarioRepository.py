@@ -45,6 +45,16 @@ class ComentarioRepository(IComentario):
             db.add(nuevo)
             db.commit()
             db.refresh(nuevo)
-            return nuevo
+
+            usuario = db.query(TuristModel).filter(TuristModel.id_usuario == nuevo.fk_usuario).first()
+
+            return {
+                "id_comentarios": nuevo.id_comentarios,
+                "comentario": nuevo.comentario,
+                "estrellas_calificacion": nuevo.estrellas_calificacion,
+                "fk_usuario": nuevo.fk_usuario,
+                "fk_establecimiento": nuevo.fk_establecimiento,
+                "nombre_usuario": usuario.nombre if usuario else None,
+            }
 
     
