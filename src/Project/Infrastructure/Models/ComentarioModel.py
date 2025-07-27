@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Time, Text, ForeignKey,relationship
+from sqlalchemy import Column, Integer, String, Time, Text, ForeignKey
+from sqlalchemy.orm import relationship 
 from src.DataBases.MySQL import Base
 
 
