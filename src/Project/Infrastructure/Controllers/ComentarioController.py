@@ -62,7 +62,7 @@ def crear_comentario():
         }
 
         nuevo_comentario = service.create(comentario_data)
-        return jsonify(nuevo_comentario.to_dict()), 201
+        return jsonify(nuevo_comentario), 201
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
