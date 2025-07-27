@@ -28,7 +28,7 @@ class ComentarioRepository(IComentario):
                     "id_comentarios": comentario.id_comentarios,
                     "estrellas_calificacion": comentario.estrellas_calificacion,
                     "comentario": comentario.comentario,
-                    "nombre_usuario": comentario.usuario.nombre if comentario.usuario else None
+                    "nombre": comentario.usuario.nombre if comentario.usuario else None
                 }
                 resultado.append(c_dict)
             return resultado
