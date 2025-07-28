@@ -10,13 +10,13 @@ from src.Project.Infrastructure.Services.EventosEspecialesService import (
 
 from src.Project.Infrastructure.Utils.jwt_utils import token_requerido
 
-bp_eventosespeciales = Blueprint("eventosespeciales", __name__)
+bp_lugares = Blueprint("lugares", __name__)
 
 # 👇 Aquí está la corrección
 creator = CreateEventosEspeciales(EventosEspecialesRepository())
 service = EventosEspecialesService(creator)
 
-@bp_eventosespeciales.route("/eventosespeciales/rg", methods=['POST', 'OPTIONS'])
+@bp_lugares.route("/lugares/rg", methods=['POST', 'OPTIONS'])
 @token_requerido
 def create_eventosEspeciales():
     data = request.get_json()
