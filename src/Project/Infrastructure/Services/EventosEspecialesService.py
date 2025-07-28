@@ -6,5 +6,5 @@ class EventosEspecialesService:
     def listar(self):
         return self.getter.execute_all()
     def create(self, evento_data: dict):
-        return self.creator.execute(evento_data)
+        return self.creator.create_eventosespeciales(evento_data)
 
