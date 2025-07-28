@@ -23,8 +23,8 @@ def create_lugar():
         # Agrega los datos adicionales que no vienen en el JSON
         data["id_lugar"] = request.json.get("id_lugar")
 
-        nuevo_eventoespecial = service.create(data)
-        return jsonify(nuevo_eventoespecial.to_dict()), 201
+        nuevo_lugar = service.create(data)
+        return jsonify(nuevo_lugar.to_dict()), 201
 
     except Exception as e:
         return jsonify({"error en controller": str(e)}), 500
