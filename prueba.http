@@ -118,7 +118,7 @@ Content-Type: application/json
     "fecha_final": "2025-07-25T18:00:00",
     "descripcion": "Evento cultural y gastronómico regional",
     "estado_afectado": "Chiapas",
-    "id_destino": 1,
+    "id_lugar": 1,
     "id_temporada": 1,
     "id_administrador": 1
 }

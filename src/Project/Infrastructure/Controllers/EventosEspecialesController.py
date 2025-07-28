@@ -26,15 +26,17 @@ def listar_eventosespeciales():
 @bp_eventosespeciales.route("/eventosespeciales/rg", methods=["POST"])
 @token_requerido
 def create_eventosEspeciales():
-    data = request.get_json()
-    if not data:
-        return jsonify({"error": "No data provided"}), 400
-
     try:
-        # Agrega los datos adicionales que no vienen en el JSON
-        data["id_lugar"] = request.json.get("id_lugar")
-        data["id_temporada"] = request.id_temporada
-        data["id_administrador"] = request.id_administrador
+        data = {
+            "nombre": request.form.get("nombre"),
+            "fecha_inicio": request.form.get("fecha_inicio"),
+            "fecha_final": request.form.get("fecha_final"),
+            "descripcion": request.form.get("descripcion"),
+            "estado_afectado": request.form.get("estado_afectado"),
+            "id_lugar": request.form.get("id_lugar"),
+            "id_temporada": request.form.get("id_temporada"),
+            "id_administrador": g.id_administrador,  # 👈 desde JWT
+        }
 
         nuevo_eventoespecial = service.create(data)
         return jsonify(nuevo_eventoespecial.to_dict()), 201
