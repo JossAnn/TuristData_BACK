@@ -14,7 +14,7 @@ service = LugaresService(creator)
 
 @bp_lugares.route("/lugares/rg", methods=['POST', 'OPTIONS'])
 @token_requerido
-def create_eventosEspeciales():
+def create_lugar():
     data = request.get_json()
     if not data:
         return jsonify({"error": "No data provided"}), 400
@@ -22,8 +22,6 @@ def create_eventosEspeciales():
     try:
         # Agrega los datos adicionales que no vienen en el JSON
         data["id_lugar"] = request.json.get("id_lugar")
-        data["id_temporada"] = request.id_temporada
-        data["id_administrador"] = request.id_administrador
 
         nuevo_eventoespecial = service.create(data)
         return jsonify(nuevo_eventoespecial.to_dict()), 201
