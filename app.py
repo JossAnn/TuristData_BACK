@@ -11,12 +11,20 @@ def create_app():
 
     cors_origin = os.getenv("CORS_ORIGIN", "")
     allowed_origins = "*"
+    
+    CORS(application, resources={
+        r"/*": {
+            "origins": "*",
+            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+            "allow_headers": ["Content-Type", "Authorization"]
+        }
+    })
 
-    CORS(
-        application,
-        supports_credentials=True,
-        resources={r"/*": {"origins": "*"}}
-    )
+    # CORS(
+    #     application,
+    #     supports_credentials=True,
+    #     resources={r"/*": {"origins": "*"}}
+    # )
 
     register_blueprints(application)
 
