@@ -1,5 +1,5 @@
 class LugaresService:
-    def __init__(self, getter,creator):
+    def __init__(self,creator):
         self.creator = creator
 
     def create(self, lugar_data: dict):
