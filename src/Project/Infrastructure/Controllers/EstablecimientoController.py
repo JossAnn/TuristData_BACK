@@ -1,3 +1,9 @@
+import cloudinary
+import cloudinary.uploader
+from flask import request, jsonify
+from dotenv import load_dotenv
+import os
+
 from flask import Blueprint, jsonify, request, g
 from src.Project.Infrastructure.Repositories.EstablecimientoRepository import (
     EstablecimientoRepository,
@@ -16,6 +22,17 @@ from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = "static/uploads"  # Puedes ajustar esto según tu estructura
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
+
+
+load_dotenv()
+
+# Configuración de Cloudinary
+cloudinary.config(
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET")
+)
+
 
 # Asegúrate que la carpeta exista
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -79,23 +96,23 @@ def create_establecimiento():
     if 'imagen' not in request.files:
         return jsonify({"error": "No se encontró la imagen"}), 400
 
-    imagen = request.files['imagen']
+    imagen = request.files.get('imagen')
 
     if imagen and allowed_file(imagen.filename):
-        filename = secure_filename(imagen.filename)
-        ruta_imagen = os.path.join(UPLOAD_FOLDER, filename)
-        imagen.save(ruta_imagen)
-
-        nombre = request.form.get("nombre")
-        direccion = request.form.get("direccion")
-        ciudad = request.form.get("ciudad")
-        estado = request.form.get("estado")
-        tipo = request.form.get("tipo")
-        horario = request.form.get("horario")
-        precio = request.form.get("precio")
-        ruta_publica = f"/static/uploads/{filename}"
-
         try:
+            # Subir imagen a Cloudinary
+            result = cloudinary.uploader.upload(imagen)
+            imagen_url = result.get("secure_url")
+
+            # Obtener datos del formulario
+            nombre = request.form.get("nombre")
+            direccion = request.form.get("direccion")
+            ciudad = request.form.get("ciudad")
+            estado = request.form.get("estado")
+            tipo = request.form.get("tipo")
+            horario = request.form.get("horario")
+            precio = request.form.get("precio")
+
             nuevo_establecimiento = service.create(
                 nombre,
                 direccion,
@@ -104,7 +121,7 @@ def create_establecimiento():
                 tipo,
                 horario,
                 precio,
-                ruta_publica,   # Guardar ruta accesible como string
+                imagen_url,  # Guardar URL pública de Cloudinary
                 g.id_administrador
             )
             return jsonify(nuevo_establecimiento.to_dict()), 201
