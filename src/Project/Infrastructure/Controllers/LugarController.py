@@ -1,20 +1,16 @@
 from flask import Blueprint, jsonify, request, g
-from src.Project.Infrastructure.Repositories.EventosEspecialesRepository import EventosEspecialesRepository
 
-from src.Project.Aplication.EventoEspecialesUsesCases.CreateEventosEspeciales import CreateEventosEspeciales
-
-from src.Project.Aplication.EventoEspecialesUsesCases.GetAllEventosEpeciales import GetEventosEspecialesUseCase
-
-from src.Project.Infrastructure.Services.EventosEspecialesService import (
-    EventosEspecialesService)
+from src.Project.Infrastructure.Repositories.LugaresRepository import LugaresRepository
+from src.Project.Aplication.LugaresUseCases.CreateLugar import CreateLugares
+from src.Project.Infrastructure.Services.LugaresService import LugaresService
 
 from src.Project.Infrastructure.Utils.jwt_utils import token_requerido
 
 bp_lugares = Blueprint("lugares", __name__)
 
 # 👇 Aquí está la corrección
-creator = CreateEventosEspeciales(EventosEspecialesRepository())
-service = EventosEspecialesService(creator)
+creator = CreateLugares(LugaresRepository())
+service = LugaresService(creator)
 
 @bp_lugares.route("/lugares/rg", methods=['POST', 'OPTIONS'])
 @token_requerido
