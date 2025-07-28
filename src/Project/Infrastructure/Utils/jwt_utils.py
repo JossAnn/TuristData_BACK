@@ -27,7 +27,7 @@ def crear_token(admin_id, correo):
         "correo": correo,
         "rol": "admin", 
         "iat": datetime.datetime.utcnow(),
-        "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # token válido 1 hora
+        "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=2)  # token válido 1 hora
         
     }
     token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
