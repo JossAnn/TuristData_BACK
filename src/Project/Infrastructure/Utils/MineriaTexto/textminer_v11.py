@@ -68,13 +68,13 @@ CATEGORY_KEYWORDS = {
             "conveniente", "razonable", "asequible", "modesto", "competitivo", "ventajoso", 
             "apropiado", "buen precio", "adecuado", "moderado", "rebajado", "oferta", 
             "promoción", "ganga", "descuento", "precio bajo", "ajustado", "correcto", 
-            "buena relación calidad-precio"
+            "buena relación calidad-precio", "por menos", "dan mas"
         ],
         "negativas": [
             "caro", "cara", "costoso", "costosa", "excesivo", "excesiva", "abusivo", "abusiva", 
             "exagerado", "exagerada", "sobreprecio", "desorbitado", "inflado", "prohibitivo", 
             "injustificado", "disparatado", "desproporcionado", "elevado", "elevadísimo", 
-            "engañoso", "pésima relación calidad-precio", "impagable", "precio ridículo"
+            "engañoso", "pésima relación calidad-precio", "impagable", "precio ridículo", "por mas", "dan menos"
         ]
     }
 }
@@ -102,7 +102,7 @@ NEUTRAL_INDICATORS = {
     "precio": [
         "precio", "valor", "cuenta", "factura", "costo", "tarifa", "gasto", "pago", 
         "desembolso", "presupuesto", "oferta", "promoción", "descuento", "cobro", "pagar", 
-        "dinero", "efectivo", "tarjeta", "monto", "importe", "cuantía"
+        "dinero", "efectivo", "tarjeta", "monto", "importe", "cuantía",  "pesos", "dolares", "euros", "centavos", "cambio", "recibo", "facturación",
     ]
 }
 
@@ -271,7 +271,7 @@ def analyze_sentiment(text: str) -> dict:
     }
 
 
-#@app.route("/comentar", methods=["POST"])
+# @app.route("/comentar", methods=["POST"])
 def analizar_sentimiento():
     data = request.get_json()
 
