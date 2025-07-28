@@ -38,6 +38,7 @@ env/
 *.xlsx
 *.pdf
 *.png
+*.pkl
 
 # Ignorar configuraciones de Docker
 #.dockerignore
