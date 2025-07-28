@@ -11,6 +11,15 @@ from src.Project.Infrastructure.Services.EstablecimientoService import (
 )
 from src.Project.Infrastructure.Utils.jwt_utils import token_requerido
 
+import os
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = "static/uploads"  # Puedes ajustar esto según tu estructura
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
+
+# Asegúrate que la carpeta exista
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
 bp_establecimiento = Blueprint("establecimiento", __name__)
 
 getter = GetEstablecimientos(EstablecimientoRepository())
@@ -29,6 +38,41 @@ def obtener_establecimiento(id_):
     est = service.obtener(id_)
     return jsonify([e.to_dict() for e in est])
 
+# @bp_establecimiento.route("/establecimientos/rg", methods=["POST"])
+# @token_requerido
+# def create_establecimiento():
+#     if 'imagen' not in request.files:
+#         return jsonify({"error": "No se encontró la imagen"}), 400
+
+#     imagen = request.files['imagen']
+#     nombre = request.form.get("nombre")
+#     direccion = request.form.get("direccion")
+#     ciudad = request.form.get("ciudad")
+#     estado = request.form.get("estado")
+#     tipo = request.form.get("tipo")
+#     horario = request.form.get("horario")
+#     precio = request.form.get("precio")
+
+#     try:
+#         nuevo_establecimiento = service.create(
+#             nombre,
+#             direccion,
+#             ciudad,
+#             estado,
+#             tipo,
+#             horario,
+#             precio,
+#             imagen.filename,
+#             g.id_administrador  # CAMBIADO: usar g en lugar de request
+#         )
+#         return jsonify(nuevo_establecimiento.to_dict()), 201
+
+#     except Exception as e:
+#         return jsonify({"error en controller": str(e)}), 500
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 @bp_establecimiento.route("/establecimientos/rg", methods=["POST"])
 @token_requerido
 def create_establecimiento():
@@ -36,30 +80,38 @@ def create_establecimiento():
         return jsonify({"error": "No se encontró la imagen"}), 400
 
     imagen = request.files['imagen']
-    nombre = request.form.get("nombre")
-    direccion = request.form.get("direccion")
-    ciudad = request.form.get("ciudad")
-    estado = request.form.get("estado")
-    tipo = request.form.get("tipo")
-    horario = request.form.get("horario")
-    precio = request.form.get("precio")
 
-    try:
-        nuevo_establecimiento = service.create(
-            nombre,
-            direccion,
-            ciudad,
-            estado,
-            tipo,
-            horario,
-            precio,
-            imagen.filename,
-            g.id_administrador  # CAMBIADO: usar g en lugar de request
-        )
-        return jsonify(nuevo_establecimiento.to_dict()), 201
+    if imagen and allowed_file(imagen.filename):
+        filename = secure_filename(imagen.filename)
+        ruta_imagen = os.path.join(UPLOAD_FOLDER, filename)
+        imagen.save(ruta_imagen)  # Guardar en carpeta
 
-    except Exception as e:
-        return jsonify({"error en controller": str(e)}), 500
+        nombre = request.form.get("nombre")
+        direccion = request.form.get("direccion")
+        ciudad = request.form.get("ciudad")
+        estado = request.form.get("estado")
+        tipo = request.form.get("tipo")
+        horario = request.form.get("horario")
+        precio = request.form.get("precio")
+
+        try:
+            nuevo_establecimiento = service.create(
+                nombre,
+                direccion,
+                ciudad,
+                estado,
+                tipo,
+                horario,
+                precio,
+                f"/{ruta_imagen}",  # Guardar ruta accesible como string
+                g.id_administrador
+            )
+            return jsonify(nuevo_establecimiento.to_dict()), 201
+
+        except Exception as e:
+            return jsonify({"error en controller": str(e)}), 500
+
+    return jsonify({"error": "Archivo no permitido"}), 400
 
 @bp_establecimiento.route("/establecimientos/<int:id_>", methods=["DELETE"])
 @token_requerido

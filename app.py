@@ -7,7 +7,7 @@ from src.Project.Aplication.LugarTuristicoUsesCases.LugarTuristicoUseCases impor
 load_dotenv()
 
 def create_app():
-    application = Flask(__name__)
+    application = Flask(__name__, static_folder='static')
 
     cors_origin = os.getenv("CORS_ORIGIN", "")
     allowed_origins = "*"
