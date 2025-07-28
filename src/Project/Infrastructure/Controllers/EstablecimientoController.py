@@ -84,7 +84,7 @@ def create_establecimiento():
     if imagen and allowed_file(imagen.filename):
         filename = secure_filename(imagen.filename)
         ruta_imagen = os.path.join(UPLOAD_FOLDER, filename)
-        imagen.save(ruta_imagen)  # Guardar en carpeta
+        imagen.save(ruta_imagen)
 
         nombre = request.form.get("nombre")
         direccion = request.form.get("direccion")
@@ -93,6 +93,7 @@ def create_establecimiento():
         tipo = request.form.get("tipo")
         horario = request.form.get("horario")
         precio = request.form.get("precio")
+        ruta_publica = f"/static/uploads/{filename}"
 
         try:
             nuevo_establecimiento = service.create(
@@ -103,7 +104,7 @@ def create_establecimiento():
                 tipo,
                 horario,
                 precio,
-                f"/{ruta_imagen}",  # Guardar ruta accesible como string
+                ruta_publica,   # Guardar ruta accesible como string
                 g.id_administrador
             )
             return jsonify(nuevo_establecimiento.to_dict()), 201
