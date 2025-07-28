@@ -39,6 +39,7 @@ env/
 *.pdf
 *.png
 *.pkl
+nltk_data/
 
 # Ignorar configuraciones de Docker
 #.dockerignore

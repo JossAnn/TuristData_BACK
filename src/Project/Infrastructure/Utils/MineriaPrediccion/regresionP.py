@@ -8,6 +8,7 @@ from sklearn.metrics import r2_score, mean_absolute_error#, mean_squared_error
 import matplotlib.pyplot as plt
 import joblib
 import warnings
+from datetime import datetime
 
 warnings.filterwarnings("ignore")
 
@@ -239,8 +240,8 @@ def main():
     # dividiremos los datos temporalmente
     df["fecha"] = pd.to_datetime(df["fecha"])
 
-    train_mask = df['fecha'] <= '2025-07-31' # Entrena hasta julio 2025
-    test_mask = df['fecha'] > '2025-07-31' # Evalua desde agosto 2025
+    train_mask = df["fecha"] <= datetime.today()  # Entrena hasta hoy
+    test_mask = df["fecha"] > datetime.today()  # Evalua de hoy en adelante
     # Este rango es para el csv de ejemplo que va de enero a diciembre 2020
     # split_date = "2020-07-01"  # Entrenar con enero-julio, evaluar con agosto-diciembre
     # train_mask = df["fecha"] < split_date
@@ -270,7 +271,7 @@ def main():
     # Guardar el modelo
     model_path = "restaurant_visit_predictor.pkl"
     predictor.save_model(model_path)
-    
+
     return 0
 
 if __name__ == "__main__":
