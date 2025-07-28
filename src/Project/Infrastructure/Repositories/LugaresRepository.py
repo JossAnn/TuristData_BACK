@@ -7,10 +7,10 @@ class LugaresRepository(ILugares):
     def __init__(self):
         self.db = SessionLocal()
         
-    def create(self, luagres):
+    def create(self, lugares):
         nuevo = LugarTuristico(
-            nombre=luagres["nombre"],
-            estado=luagres["estado"]
+            nombre=lugares["nombre"],
+            estado=lugares["estado"]
         )
         self.db.add(nuevo)
         self.db.commit()

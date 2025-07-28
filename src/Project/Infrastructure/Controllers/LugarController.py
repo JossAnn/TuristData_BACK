@@ -16,7 +16,7 @@ bp_eventosespeciales = Blueprint("eventosespeciales", __name__)
 creator = CreateEventosEspeciales(EventosEspecialesRepository())
 service = EventosEspecialesService(creator)
 
-@bp_eventosespeciales.route("/eventosespeciales/rg", methods=["POST"])
+@bp_eventosespeciales.route("/eventosespeciales/rg", methods=['POST', 'OPTIONS'])
 @token_requerido
 def create_eventosEspeciales():
     data = request.get_json()
