@@ -3,12 +3,14 @@ import numpy as np
 import nltk
 from nltk.tokenize import sent_tokenize
 from transformers import pipeline
-from flask import Flask, request, jsonify
+from flask import request, jsonify
 from transliterator import transliterator
 from cleaner import clean_text
+import warnings
 
 # Configuración inicial
-nltk.download("punkt")
+# nltk.download("punkt")
+warnings.filterwarnings("ignore")
 
 # Palabras clave para cada categoría con pesos de sentimiento
 CATEGORY_KEYWORDS = {
@@ -109,7 +111,7 @@ NEUTRAL_INDICATORS = {
 
 BAD_WORDS = [
     # Español - Insultos comunes
-    "maldito", "maldita", "idiota", "estúpido", "estúpida", "imbécil", "imbéciles", "tonto", "tonta",
+    "maldito", "malditos", "maldita", "malditas", "idiota", "estúpido", "estúpida", "imbécil", "imbéciles", "tonto", "tonta",
     "pendejo", "pendeja", "mierda", "mierder", "joder", "jodido", "jodida", "jodiendo", "chingar",
     "chingado", "chingada", "chingón", "chingona", "verga", "vergas", "culero", "culera", "cabron", "cabrón",
     "cabrona", "carajo", "coño", "hostia", "gilipollas", "zorra", "zorro", "bastardo", "bastarda",
@@ -282,3 +284,99 @@ def analizar_sentimiento():
     resultado = analyze_sentiment(texto)
 
     return jsonify({"resultado": resultado})
+
+
+def print_results_bonito(result):
+    """Imprime los resultados de forma bonita en consola"""
+
+    # Título principal
+    print("=" * 60)
+    print("ANÁLISIS DE SENTIMIENTOS - RESULTADOS".center(60))
+    print()
+
+    # Categorías reconocidas
+    print("CATEGORÍAS RECONOCIDAS:")
+    print("-" * 50)
+    for categoria, cantidad in result["detalle_oraciones"].items():
+        print(f"   • {categoria.capitalize():12} -> {cantidad} oraciones")
+    print()
+
+    # Estrellas por categoría
+    print("PUNTUACIÓN POR CATEGORÍA:")
+    print("-" * 50)
+    for categoria, puntuacion in result["categorias"].items():
+        # Verificar si la puntuación es None o un número válido
+        if puntuacion is None:
+            print(f"   • {categoria.capitalize():12} -> No puntuado  ──")
+        else:
+            # Asegurar que la puntuación esté entre 0 y 5
+            puntuacion_int = max(0, min(5, int(puntuacion)))
+            estrellas = "★" * puntuacion_int + "☆" * (5 - puntuacion_int)
+            print(
+                f"   • {categoria.capitalize():12} -> {puntuacion:.1f}/5.0  {estrellas}"
+            )
+    print()
+
+    # Métricas principales
+    print("MÉTRICAS PRINCIPALES:")
+    print("-" * 50)
+    print(f"   • Puntuación total:     {result['puntuacion'][0]:3d}")
+    print(f"   • Puntaje promedio:     {result['promedio'][0]:5.2f}")
+    print(f"   • Censuras realizadas:  {result['censuras']:3d}")
+    print()
+
+    # Estado del texto
+    print("ESTADO DEL TEXTO:")
+    print("-" * 50)
+    if result["censuras"] > 0:
+        print(f"   • Se realizaron {result['censuras']} censura(s)")
+        print("   • Texto censurado disponible")
+    else:
+        print("   • Texto limpio, sin censuras")
+    print()
+
+    # Resumen final
+    total_oraciones = sum(result["detalle_oraciones"].values())
+    eficiencia = (result["puntuacion"][0] / result["puntuacion"][1]) * 100
+
+    # Filtrar categorías con puntuación válida para mejor/peor
+    categorias_validas = {
+        k: v for k, v in result["categorias"].items() if v is not None
+    }
+
+    print("RESUMEN:")
+    print("-" * 50)
+    print(f"   • Total de oraciones:   {total_oraciones}")
+    print(f"   • Eficiencia del texto: {eficiencia:.1f}%")
+
+    if categorias_validas:
+        mejor_categoria = max(categorias_validas, key=categorias_validas.get)
+        peor_categoria = min(categorias_validas, key=categorias_validas.get)
+        print(f"   • Mejor Categoría:      {mejor_categoria.capitalize()}")
+        print(f"   • Peor Categoría:       {peor_categoria.capitalize()}")
+    else:
+        print("   • No hay categorías con puntuación válida")
+
+    print()
+
+
+if __name__ == "__main__":
+    # Datos de ejemplo
+    data = """Esos malditos tacos están buenísimos, 
+    especialmente los de suadero y tripa, súper jugosos y bien servidos. 
+    El sabor es callejero auténtico. Lo único malo es que las mesas estaban algo 
+    sucias y no había servilletas a la mano. Aun así, por 3 tacos y un refresco 
+    por menos de 70 pesos, no se puede pedir más."""
+
+    # Ejecutar análisis
+    result = analyze_sentiment(data)
+
+    # Mostrar resultados bonitos
+    print_results_bonito(result)
+
+    # Si quieres ver el texto censurado también:
+    if result["censuras"] > 0:
+        print("TEXTO CENSURADO:")
+        print("-" * 60)
+        print(result["textocensurado"])
+        print("=" * 60)
