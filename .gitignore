@@ -40,6 +40,7 @@ env/
 *.png
 *.pkl
 nltk_data/
+bert-sentiment-finetuned/
 
 # Ignorar configuraciones de Docker
 #.dockerignore

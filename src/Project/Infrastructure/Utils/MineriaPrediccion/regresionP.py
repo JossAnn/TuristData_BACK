@@ -4,7 +4,8 @@
 import pandas as pd
 from sklearn.preprocessing import PolynomialFeatures, LabelEncoder
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score, mean_absolute_error#, mean_squared_error
+from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
+import numpy as np
 import matplotlib.pyplot as plt
 import joblib
 import warnings
@@ -117,9 +118,9 @@ class RestaurantVisitPredictor:
 
         r2 = r2_score(test_y, y_pred)
         mae = mean_absolute_error(test_y, y_pred)
-        # rmse = np.sqrt(mean_squared_error(test_y, y_pred))
+        rmse = np.sqrt(mean_squared_error(test_y, y_pred))
 
-        self.metrics = {"R^2": r2, "MAE": mae}#, "RMSE": rmse}
+        self.metrics = {"R^2": r2, "MAE": mae, "RMSE": rmse}
 
         return self.metrics
 
@@ -167,9 +168,11 @@ class RestaurantVisitPredictor:
         plt.xlabel("Residuos")
         plt.ylabel("Frecuencia")
         plt.title("Distribución de Residuos")
+        #save
+        plt.savefig("histograma_residuos.png")
 
         plt.tight_layout()
-        plt.show()
+        #plt.show()
 
         # Mostrar metricas
         print("\n" + "=" * 50)
@@ -224,7 +227,7 @@ def main():
     print("Cargando datos del restaurante...")
     # Esto se debe cambiar por la conexion a a los registros de la db
     # df = pd.read_csv("ejemplo_data_restaurante_2020.csv")
-    df = pd.read_csv("data_restaurante_2020_2025.csv")
+    df = pd.read_csv("data_restaurante_2015_2026.csv")
 
     print("DATOS ENCONTRADOS:")
     print(f"Datos cargados: {len(df)} registros")

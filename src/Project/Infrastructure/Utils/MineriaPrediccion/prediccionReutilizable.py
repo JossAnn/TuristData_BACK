@@ -1,10 +1,11 @@
 # En este archivo deje las funciones que se deben enrutar
-# Se podran usar las funciones despues de que corras el regresionP.py 
+# Se podran usar las funciones despues de que corras el regresionP.py
 
 import pandas as pd
 import numpy as np
 import joblib
 from datetime import datetime, timedelta
+from flask import Blueprint, jsonify
 import warnings
 import random
 
@@ -432,6 +433,9 @@ if __name__ == "__main__":
 predictor = RestaurantPredictor()
 
 # ================================================================================= Estas son las funciones que se deben enrutar
+bp_prediccion = Blueprint("prediccion", __name__)
+
+@bp_prediccion.route("/predecir-manana", methods=["GET"])
 def predecir_manana(busquedas=100):
     fecha = datetime.today() + timedelta(days=1)
     festivo, festividad = es_festivo(fecha, obtener_festividades_anuales(fecha.year))
@@ -445,6 +449,7 @@ def predecir_manana(busquedas=100):
     pred = predictor.predict_with_details(datos)
     return pred.to_dict(orient="records")
 
+@bp_prediccion.route("/predecir-proxima-semana", methods=["GET"])
 def predecir_proxima_semana():
     hoy = datetime.today()
     prox_lunes = hoy + timedelta(days=(7 - hoy.weekday()) % 7)
@@ -453,6 +458,7 @@ def predecir_proxima_semana():
     pred = predictor.predict_with_details(datos)
     return pred.to_dict(orient="records")
 
+@bp_prediccion.route("/predecir-hasta-domingo", methods=["GET"])
 def predecir_hasta_domingo():
     hoy = datetime.today()
     manana = hoy + timedelta(days=1)
@@ -462,6 +468,7 @@ def predecir_hasta_domingo():
     pred = predictor.predict_with_details(datos)
     return pred.to_dict(orient="records")
 
+@bp_prediccion.route("/predecir-quincena", methods=["GET"])
 def predecir_quincena():
     hoy = datetime.today()
     if hoy.day <= 15:
@@ -487,6 +494,7 @@ def predecir_quincena():
     pred = predictor.predict_with_details(datos)
     return pred.to_dict(orient="records")
 
+@bp_prediccion.route("/predecir-mes-completo", methods=["GET"])
 def predecir_mes_completo():
     hoy = datetime.today()
     mes_siguiente = hoy.month + 1 if hoy.month < 12 else 1
@@ -502,6 +510,7 @@ def predecir_mes_completo():
     pred = predictor.predict_with_details(datos)
     return pred.to_dict(orient="records")
 
+@bp_prediccion.route("/predecir-anio-completo", methods=["GET"])
 def predecir_anio_completo():
     hoy = datetime.today()
     inicio = datetime(hoy.year, hoy.month, hoy.day)
@@ -511,6 +520,7 @@ def predecir_anio_completo():
     pred = predictor.predict_with_details(datos)
     return pred.to_dict(orient="records")
 
+@bp_prediccion.route("/obtener-info-modelo", methods=["GET"])
 def obtener_info_modelo():
     return predictor.get_model_info()
 # =================================================================================

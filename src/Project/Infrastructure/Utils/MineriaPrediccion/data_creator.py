@@ -53,7 +53,7 @@ def obtener_semana_santa(year):
 
 
 # Generar datos diarios
-fechas = pd.date_range(start="2020-01-01", end="2025-12-31", freq="D")
+fechas = pd.date_range(start="2015-01-01", end="2026-12-31", freq="D")
 datos = []
 
 for fecha in fechas:
@@ -90,4 +90,4 @@ for fecha in fechas:
     )
 
 df = pd.DataFrame(datos)
-df.to_csv("data_restaurante_2020_2025.csv", index=False)
+df.to_csv("data_restaurante_2015_2026.csv", index=False)
