@@ -3,7 +3,7 @@ import numpy as np
 import nltk
 from nltk.tokenize import sent_tokenize
 from transformers import pipeline
-from flask import request, jsonify
+from flask import request, jsonify, Blueprint
 from transliterator import transliterator
 from cleaner import clean_text
 import warnings
@@ -273,7 +273,8 @@ def analyze_sentiment(text: str) -> dict:
     }
 
 
-# @app.route("/comentar", methods=["POST"])
+bp_calificacion = Blueprint("calificacion", __name__)
+@bp_calificacion.route("/calificar-comentario", methods=["POST"])
 def analizar_sentimiento():
     data = request.get_json()
 
