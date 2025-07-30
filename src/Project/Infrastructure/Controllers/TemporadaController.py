@@ -3,6 +3,7 @@ from src.Project.Infrastructure.Repositories.TemporadaRepository import Temporad
 from src.Project.Aplication.TemporadaUseCases.CreateTemporada import CreateTemporada
 from src.Project.Infrastructure.Services.TemporadaService import TemporadaService
 from src.Project.Infrastructure.Utils.jwt_utils import token_requerido
+from flask import Blueprint, jsonify, request, g
 
 bp_temporadas = Blueprint("temporadas", __name__)
 
@@ -21,7 +22,7 @@ def create_temporada():
 
     try:
         # Agregar id_administrador al JSON que se enviará
-        data["id_administrador"] = request.id_administrador
+        data["id_administrador"] = g.id_administrador
 
         nuevo_temporada = service.register(data)
         return jsonify(nuevo_temporada.to_dict()), 201

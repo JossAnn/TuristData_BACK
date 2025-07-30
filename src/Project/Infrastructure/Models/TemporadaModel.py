@@ -10,7 +10,7 @@ class TemporadaModel(Base):
     fecha_inicio = Column(Date)
     fecha_fin = Column(Date)
     tipo_temporada = Column(String)
-    estatus = Column(Integer)
+    estatus = Column(String)
 
     def to_dict(self):
         return {

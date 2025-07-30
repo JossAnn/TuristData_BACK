@@ -8,7 +8,7 @@ from src.Project.Infrastructure.Utils.upload import (bp_upload)
 from src.Project.Infrastructure.Controllers.TemporadaController import (bp_temporadas)
 from src.Project.Infrastructure.Controllers.DestinoController import (bp_destinos)
 from src.Project.Infrastructure.Controllers.ComentarioController import (bp_comentario)
-
+from src.Project.Infrastructure.Controllers.LugarController import (bp_lugares)
 from src.Project.Infrastructure.Utils.MineriaPrediccion.prediccionReutilizable import (bp_prediccion)
 from src.Project.Infrastructure.Utils.MineriaTexto.textminer_v11 import (bp_calificacion)
 
@@ -21,7 +21,7 @@ def register_blueprints(app):
     app.register_blueprint(bp_temporadas, url_prefix="/api")
     app.register_blueprint(bp_destinos, url_prefix="/api")
     app.register_blueprint(bp_comentario, url_prefix="/api")
-    
+    app.register_blueprint(bp_lugares, url_prefix="/api")
     app.register_blueprint(bp_prediccion, url_prefix="/api")
     app.register_blueprint(bp_calificacion, url_prefix="/api")
 
