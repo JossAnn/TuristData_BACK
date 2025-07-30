@@ -360,14 +360,14 @@ def print_results_bonito(result):
 
     print()
 
-
+"""
 if __name__ == "__main__":
     # Datos de ejemplo
-    data = """Esos malditos tacos están buenísimos, 
+    data = ""Esos malditos tacos están buenísimos, 
     especialmente los de suadero y tripa, súper jugosos y bien servidos. 
     El sabor es callejero auténtico. Lo único malo es que las mesas estaban algo 
     sucias y no había servilletas a la mano. Aun así, por 3 tacos y un refresco 
-    por menos de 70 pesos, no se puede pedir más."""
+    por menos de 70 pesos, no se puede pedir más.""
 
     # Ejecutar análisis
     result = analyze_sentiment(data)
@@ -381,3 +381,4 @@ if __name__ == "__main__":
         print("-" * 60)
         print(result["textocensurado"])
         print("=" * 60)
+"""

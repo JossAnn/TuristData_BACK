@@ -12,6 +12,7 @@ __pycache__/
 venv/
 env/
 */env/*
+.env
 
 # Ignorar configuraciones de editores y entornos de desarrollo
 .vscode/
@@ -19,6 +20,7 @@ env/
 *.env
 *.env.local
 !.env.example
+.env.test
 
 # Ignorar archivos de control de versiones
 #.git/
@@ -26,6 +28,7 @@ env/
 #.gitattributes
 
 # Ignorar archivos generados o temporales
+*__init__.py
 *.log
 *.tmp
 *.swp
@@ -35,6 +38,9 @@ env/
 *.xlsx
 *.pdf
 *.png
+#*.pkl
+nltk_data/
+bert-sentiment-finetuned/
 
 # Ignorar configuraciones de Docker
 #.dockerignore
