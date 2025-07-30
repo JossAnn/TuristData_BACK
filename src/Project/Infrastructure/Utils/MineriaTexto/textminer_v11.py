@@ -4,8 +4,10 @@ import nltk
 from nltk.tokenize import sent_tokenize
 from transformers import pipeline
 from flask import request, jsonify, Blueprint
-from transliterator import transliterator
-from cleaner import clean_text
+from src.Project.Infrastructure.Utils.MineriaTexto.transliterator import transliterator
+#from transliterator import transliterator
+from src.Project.Infrastructure.Utils.MineriaTexto.cleaner import clean_text
+#from cleaner import clean_text
 import warnings
 
 # Configuración inicial

@@ -13,7 +13,7 @@ warnings.filterwarnings("ignore")
 
 
 class RestaurantPredictor:
-    def __init__(self, model_path="restaurant_visit_predictor.pkl"):
+    def __init__(self, model_path="src/Project/Infrastructure/Utils/MineriaPrediccion/restaurant_visit_predictor.pkl"):
         self.model_path = model_path
         self.model_data = None
         self.load_model()
