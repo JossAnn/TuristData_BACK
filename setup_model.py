@@ -3,7 +3,7 @@ from flask import Flask, jsonify
 import os
 
 # Importar el setup del modelo
-from setup_model import setup_model
+from TuristData_BACK.setup_model import setup_model
 
 # Importar el blueprint
 from src.Project.Infrastructure.Utils.MineriaPrediccion.prediccionReutilizable import bp_prediccion
