@@ -27,16 +27,6 @@ def listar_eventosespeciales():
 @token_requerido
 def create_eventosEspeciales():
     try:
-        # data = {
-        #     "nombre": request.form.get("nombre"),
-        #     "fecha_inicio": request.form.get("fecha_inicio"),
-        #     "fecha_final": request.form.get("fecha_final"),
-        #     "descripcion": request.form.get("descripcion"),
-        #     "estado_afectado": request.form.get("estado_afectado"),
-        #     "id_lugar": request.form.get("id_lugar"),
-        #     "id_temporada": request.form.get("id_temporada"),
-        #     "id_administrador": g.id_administrador,  # 👈 desde JWT
-        # }
         data = request.get_json()
         data["id_administrador"] = g.id_administrador  # Agregas el administrador desde el token
 

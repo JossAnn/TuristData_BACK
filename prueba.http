@@ -1,6 +1,6 @@
 #-----------RUTA PARA OBTENER TURISTA POR ID-----------
 ###
-GET http://localhost:8000/api/turistas/1 HTTP/1.1
+GET https://turistdata-back.onrender.com/api/turistas/1 HTTP/1.1
 Accept: application/json
 
 

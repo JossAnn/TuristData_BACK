@@ -41,8 +41,7 @@ def registrar_administrador():
         return jsonify({"error": "No data provided"}), 400
 
     try:
-        nuevo_administrador = service.register(data)  # ✅ corregido aquí
-        # return jsonify(nuevo_administrador.__dict__), 201
+        nuevo_administrador = service.register(data)  
         return jsonify(nuevo_administrador.to_dict()), 201
     except Exception as e:
         print("Error al registrar administrador - Controller:", str(e))
@@ -56,7 +55,6 @@ def login_administrador():
 
     try:
         admin = service.login(data["correo"], data["password"])
-
         token = crear_token(admin.id_administrador, admin.correo)
 
         return jsonify({
