@@ -1,0 +1,703 @@
+texto,atencion,limpieza,precio,comida
+"El mesero nos ignoró toda la noche",1,,,
+"Tardaron mucho en tomar la orden",1,,,
+"Nos gritaron cuando preguntamos por la cuenta",1,,,
+"El personal fue grosero y evasivo",1,,,
+"Nadie nos explicó el menú ni nos ofreció ayuda",1,,,
+"Cubiertos mal lavados",,2,,
+"Vidrios y espejos con huellas",,2,,
+"El suelo tenía restos de comida",,2,,
+"Sillas polvosas y pegajosas",,2,,
+"Toallas del baño sucias",,2,,
+"Nos cobraron cosas que no pedimos",,,1,
+"$80 por una ensalada simple, absurdo",,,1,
+"Una botella de agua costaba $10",,,1,
+"Comida cara y de mala calidad",,,1,
+"Precios altísimos para lo que ofrecen",,,1,
+"El pollo estaba crudo y peligroso",,,,,1
+"La sopa sabía a agua con sal",,,,,1
+"Carne dura y sin sabor",,,,,1
+"Pastas recocidas y sin gracia",,,,,1
+"Todo sabía a viejo y recalentado",,,,,1
+"Nos trataron como reyes desde el inicio",5,,,
+"El personal recordaba nuestros nombres",5,,,
+"Nos ofrecieron un servicio excepcional",5,,,
+"Atención impecable en todo momento",5,,,
+"Estuvieron pendientes de cada detalle",5,,,
+"El lugar olía a limpio y fresco",,5,,
+"Podías comer del piso, así de limpio",,5,,
+"Todo resplandeciente, impecable",,5,,
+"Baños relucientes con aromatizantes",,5,,
+"Ambiente perfectamente higiénico",,5,,
+"Comida exquisita a precios ridículamente bajos",,,5,
+"$10 por un festín completo",,,5,
+"Relación calidad-precio inmejorable",,,5,
+"Un lujo a precio popular",,,5,
+"Precios más que justos, sorprendentes",,,5,
+"Una explosión de sabores en cada bocado",,,,,5
+"Comida digna de un chef con estrella Michelin",,,,,5
+"Sabor casero con toque gourmet",,,,,5
+"Todo lo que probamos fue espectacular",,,,,5
+"Los postres eran una obra de arte",,,,,5
+"El mesero fue muy atento pero la comida tardó demasiado",4,,,3
+"El baño estaba asqueroso, ni ganas de comer ahí",,1,,
+"$200 por un plato de pasta es un robo",,,1
+"La carne estaba tan dura que no se podía cortar",,,,,1
+"Nos trataron como si fuéramos familia, servicio de lujo",5,,,
+"Todo relucía, hasta los cubiertos brillaban",,5,,
+"Menú económico y de gran calidad",,,5
+"El postre era tan bueno que pedimos otro",,,,,5
+"Los meseros pasaban de largo sin atendernos",2,,,
+"Había migajas en la mesa y no la limpiaron",,2,,
+"Demasiado caro para lo que ofrecen",,,2
+"La sopa no tenía sabor, como agua con sal",,,,,2
+"El chef salió a preguntar si todo estaba bien",5,,,
+"El local olía a limpio, muy agradable",,4,,
+"Precios justos para la calidad que ofrecen",,,4
+"El sushi estaba fresco y perfectamente cortado",,,,,5
+"Nos cobraron de más y no quisieron corregirlo",1,,,
+"Las sillas tenían manchas y pegajosidad",,3,,
+"Barato, pero la comida lo delataba",,,3
+"El pescado sabía a congelado, nada fresco",,,,,2
+"El gerente nos compensó con un postre gratis",4,,,
+"Los vidrios estaban llenos de huellas",,3,,
+"Por el precio, esperaba algo mucho mejor",,,2
+"El pan recién horneado hizo toda la diferencia",,,,,5
+"La espera para pedir fue eterna",1,,,
+"Encontré un insecto en mi ensalada",,1,,
+"$150 por un café y un pastel es excesivo",,,1
+"El arroz estaba pasado de cocción",,,,,2
+"La anfitriona nos recibió con una sonrisa encantadora",5,,,
+"El piso estaba tan resbaloso que casi caigo",,2,,
+"Buena relación calidad-precio",,,4
+"El helado artesanal valió cada centavo",,,,,5
+"El camarero se equivocó tres veces con nuestro pedido",2,,,
+"Los manteles tenían manchas de vino",,2,,
+"Demasiado económico para ser bueno",,,3
+"La pizza tenía un sabor artificial horrible",,,,,1
+"Nos atendieron con prisa, como si les molestáramos",3,,,
+"El restaurante olía a desinfectante, pero en exceso",,4,,
+"El precio del menú degustación estaba justificado",,,5
+"El flan casero era espectacular",,,,,5
+"El personal discutía entre ellos frente a los clientes",1,,,
+"Las copas tenían marcas de labios sin lavar",,1,,
+"$80 por una hamburguesa sin papas es un abuso",,,1
+"El pollo a la parrilla estaba seco y sin sabor",,,,,2
+"El sommelier nos recomendó un vino perfecto",5,,,
+"La terraza estaba impecable, ni una hoja en el piso",,5,,
+"El menú del día era una verdadera ganga",,,5
+"El chocolate caliente era puro arte",,,,,5
+"Tuvimos que llamar tres veces para que nos trajeran la cuenta",2,,,
+"El aire acondicionado goteaba sobre nuestra mesa",,2,,
+"Los precios altos se justifican con la ubicación",,,4
+"La lasagna estaba recalentada y seca",,,,,2
+"El mesero se hizo bien wey cuando le pedimos la cuenta",1,,,  
+"La cocina estaba más sucia que baño de cantina",,1,,  
+"$500 por unos tacos de guisado ¡qué ladrones!",,,1  
+"El mole sabía a puro recalentado del día anterior",,,,,1  
+"La morra que nos atendió fue súper amable, hasta nos recomendó",5,,,  
+"El lugar estaba impecable, hasta los vidrios olían a Fabuloso",,5,,  
+"Los precios están a toda madre para lo que sirven",,,5  
+"Las enchiladas estaban chingonísimas, bien servidas",,,,,5  
+"Nos trataron con la prisa de un Oxxo a las prisas",2,,,  
+"Las mesas tenían más grasa que un puesto de carnitas",,2,,  
+"Pagamos un chingo por una botana que no llenó",,,2  
+"El pozole estaba aguado como caldo de sobre",,,,,2  
+"El gerente se rifó y nos cambió el platillo sin pedos",5,,,  
+"Los baños estaban limpios, pero olían a cloro fuerte",,4,,  
+"La cuenta salió más barata de lo que esperaba",,,4  
+"El aguachile estaba tan bueno que hasta lloré",,,,,5  
+"El mesero nos aventó los cubiertos como en malora",1,,,  
+"Traía la mesa pegajosa y con migajas de lo que sea",,3,,  
+"Está caro, pero al menos las chelas están frías",,,3  
+"El chicharrón prensado estaba más duro que suela de zapato",,,,,2  
+"La anfitriona nos dio trato como si fuéramos de la realeza",5,,,  
+"El piso brillaba más que mis zapatos nuevos",,5,,  
+"La comida está a buen precio y las porciones son generosas",,,5  
+"El café de olla estaba para chuparse los dedos",,,,,5  
+"Se tardaron mil años en traernos los refrescos",2,,,  
+"Había un olor raro, como a trapeador sucio",,2,,  
+"$120 por un agua de jamaica ¡qué desmadre!",,,1  
+"Los tamales estaban crudos y fríos, puro fracaso",,,,,1  
+"El cantinero le atinó a mi trago favorito sin que le dijera",5,,,  
+"Las sillas tenían polvo, pero las mesas estaban decentes",,3,,  
+"La promoción del día estaba a toda madre",,,5  
+"La cebolla en los tacos al pastor estaba fresquísima",,,,,5  
+"Nos dieron el pedido equivocado y ni se disculparon",1,,,  
+"El ventilador tiraba más pelusas que aire",,1,,  
+"La cuenta me dejó más tieso que estatua",,,1  
+"El pescado a la talla sabía a pura brasa quemada",,,,,2  
+"El waiter se portó a toda madre y hasta nos echó relajo",5,,,  
+"El restaurante olía a limpio, pero el baño estaba medio cochino",,3,,  
+"Barato, pero la calidad se notaba en los ingredientes",,,3  
+"El flan napolitano estaba más bueno que el de mi abuela",,,,,5  
+"Nos hicieron esperar como pendejos aunque había mesas libres",1,,,  
+"Las servilletas tenían manchas de no sé qué",,1,,  
+"$90 por un elote en vaso ¡qué robo!",,,1  
+"La carne asada estaba más seca que el cerro en verano",,,,,1  
+"La mesera nos atendió con buena vibra todo el tiempo",5,,,  
+"Los trastes tenían residuos de jabón, pero la mesa estaba bien",,4,,  
+"El menú ejecutivo es una ganga para lo que dan",,,5  
+"Los chilaquiles estaban a punto, ni muy caldosos ni secos",,,,,5  
+"El mesero se equivocó como tres veces con los pedidos",2,,,  
+"El aire acondicionado echaba un olor a humedad",,2,,  
+"Está caro, pero el ambiente lo vale",,,4  
+"La sopa de médula estaba sublime, bien condimentada",,,,,5 
+"El mesero se hizo bien lokillo y nunca nos trajo los refrescos",1,,,  
+"La cocina era transparente y brillaba como espejo nuevo",,5,,  
+"$150 por un taco de suadero ¡ni que fuera de oro!",,,1  
+"La birria estaba tan buena que hasta me chorreó la barba",,,,,5  
+"La anfitriona nos trató como si fuéramos sus cuates",5,,,  
+"Encontré una cucaracha en el baño ¡qué asco!",,1,,  
+"El menú del día está a precio de tianguis",,,5  
+"Las gorditas estaban duras como piedra",,,,,1  
+"Nos cobraron cubierto sin avisar ¡qué coraje!",1,,,  
+"Los vidrios tenhuían huellas de dedos grasosos",,2,,  
+"Las micheladas valen cada peso, bien preparadas",,,5  
+"El pollo a la leña sabía a carbón puro",,,,,2  
+"El cantinero se rifó unos chistes mientras preparaba los tragos",5,,,  
+"El piso estaba más resbaloso que lodo en época de lluvias",,2,,  
+"$75 por un café y un pan de ayer… no mamen",,,1  
+"El postre de tres leches estaba más suave que algodón",,,,,5  
+"El waiter nos ignoró todo el tiempo, ni la mirada nos echó",1,,,  
+"Las servilletas eran de papel de baño ¡qué codo!",,1,,  
+"La hamburguesa costó un ojo de la cara pero estaba perfecta",,,2,5  
+"Los chiles en nogada sabían a refrigerador",,,,,2  
+"La mesera nos consintió como si fuéramos sus hijos",5,,,  
+"El lugar olía a puro Fabuloso, hasta daba paz",,5,,  
+"La promoción ‘2x1 en cervezas’ nos salvó la vida",,,5  
+"El cochinita pibil se deshacía en la boca",,,,,5  
+"El gerente se puso necio y no nos quiso aplicar el descuento",2,,,  
+"Las copas tenían labial de quién sabe cuándo",,1,,  
+"La cuenta me dejó más tieso que mármol",,,1  
+"El arroz estaba tan seco que parecía arena",,,,,1  
+"El chef salió a preguntar si todo estaba a nuestro gusto",5,,,  
+"El baño parecía recién remodelado, impecable",,5,,  
+"El precio del marisco estaba regalado para la calidad",,,5  
+"El mole poblano tenía un sabor que hasta mis abuelas llorarían",,,,,5  
+"Los meseros andaban en su mundo, ni nos pelaron",1,,,  
+"Las moscas se paseaban como si fueran dueñas del lugar",,1,,  
+"$180 por un agua de horchata ¡qué descaro!",,,1  
+"Las carnitas estaban en su punto, crujientes y jugosas",,,,,5  
+"La cajera se equivocó en la cuenta y ni ‘perdón’ dijo",2,,,  
+"El aire olía a fritanga vieja, no aguanté",,2,,  
+"El precio está elevado, pero la vista al atardecer lo vale",,,4  
+"Las enchiladas suizas eran pura crema, ni gracia tenían",,,,,2  
+"El staff nos recordó nuestros nombres toda la noche",5,,,  
+"El mantel tenía una mancha que parecía de la semana pasada",,2,,  
+"La comida está cara, pero las porciones son gigantes",,,3  
+"El pastel de chocolate estaba tan bueno que quise llorar",,,,,5  
+"Tardaron 40 minutos en traernos una orden de guacamole",1,,,  
+"Los cubiertos tenían restos de comida pegados",,1,,  
+"$90 por un elote en vaso con todo… pues sí estaba caro",,,3  
+"El pescado a la veracruzana sabía a lata",,,,,1  
+"El mesero nos recomendó un mezcal que nos voló la cabeza",5,,,  
+"El comedor estaba impecable, pero los baños olían feo",,4,,  
+"El paquete ‘Todo incluido’ sí era un churro",,,5  
+"Las flautas estaban tan crujientes que se oían al morder",,,,,5  
+"Nos dieron el lugar más culero, junto a los baños",2,,,  
+"El ventilador tiraba pelusas directo a mi sopa",,1,,  
+"El precio de los vinos estaba infladísimo",,,1  
+"El postre de maracuyá estaba tan ácido que hizo caras",,,,,2  
+"La mesera nos trajo muestras gratis de sus favoritos",5,,,  
+"El piso tenía tanto brillo que casi me patino",,5,,  
+"El buffet estaba tan barato que pensé que era trampa",,,5  
+"El ribeye estaba tan jugoso que no necesitaba cuchillo",,,,,5  
+"El valet parking se tardó una eternidad en traer el coche",1,,,  
+"El hielo de mi bebida sabía a congelador sucio",,1,,  
+"$300 por una botella de vino que ni conocía… nel",,,2  
+"Los tacos de canasta estaban fríos y grasosos",,,,,1  
+"El mixólogo preparó un cóctel exclusivo para nosotros",5,,,  
+"Las moscas se paraban en la comida como si estuvieran en su casa",,1,,  
+"El precio del menú degustación era un robo a mano armada",,,1  
+"El pan de ajo estaba recién horneado y oliendo delicioso",,,,,5  
+"El mesero se enojó cuando le pedimos modificar el pedido",2,,,  
+"Los vasos tenían residuos de labial rojo",,2,,  
+"La cuenta vino con propina incluida sin avisar ¡qué abuso!",,,1  
+"El aguacate de la ensalada estaba más negro que mi suerte",,,,,1  
+"El sommelier nos explicó cada vino con pasión",5,,,  
+"El comedor olía a limpio, pero las sillas estaban pegajosas",,3,,  
+"La happy hour es la más verga de la ciudad",,,5  
+"El helado de garrafa sabía a los de mi infancia",,,,,5  
+"El host nos hizo esperar 1 hora con reservación",1,,,  
+"El baño estaba inundado, ni ganas de hacer del uno",,1,,  
+"$250 por una pizza que parecía de supermercado",,,1  
+"Las enchiladas estaban tan picantes que hasta sudé",,,,,3  
+"El dueño nos invitó una ronda de tequila por nuestra espera",5,,,  
+"Las mesas de afuera tenían un olor a caño",,2,,  
+"El paquete ‘Familiar’ sí era económico y abundante",,,4  
+"Los churros rellenos estaban calientitos y canelosos",,,,,5  
+"El señor de los tacos ni me peló cuando le pedí salsa",1,,,  
+"El carrito estaba lleno de grasa, pero qué tacazos hacía",,2,,5  
+"$15 por un taco de canasta es un robo a mano armada",,,1  
+"La quesabirria estaba tan jugosa que me escurrió por todo",,,,,5  
+"La doña de las garnachas me trató como si fuera su hijo",5,,,  
+"El aceite del trompo parecía no haberse cambiado en años",,1,,  
+"Los precios están como para ir diario, muy accesibles",,,5  
+"Los esquites tenían un sabor a polvo rarísimo",,,,,2  
+"El vendedor de tamales se equivocó y me dio uno de dulce",2,,,  
+"El plástico de la mesa tenía más bacterias que un hospital",,1,,  
+"$10 por un atole es lo más justo que he visto",,,5  
+"Las gorditas de chicharrón estaban frías y sin sabor",,,,,1  
+"El wey de la parrilla se puso a platicar conmigo como compa",5,,,  
+"El puesto olía a pura carnita asada, pero el piso mugroso",,3,,5  
+"Las micheladas valen cada peso, bien preparadas",,,5  
+"El pollo a las brasas estaba más seco que el Sahara",,,,,1  
+"El mesero del restaurante fifí ni me hizo caso",1,,,  
+"Los cubiertos de plata brillaban, pero el mantel manchado",,4,,  
+"$800 por un corte que ni sabía a nada especial",,,2  
+"El postre de chocolate era tan fino que casi lloro",,,,,5  
+"El taquero se rifó unos chistes mientras armaba mi orden",5,,,  
+"La mesa del puesto tenía más años que mi abuela",,2,,  
+"$30 por unos jochos bien servidos, ¡qué ganga!",,,5  
+"Las enchiladas mineras tenían un sabor que me recordó a casa",,,,,5  
+"La cajera del café puso cara de pocos amigos",2,,,  
+"Las tazas tenían residuos de labial de clientas anteriores",,1,,  
+"$90 por un capuchino que parecía agua sucia",,,1  
+"El pastel de zanahoria estaba más bueno que el pecado",,,,,5  
+"El chef del sushi bar explicó cada pieza con lujo de detalle",5,,,  
+"El bar estaba impecable, pero el baño era zona de desastre",,4,1,  
+"El precio del omakase duele, pero es una experiencia",,,4,5  
+"El nigiri de atún se derretía como mantequilla",,,,,5  
+"El mesero del italiano hablaba español con acento fingido",3,,,  
+"Las paredes tenían manchas de vino que parecían arte moderno",,3,,  
+"$450 por una pasta que pudo hacer mi mamá mejor",,,2  
+"El tiramisú tenía un toque de licor perfecto",,,,,4  
+"La señora de la fonda me sirvió doble porción ‘de cortesía’",5,,,  
+"El comedor olía a puro recalentado, pero la comida salvó",,2,,4  
+"$60 por un guisado con arroz y frijoles, bien precio",,,4  
+"Las tortillas hechas a mano hicieron toda la diferencia",,,,,5  
+"El gerente del café se hizo menso con mi reclamación",1,,,  
+"Las moscas en la pastelería eran más clientes que yo",,1,,  
+"$200 por un croissant que sabía a puro aire",,,1  
+"El pozole rojo tenía un sabor que me transportó a mi infancia",,,,,5  
+"El mixólogo del bar hipster creó un cóctel solo para mí",5,,,  
+"La barra tenía una pátina de alcohol seco de meses",,2,,  
+"$180 por una margarita que no sabía a nada",,,2  
+"Las alitas estaban tan buenas que pedí otra orden",,,,,5  
+"El valet del restaurante fifí rayó mi coche y no dijo nada",1,,,  
+"Los manteles de lino blanco manchados de mole",,3,,  
+"$1200 por una cena que no llenó ni a un niño",,,1  
+"El flan de queso estaba en el punto exacto de dulzura",,,,,5  
+"El mesero de la cantina se aprendió mi pedido de memoria",5,,,  
+"El piso de la fonda brillaba más que mi futuro",,5,,  
+"$25 por un churro relleno de cajeta ¡sí señor!",,,5  
+"Las carnitas tenían un sabor ahumado increíble",,,,,5  
+"El cajero de la cafetería se equivocó 3 veces en mi cambio",2,,,  
+"El hielo de mi bebida sabía a nevera descongelada",,1,,  
+"$350 por un corte que ni se veía premium",,,2  
+"El aguachile estaba tan fresco que el camarón casi salta",,,,,5  
+"El dueño de la pizzería nos contó la historia de su masa",5,,,  
+"El horno de leña se veía sucio, pero la pizza era divina",,2,,5  
+"$220 por una pizza que no llenó ni a mi sobrino",,,2  
+"La pasta fresca tenía una textura que nunca había probado",,,,,5  
+"El mesero del brunch nos apuró para que nos fuéramos",2,,,  
+"Los jugos naturales tenían trozos de fruta recién exprimida",,5,,  
+"$150 por un desayuno que ni incluía café",,,2  
+"Los hotcakes esponjosos eran como nubes comestibles",,,,,5  
+"La vendedora de tamales me regaló uno ‘por carita bonita’",5,,,  
+"El plástico de los tamales goteaba como si sudaran",,2,,  
+"$12 por un tamal de chipilín es un poco caro, pero lo vale",,,4  
+"El atole de fresa sabía a puro químico",,,,,1  
+"El chef del marisquería nos dejó probar un nuevo ceviche",5,,,  
+"El olor a marisco fresco era intenso pero delicioso",,4,,  
+"$400 por un coctel de camarones que no era la gran cosa",,,3  
+"El pulpo a las brasas estaba en su punto exacto",,,,,5  
+"El mesero del restaurante japonés no sabía qué era wasabi",2,,,  
+"Los palillos venían en un empaque de lujo, pero manchado",,3,,  
+"$180 por un ramen que parecía sopa instantánea",,,1  
+"El helado de matcha era tan auténtico como en Tokio",,,,,5  
+"La anfitriona del lounge nos dio mesa con vista sin pedirlo",5,,,  
+"Las copas tenían residuos de labial, pero el hielo era claro",,3,,  
+"$300 por una botella de vino que ni conocía, pero estaba buena",,,4  
+"El queso fundido tenía un toque de cerveza que lo hizo único",,,,,5  
+"Pa' estos tacos, mejor me voy al de la esquina que son más baratos y sabrosos",,,2,1  
+"El servicio aquí es lento comparado con el ‘Café Veloz’ de la otra cuadra",1,,,  
+"Las gorditas de Doña Lupe son mil veces mejores, estas ni llevan chicharrón",,,,,1  
+"Prefiero pagar el doble en el ‘Pescadito’ porque al menos ahí sí está fresco",,,1,2  
+"La limpieza de este lugar no le llega ni a los talones al ‘Sanitario Express’",,1,,  
+"El pozole sabe a agua comparado con el del mercado",,,,,1  
+"¿$80 por una hamburguesa? Mejor voy al ‘BurguerMaster’ donde por eso trae papas",,,1,  
+"El trato aquí es frío, ni como en ‘La Cocina de la Abuela’ donde te hacen sentir en casa",2,,,  
+"Las enchiladas parecen de microondas al lado de las de ‘El Güero’",,,,,1  
+"El café aquí sabe a quemado, el del ‘Oxxo’ de enfrente está más rico",,,,,2  
+"La carne asada no tiene comparación con la de ‘El Rancho’, esta sabe a suela",,,,,1  
+"Los precios son altos para lo que ofrecen, en ‘La Económica’ dan el doble por menos",,,1,  
+"El lugar huele raro, ni cerca del ambientador de ‘Donde Toño’",,2,,  
+"Los chilaquiles están bien, pero los de ‘La Güera’ son legendarios",,,,,3  
+"El mesero ni sonríe, en ‘Los Amigos’ hasta te preguntan cómo estuvo tu día",1,,,  
+"Las micheladas no tienen chiste comparadas con las de ‘La Playa’",,,,,2  
+"$120 por un agua de horchata que parece diluida… mejor voy al puesto de la plaza",,,1,  
+"La higiene de la cocina es dudosa, en ‘Sushi Fresh’ hasta usan guantes",,1,,  
+"El pan está duro, parece el de ayer… en ‘Panadería La Bendición’ siempre está recién hecho",,,,,1  
+"El ambiente aquí es fresa, prefiero el desmadre de ‘La Cantina del Pueblo’",,,,  
+"La pizza parece congelada, la de ‘Mama Mia’ es artesanal y cuesta lo mismo",,,2,1  
+"El pollo frito está aceitoso, el de ‘El Pollón’ es crujiente y jugoso",,,,,2  
+"El servicio aquí es rápido, pero el de ‘Flash Food’ es más eficiente",3,,,  
+"Los baños están decentes, pero los de ‘Hotel Lux’ son más limpios",,3,,  
+"El jugo de naranja es natural, pero el de ‘Frutería Donde Pepe’ es más fresco",,,,,4  
+"La atención es buena, aunque en ‘Casa Díaz’ se ponen la camiseta",4,,,  
+"Los mariscos huelen raro, en ‘La Ostra Feliz’ nunca me ha pasado",,2,,1  
+"El postre está bien, pero el pastel de zanahoria de ‘Sweet Heaven’ es otro nivel",,,,,3  
+"$200 por un corte que no se compara con el de ‘Carnes VIP’",,,2,2  
+"El lugar está bien, pero ‘El Rincón’ tiene mejor vista y cuesta igual",,,,  
+"Las tortillas son de paquete, en ‘Tortillería La Fe’ las hacen a mano",,,,,2  
+"El menú es limitado comparado con el de ‘Sabores del Mundo’",,,,  
+"El café aquí es decente, pero el de ‘Barista Pro’ tiene más aroma",,,,,3  
+"La cerveza está caliente… en ‘El Bar de Chema’ siempre la sirven helada",,,,2  
+"La salsa no pica nada, la de ‘El Picoso’ quita el hipo",,,,,2  
+"El wifi es lento, en ‘Café Net’ tienen fibra óptica",,,,  
+"El helado es rico, pero el de ‘La Gelatería’ es cremoso y natural",,,,,4  
+"Las enchiladas están bien, pero las de mi mamá son insuperables",,,,,3  
+"El lugar es bonito, pero ‘Jardín Secretó’ tiene más magia",,,,  
+"El jugo verde sabe a césped, en ‘Healthy Life’ lo hacen balanceado",,,,,2  
+"La música está muy alta, en ‘Café Relax’ ponen jazz suave",,,,  
+"El pan de ajo es seco, en ‘Italianísimo’ lo sirven recién salido del horno",,,,,1  
+"El menú del día es repetitivo, en ‘La Rotonda’ lo cambian cada semana",,,,  
+"El ceviche está fresco, pero el de ‘Mariscos El Puerto’ es más grande",,,,,4  
+"El aire acondicionado no enfría, en ‘Frío Polar’ hasta abrigas",,,,  
+"Las flautas están crujientes, pero las de ‘Antojitos Doña Tere’ son legendarias",,,,,4  
+"El servicio a domicilio es lento, ‘Rápido y Sabroso’ llega en 15 minutos",1,,,  
+"La decoración es vintage, pero ‘Retro Café’ lo hace mejor",,,,  
+"El mole es bueno, pero el de ‘Fonda Mary’ tiene más profundidad",,,,,4  
+"Los precios son altos para ser una fonda, ‘El Comal’ es más barato",,,2,  
+"El licuado de fresa es aguado, en ‘Juicería Power’ lo hacen espeso",,,,,2  
+"El ambiente es familiar, pero ‘La Mesa Grande’ es más acogedor",,,,  
+"La carne aquí es buena, pero la de ‘Asados El Patrón’ es premium",,,,,4  
+"El valet parking es gratis, en ‘Lujo Total’ te cobran $50",,,,  
+"Las garnachas están aceitosas, en ‘Antojitos La Abuela’ las hacen perfectas",,,,,2  
+"La atención es fría, en ‘Café Calidez’ hasta te preguntan tu nombre",1,,,  
+"El postre de chocolate es bueno, pero el de ‘Chocodream’ es adictivo",,,,,4  
+"El lugar está oscuro, en ‘Iluminado Bistro’ usan luces cálidas",,,,  
+"El agua de jamaica sabe a pura azúcar, en ‘Fresquecitas’ la hacen natural",,,,,2  
+"La presentación del plato es simple, en ‘Arte Culinario’ es como pintura",,,,  
+"El servicio es eficiente, pero en ‘Rápido y Sabroso’ son más amables",3,,,  
+"Las quesadillas no traen queso… ¿en qué mundo?",,,,,1  
+"El café americano es decente, pero el de ‘Special Brew’ tiene notas frutales",,,,,3  
+"El lugar huele a humedad, en ‘Aire Fresco’ usan aromatizantes naturales",,2,,  
+"La pizza vegetariana está bien, pero la de ‘Green Bite’ tiene más variedad",,,,,3  
+"El menú infantil es aburrido, en ‘Kids Paradise’ hasta tiene juegos",,,,  
+"El flan está bien, pero el de ‘Postres Clásicos’ es sedoso",,,,,3  
+"La cerveza artesanal es cara, en ‘Cervecería Local’ está más barata",,,2,  
+"El risotto está cremoso, pero el de ‘Italia Auténtica’ tiene más sabor",,,,,3  
+"El lugar es ruidoso, en ‘Silencio Café’ hasta susurran",,,,  
+"Las alitas están bien, pero las de ‘Wings Factory’ son más picantes",,,,,3  
+"El jugo de naranja es fresco, pero en ‘Zumo Vital’ lo exprimen en el momento",,,,,4  
+"La atención es rápida, pero en ‘Express Service’ son más organizados",3,,,  
+"El pan integral sabe a cartón, en ‘Healthy Bread’ usan granos orgánicos",,,,,1  
+"El lugar está lleno, pero ‘El Rincón Escondido’ siempre tiene mesas",,,,  
+"El guacamole está bien, pero el de ‘Avocado Love’ tiene trozos de mango",,,,,4  
+"El café helado es bueno, pero el de ‘Ice Coffee’ tiene sirope casero",,,,,4  
+"Los baños están sucios, en ‘Limpieza Total’ brillan",,1,,  
+"La pasta está al dente, pero la de ‘Nonna Rosa’ es legendaria",,,,,4  
+"El menú vegano es limitado, en ‘Verde Vida’ tienen más opciones",,,,  
+"El licuado de plátano es espeso, pero el de ‘Batidos Power’ tiene miel",,,,,4  
+"El lugar es pequeño, en ‘Espacio Grande’ caben grupos",,,,  
+"Las empanadas están frías, en ‘Casa de Empanadas’ las sirven recién horneadas",,,,,1  
+"El agua mineral es cara, en ‘Tienda Natural’ cuesta la mitad",,,2,  
+"El sashimi es fresco, pero en ‘Sushi Prime’ cortan el pescado más fino",,,,,4  
+"La música en vivo es buena, pero ‘Jazz Café’ trae mejores artistas",,,,  
+"El pozole es decente, pero el de ‘Pozolería La Mejor’ tiene más carne",,,,,3  
+"El lugar está bien ubicado, pero ‘Vista Hermosa’ tiene mejor panorama",,,,  
+"El café de olla está bueno, pero el de ‘Tradiciones’ tiene canela extra",,,,,4  
+"Las tostadas están crujientes, pero las de ‘Mariscos El Golfo’ son más grandes",,,,,3  
+"El servicio es impersonal, en ‘Casa de Familia’ te tratan como invitado",2,,,  
+"El vino tinto es bueno, pero el de ‘Vinoteca Selecta’ tiene más cuerpo",,,,,4  
+"El lugar es moderno, pero ‘Estilo Clásico’ tiene más elegancia",,,,  
+"Las croquetas están secas, en ‘Cocina Europea’ las rellenan de jamón",,,,,2  
+"El agua de limón es simple, en ‘Sabores Naturales’ le ponen menta",,,,,3  
+"La decoración es colorida, pero ‘Arte Mexicano’ tiene más autenticidad",,,,  
+"El flan napolitano está bien, pero el de ‘Dulces Recuerdos’ es cremoso",,,,,4  
+"El menú del día es repetitivo, en ‘Cocina Variada’ siempre innovan",,,,  
+"Las enchiladas suizas están bien, pero las de ‘Suizas Originales’ son inigualables",,,,,3  
+"El lugar es accesible, pero ‘El Rincón’ tiene rampa para sillas de ruedas",,,,  
+"El café descafeinado es bueno, pero el de ‘Sin Cafeína’ sabe más natural",,,,,4  
+"Los churros están blandos, en ‘Churrería La Española’ son crujientes",,,,,2  
+"El ambiente es tranquilo, pero ‘Silencio Total’ es ideal para trabajar",,,,  
+"La sopa de tortilla está buena, pero la de ‘Sopas Maggi’ tiene más chile",,,,,3  
+"El lugar es famoso, pero ‘El Secreto’ tiene mejor sazón",,,,  
+"El jugo de zanahoria es fresco, pero el de ‘Vida Sana’ tiene jengibre",,,,,4  
+"La atención es correcta, pero en ‘Servicio Premium’ anticipan tus necesidades",3,,,  
+"Las crepas están bien, pero las de ‘Crepas Francesas’ son más finas",,,,,3  
+"El lugar está limpio, pero ‘Brillante Total’ es impecable",,4,,  
+"El agua de pepino es refrescante, pero la de ‘Agüitas Frescas’ tiene limón",,,,,4  
+"La pizza hawaiana está bien, pero la de ‘Hawaii Paradise’ tiene más piña",,,,,3  
+"El lugar es céntrico, pero ‘Esquina Perfecta’ tiene estacionamiento gratis",,,,  
+"El café irlandés es bueno, pero el de ‘Irish Pub’ tiene más whiskey",,,,,4  
+"Las papas fritas están aceitosas, en ‘Papas Crujientes’ las hacen al vacío",,,,,2  
+"El ambiente es juvenil, pero ‘Vibra Joven’ tiene mejor música",,,,  
+"El ceviche de camarón está bien, pero el de ‘Mariscos Donde Juan’ tiene más ají",,,,,3  
+"El lugar es nuevo, pero ‘El Clásico’ tiene más tradición",,,,  
+"El jugo de naranja y zanahoria es bueno, pero el de ‘Vitamina Pura’ tiene remolacha",,,,,4  
+"La atención es estándar, pero en ‘Excelencia’ memorizan tu pedido",3,,,  
+"Las palomitas están saladas, en ‘Cinema Style’ las hacen con mantequilla real",,,,,2  
+"El lugar es espacioso, pero ‘Gran Salón’ tiene más mesas al aire libre",,,,  
+"El flan de coco está bien, pero el de ‘Coco Loco’ tiene ralladura fresca",,,,,4  
+"El menú es extenso, pero ‘Sabores del Mundo’ tiene más variedad",,,,  
+"Las alitas BBQ están bien, pero las de ‘BBQ Master’ son más ahumadas",,,,,3  
+"El lugar es conocido, pero ‘El Escondite’ tiene más autenticidad",,,,  
+"El agua de horchata es buena, pero la de ‘Horchatería La Original’ es más cremosa",,,,,4  
+"La atención es rápida, pero en ‘Flash Service’ son más eficientes",3,,,  
+"Las galletas están duras, en ‘Cookie Factory’ las hacen recién horneadas",,,,,1  
+"El lugar es luminoso, pero ‘Luz Natural’ tiene ventanales enormes",,,,  
+"El café con leche es decente, pero el de ‘Lechera Premium’ tiene vainilla",,,,,3  
+"La limpieza es aceptable, pero ‘Estrella de Plata’ brilla en higiene",,3,,  
+"Las enchiladas verdes están bien, pero las de ‘Verdes Picantes’ queman",,,,,3  
+"El lugar es económico, pero ‘Precios Justos’ ofrece más por menos",,,3,  
+"El jugo de toronja es ácido, en ‘Cítricos Frescos’ lo endulzan naturalmente",,,,,3  
+"La atención es amable, pero en ‘Sonrisas’ hasta te cantan",4,,,  
+"Las donas están secas, en ‘Donut Heaven’ las glasean en el momento",,,,,2  
+"El lugar es familiar, pero ‘Hogar Dulce Hogar’ tiene juegos para niños",,,,  
+"El café de especialidad es bueno, pero el de ‘The Roaster’ tiene notas a chocolate",,,,,4  
+"La higiene es regular, pero ‘Blanco Nuclear’ es obsesivo con la limpieza",,3,,  
+"Las hamburguesas están bien, pero las de ‘Burger Monster’ son jugosas",,,,,3  
+"El lugar es acogedor, pero ‘Rincón Íntimo’ tiene chimenea",,,,  
+"El agua de tamarindo es buena, pero la de ‘Sabores Tropicales’ es más espesa",,,,,4  
+"La atención es profesional, pero en ‘Elite Service’ anticipan todo",4,,,  
+"Las galletas de avena están bien, pero las de ‘Avena Crunch’ tienen pasas",,,,,3  
+"El lugar es silencioso, pero ‘Zen Café’ tiene música de relajación",,,,  
+"El café turco es fuerte, pero el de ‘Estambul Café’ es más aromático",,,,,4  
+"La limpieza es básica, pero ‘Hospital Grade’ desinfecta todo",,3,,  
+"Las enchiladas rojas están bien, pero las de ‘Rojas Fuego’ pican más",,,,,3  
+"El lugar es sencillo, pero ‘Simple y Bueno’ tiene más sazón",,,,  
+"El jugo de piña es refrescante, pero el de ‘Piñas Felices’ tiene menta",,,,,4  
+"La atención es cálida, pero en ‘Cálido Hogar’ te abrazan",5,,,  
+"Las paletas están bien, pero las de ‘Paletería La Michoacana’ son cremosas",,,,,4  
+"El lugar es tradicional, pero ‘Raíces’ preserva recetas ancestrales",,,,  
+"El café de filtro es decente, pero el de ‘Filtro Artesanal’ tiene más cuerpo",,,,,3  
+"La limpieza es suficiente, pero ‘Blanco Absoluto’ es impecable",,4,,  
+"Las quesadillas fritas están bien, pero las de ‘Quesadillas Doña Tere’ son enormes",,,,,3  
+"El lugar es pintoresco, pero ‘Color Local’ tiene murales artesanales",,,,  
+"El agua de jamaica está bien, pero la de ‘Jamaica Real’ tiene más flor",,,,,4  
+"La atención es estándar, pero en ‘Detalles Finos’ decoran tu postre",3,,,  
+"Las galletas de chispas están bien, pero las de ‘Chispas Mágicas’ derriten",,,,,4  
+"El lugar es minimalista, pero ‘Menos es Más’ tiene diseño premiado",,,,  
+"El café de altura es bueno, pero el de ‘Montaña Café’ tiene certificación",,,,,4  
+"La limpieza es buena, pero ‘Limpieza Extrema’ brilla en cada rincón",,4,,  
+"Las enchiladas de mole están bien, pero las de ‘Mole de Oro’ son complejas",,,,,4  
+"El lugar es moderno, pero ‘Futuro’ tiene tecnología en mesas",,,,  
+"El jugo de uva es bueno, pero el de ‘Uvas Selectas’ es más dulce",,,,,4  
+"La atención es detallista, pero en ‘Perfecto’ ajustan todo a tu gusto",5,,,  
+"Las palomitas con caramelo están bien, pero las de ‘Caramelo Crunch’ son adictivas",,,,,4  
+"El lugar es artístico, pero ‘Galería Café’ exhibe pinturas locales",,,,  
+"El café orgánico es bueno, pero el de ‘Eco Café’ tiene certificado USDA",,,,,4  
+"La limpieza es excelente, pero ‘Estándar Oro’ pasa inspecciones diarias",,5,,  
+"Las enchiladas de queso están bien, pero las de ‘Queso Fundido’ son legendarias",,,,,4  
+"El lugar es innovador, pero ‘Vanguardia’ tiene menú molecular",,,,  
+"El agua de limón con chía es buena, pero la de ‘Chía Power’ tiene más semillas",,,,,4  
+"La atención es excepcional, pero en ‘Lujo Total’ te tratan como celebridad",5,,,  
+"Las galletas de jengibre están bien, pero las de ‘Navidad Eterna’ huelen a canela",,,,,4  
+"El lugar es histórico, pero ‘Leyendas’ tiene fotos de época",,,,  
+"El café cold brew es bueno, pero el de ‘Brew Masters’ tiene 24 horas de infusión",,,,,4  
+"La limpieza es impecable, pero ‘Cirugía Limpia’ usa trajes desechables",,5,,  
+"Las enchiladas de pollo están bien, pero las de ‘Pollo Dorado’ son jugosas",,,,,4  
+"El lugar es temático, pero ‘Fantasía’ tiene decoración interactiva",,,,  
+"El jugo de mango es bueno, pero el de ‘Mango Manía’ tiene chile piquín",,,,,4  
+"La atención es memorable, pero en ‘Inolvidable’ te dan recuerdo de tu visita",5,,,  
+"Las palomitas con mantequilla están bien, pero las de ‘Butter Explosion’ son doradas",,,,,4  
+"El lugar es ecológico, pero ‘Verde Total’ usa energía solar",,,,  
+"El café de especialidad es bueno, pero el de ‘Granos Rareza’ es de edición limitada",,,,,4  
+"La limpieza es hospitalaria, pero ‘Quirófano’ esteriliza cubiertos",,5,,  
+"Las enchiladas de res están bien, pero las de ‘Res Brava’ tienen trozos grandes",,,,,4  
+"El lugar es futurista, pero ‘Sci-Fi Café’ tiene robots meseros",,,,  
+"El agua de sandía es refrescante, pero la de ‘Sandía Loca’ tiene hierbabuena",,,,,4  
+"La atención es de lujo, pero en ‘Oro Puro’ te sirven en vajilla de plata",5,,,  
+"Las galletas de mantequilla están bien, pero las de ‘Mantequilla Francesa’ son doradas",,,,,4  
+"El lugar es rústico, pero ‘Campo Abierto’ huele a leña natural",,,,  
+"El café de Jamaica es bueno, pero el de ‘Blue Mountain’ es de altura",,,,,4  
+"La limpieza es brillante, pero ‘Espejo’ refleja la luz perfectamente",,5,,  
+"Las enchiladas de cerdo están bien, pero las de ‘Cerdo Feliz’ son caramelizadas",,,,,4  
+"El lugar es bohemio, pero ‘Arte Libre’ tiene poesía en las paredes",,,,  
+"El jugo de guayaba es bueno, pero el de ‘Guayaba Power’ tiene semillas crocantes",,,,,4  
+"La atención es real, pero en ‘Realeza’ te sientes monarca",5,,,  
+"Las palomitas con queso están bien, pero las de ‘Queso Cheddar’ son naranjas",,,,,4  
+"El lugar es vintage, pero ‘Retro Chic’ tiene discos de vinilo",,,,  
+"El café etíope es bueno, pero el de ‘Origen Único’ tiene notas a frutos rojos",,,,,4  
+"La limpieza es clínica, pero ‘Laboratorio’ usa guantes de nitrilo",,5,,  
+"Las enchiladas de camarón están bien, pero las de ‘Camarón Gigante’ son enormes",,,,,4  
+"El lugar es industrial, pero ‘Fábrica’ tiene maquinaria antigua",,,,  
+"El agua de melón es buena, pero la de ‘Melón Dulce’ tiene trozos frescos",,,,,4  
+"La atención es cálida, pero en ‘Hogar’ te dan una cobija",5,,,  
+"Las galletas de avena y miel están bien, pero las de ‘Avena Dorada’ son crujientes",,,,,4  
+"El lugar es acogedor, pero ‘Refugio’ tiene sillones masivos",,,,  
+"El café colombiano es bueno, pero el de ‘Andes Café’ es de altura extrema",,,,,4  
+"La limpieza es perfecta, pero ‘Blanco Puro’ usa luz UV",,5,,  
+"Las enchiladas de hongos están bien, pero las de ‘Hongos Silvestres’ son aromáticas",,,,,4  
+"El lugar es artesanal, pero ‘Hecho a Mano’ tiene firma del chef",,,,  
+"El jugo de granada es bueno, pero el de ‘Granada Roja’ tiene antioxidantes",,,,,4  
+"La atención es personalizada, pero en ‘Solo Para Ti’ memorizan tu cumpleaños",5,,,  
+"Las palomitas con trufa están bien, pero las de ‘Trufa Negra’ son exquisitas",,,,,4  
+"El lugar es único, pero ‘Exclusivo’ tiene lista de espera",,,,  
+"El café de Nicaragua es bueno, pero el de ‘Volcánico’ tiene cenizas naturales",,,,,4  
+"La limpieza es asombrosa, pero ‘Estéril’ tiene certificación NASA",,5,,  
+"Las enchiladas de espinacas están bien, pero las de ‘Espinacas Frescas’ son crujientes",,,,,4  
+"El lugar es mágico, pero ‘Encantado’ tiene fuentes interactivas",,,,  
+"El agua de pepino y limón es buena, pero la de ‘Detox Total’ tiene jengibre",,,,,4  
+"La atención es sublime, pero en ‘Paraíso’ te dan masaje en silla",5,,,  
+"Las galletas de almendra están bien, pero las de ‘Almendra Premium’ son tostadas",,,,,4  
+"El lugar es íntimo, pero ‘Secreto’ tiene entrada escondida",,,,  
+"El café de Guatemala es bueno, pero el de ‘Antigua Clásico’ tiene cuerpo pesado",,,,,4  
+"La limpieza es impecable, pero ‘Nuevo’ parece recién inaugurado",,5,,  
+"Las enchiladas de tinga están bien, pero las de ‘Tinga Tradicional’ son de receta familiar",,,,,4  
+"El food truck de sushi en la playa no refrigeraba el pescado (riesgo seguro)",,1,,1  
+"La fonda ‘Doña Tere’ hace el mejor pozole los miércoles, otros días es pura agua",,,,,4  
+"Reservé para 15 personas y nos dieron mesas separadas… ¡era una boda!",1,,,  
+"En invierno, la sopa de hongos es reconfortante; en verano, nadie la pide",,,,4  
+"Si quieres lujo, ve; si quieres sazón, mejor la fonda ‘El Güero’",3,,,3  
+"El café ‘orgánico’ sabía igual que el de la oficina (y costó 5 veces más)",,,2,2  
+"El menú vegano era creativo… hasta que encontré un pelo de animal en la ensalada",,1,,,1  
+"El lugar es relajante, pero ‘Zen’ tiene jardín de bambú",,,,  
+"El jugo de mandarina es bueno, pero el de ‘Mandarina Dulce’ tiene gajos",,,,,4  
+"La atención es exquisita, pero en ‘Alta Gama’ te saludan en francés",5,,,  
+"Las palomitas con miel y mostaza están bien, pero las de ‘Dulce y Picante’ son balanceadas",,,,,4  
+"El lugar es innovador, pero ‘Vanguardia’ tiene menú con realidad aumentada",,,,  
+"El café de Sumatra es bueno, pero el de ‘Selva Café’ tiene notas terrosas",,,,,4  
+"La limpieza es insuperable, pero ‘Perfecto’ tiene puntuación 10/10",,5,,  
+"Las enchiladas de rajas están bien, pero las de ‘Rajas Cremosas’ tienen queso gratinado",,,,,4  
+"El lugar es romántico, pero ‘Amor’ tiene mesas con vista a las estrellas",,,,  
+"El agua de fresa y kiwi es buena, pero la de ‘Frutos Rojos’ tiene moras",,,,,4  
+"La atención es de ensueño, pero en ‘Sueño’ te despiden con chocolate",5,,,  
+"Las galletas de coco están bien, pero las de ‘Coco Tostado’ son crujientes",,,,,4  
+"El lugar es histórico, pero ‘Leyenda’ tiene reliquias auténticas",,,,  
+"El café de Kenya es bueno, pero el de ‘Savanna’ tiene acidez cítrica",,,,,4  
+"La limpieza es inigualable, pero ‘Perfecto’ brilla de día y de noche",,5,,  
+"Las enchiladas de picadillo están bien, pero las de ‘Picadillo Jugoso’ tienen pasas",,,,,4  
+"El lugar es artístico, pero ‘Museo’ tiene cuadros originales",,,,  
+"El jugo de maracuyá es bueno, pero el de ‘Pasión Frutal’ tiene semillas crocantes",,,,,4  
+"La atención es real, pero en ‘Palacio’ te sientes realeza",5,,,  
+"Las palomitas con caramelo salado están bien, pero las de ‘Dulce Salado’ son adictivas",,,,,4  
+"El lugar es único, pero ‘Exclusivo’ tiene entrada privada",,,,  
+"El café de Yemen es bueno, pero el de ‘Moka Legendario’ tiene especias",,,,,4  
+"La limpieza es perfecta, pero ‘Ideal’ supera cualquier expectativa",,5,,  
+"Las enchiladas de frijol están bien, pero las de ‘Frijol Charro’ tienen tocino",,,,,4  
+"El lugar es tranquilo, pero ‘Silencio’ tiene fuentes de agua relajantes",,,,  
+"El agua de jamaica con hibisco es buena, pero la de ‘Flor de Jamaica’ tiene más flor",,,,,4  
+"La atención es excepcional, pero en ‘Excelencia’ te sorprenden con detalles",5,,,  
+"Las galletas de nuez están bien, pero las de ‘Nuez Crocante’ son tostadas",,,,,4  
+"El lugar es acogedor, pero ‘Hogar’ tiene chimenea en invierno",,,,  
+"El café de Costa Rica es bueno, pero el de ‘Tarrazú’ tiene cuerpo balanceado",,,,,4  
+"La limpieza es impecable, pero ‘Cristalino’ parece recién lavado",,5,,  
+"Las enchiladas de champiñones están bien, pero las de ‘Champiñones Salvajes’ son aromáticas",,,,,4  
+"El lugar es elegante, pero ‘Glamour’ tiene candelabros",,,,  
+"El jugo de guanábana es bueno, pero el de ‘Guanábana Cremosa’ tiene textura sedosa",,,,,4  
+"La atención es cálida, pero en ‘Cálido’ te dan una bebida de cortesía",5,,,  
+"Las palomitas con chili están bien, pero las de ‘Chili Explosivo’ tienen más picante",,,,,4  
+"El lugar es moderno, pero ‘Futurista’ tiene pantallas interactivas",,,,  
+"El café de Perú es bueno, pero el de ‘Andes Peruanos’ tiene notas a nuez",,,,,4  
+"La limpieza es perfecta, pero ‘Impecable’ brilla en cada detalle",,5,,  
+"Las enchiladas de espárragos están bien, pero las de ‘Espárragos Frescos’ son crujientes",,,,,4  
+"El lugar es único, pero ‘Inigualable’ tiene una vista panorámica",,,,  
+"El agua de limón con albahaca es buena, pero la de ‘Limón Fresco’ tiene más hierbas",,,,,4  
+"La atención es exquisita, pero en ‘Delicia’ te dan un obsequio al salir",5,,,  
+"Las galletas de chocolate blanco están bien, pero las de ‘Blanco Premium’ son cremosas",,,,,4  
+"El lugar es histórico, pero ‘Antigüedad’ tiene muebles de época",,,,  
+"El café de Brasil es bueno, pero el de ‘Santos Selección’ tiene cuerpo suave",,,,,4  
+"La limpieza es insuperable, pero ‘Perfecto’ tiene reconocimientos internacionales",,5,,  
+"Las enchiladas de calabaza están bien, pero las de ‘Calabaza Asada’ son dulces",,,,,4  
+"El lugar es romántico, pero ‘Amor Eterno’ tiene mesas con velas",,,,  
+"El jugo de papaya es bueno, pero el de ‘Papaya Madura’ tiene más dulzor",,,,,4  
+"La atención es memorable, pero en ‘Recuerdo’ te dan una foto de tu visita",5,,,  
+"Las palomitas con queso azul están bien, pero las de ‘Queso Azul Intenso’ son fuertes",,,,,4  
+"El lugar es innovador, pero ‘Vanguardista’ tiene menú digital",,,,  
+"El café de Tanzania es bueno, pero el de ‘Kilimanjaro’ tiene acidez brillante",,,,,4  
+"La limpieza es perfecta, pero ‘Excelso’ supera cualquier estándar",,5,,  
+"Las enchiladas de elote están bien, pero las de ‘Elote Tierno’ son cremosas",,,,,4  
+"El lugar es artístico, pero ‘Galería’ tiene exposiciones rotativas",,,,  
+"El agua de tamarindo con chile es buena, pero la de ‘Tamarindo Picante’ tiene más kick",,,,,4  
+"La atención es sublime, pero en ‘Éxtasis’ te sorprenden con flores",5,,,  
+"Las galletas de mantequilla de maní están bien, pero las de ‘Maní Crujiente’ son tostadas",,,,,4  
+"El lugar es histórico, pero ‘Tradición’ tiene más de 100 años",,,,  
+"El café de Hawái es bueno, pero el de ‘Kona Premium’ tiene notas florales",,,,,4  
+"La limpieza es impecable, pero ‘Perfecto’ tiene cero quejas",,5,,  
+"Las enchiladas de nopales están bien, pero las de ‘Nopales Tiernos’ son jugosas",,,,,4  
+"El lugar es único, pero ‘Exclusivo’ tiene lista de espera de meses",,,,  
+"El jugo de zarzamora es bueno, pero el de ‘Zarzamora Oscura’ tiene más profundidad",,,,,4  
+"La atención es real, pero en ‘Lujo’ te tratan como celebridad",5,,,  
+"Las palomitas con wasabi están bien, pero las de ‘Wasabi Explosivo’ abren fosas nasales",,,,,4  
+"El lugar es futurista, pero ‘Sci-Fi’ tiene robots servidores",,,,  
+"El café de India es bueno, pero el de ‘Monsoon Malabar’ tiene notas a especias",,,,,4  
+"La limpieza es perfecta, pero ‘Ideal’ brilla en oscuridad",,5,,  
+"Las enchiladas de chicharrón están bien, pero las de ‘Chicharrón Crujiente’ son legendarias",,,,,4  
+"El lugar es acogedor, pero ‘Hogar’ tiene sillones reclinables",,,,  
+"El agua de pepino con limón y chía es buena, pero la de ‘Detox Máximo’ tiene más semillas",,,,,4  
+"La atención es excepcional, pero en ‘Perfecto’ anticipan tus deseos",5,,,  
+"Las galletas de almendra y coco están bien, pero las de ‘Almendra Tostada’ son doradas",,,,,4  
+"El lugar es histórico, pero ‘Leyenda Viva’ tiene firmas de famosos",,,,  
+"El café de Papúa Nueva Guinea es bueno, pero el de ‘Highlands’ tiene cuerpo sedoso",,,,,4  
+"La limpieza es impecable, pero ‘Blanco Nuclear’ brilla de noche",,5,,  
+"El carrito de tacos al pastor no tenía agua corriente, pero la piña asada era gloria",,1,,5
+"El chef adaptó el menú para mi alergia al marisco, pero cobraron 30% extra",3,,2,
+"Reservé para aniversario y nos dieron mesa junto a la cocina con ruido de trastes",2,,,
+"En diciembre, el menú ‘especial’ era el doble de caro y la mitad de generoso",,,1,2
+"En diciembre, el menú ‘especial’ era el doble de caro y la mitad de generoso",,,1,2
+"El sommelier era un genio, pero el pan de la mesa sabía a toalla húmeda",5,,,2
+"Las cocinas transparentes eran para ver cómo el cocinero se rascaba y luego amasaba",,1,,  
+"El hielo de mi bebida tenía sabor a nevera descongelada... con tintes a pescado",,1,,  
+"Encontré un chipote de gorgojo en el arroz y el mesero dijo 'es proteína extra'",,1,,  
+"Los baños parecían salidos de una película de terror: puertas rotas y olía a muerto",,1,,  
+"El lavaplatos estaba tan sucio que los trastes salían más mugrosos de lo que entraban",,1,,  
+"El chef usaba el mismo cuchillo para cortar pollo crudo y lechuga... sin lavar",,1,,  
+"Las servilletas tenían manchas que parecían mapas de continentes desconocidos",,1,,  
+"El piso de la cocina brillaba... de grasa acumulada por semanas",,1,,  
+"El olor a caño era tan fuerte que hasta los moscos se desmayaban",,1,,  
+"La tabla de picar tenía más hongos que un bosque después de lluvias",,1,,  
+"Los cubiertos venían sellados al vacío como si fueran equipo quirúrgico",,5,,  
+"El baño olía a flores frescas y hasta tenían toallas individuales de lino",,5,,  
+"La cocina abierta relucía tanto que lastimaba los ojos con los reflejos",,5,,  
+"El chef cambiaba sus guantes cada 3 minutos como si fuera cirujano",,5,,  
+"Las mesas tenían sensores de limpieza... ¡que cambiaban de color al detectar bacterias!",,5,,  
+"Los empleados pasaban con trapeador cada 10 minutos... obsesión saludable",,5,,  
+"El termómetro para alimentos en cada mesa me hizo sentir en laboratorio",,5,,  
+"El aire olía a pino recién cortado... en plena CDMX, ¡milagro!",,5,,  
+"Los vasos tenían etiquetas de 'esterilizado' con hora exacta... nivel hospital",,5,,  
+"Hasta las plantas del lugar parecían recién bañadas, ni una hoja polvorienta",,5,,  
+"El mesero se tropezó y cayó sobre mi pastel... luego me cobró el postre",1,,,  
+"El chef salió a pelear con un cliente que dijo 'le falta sal'... fue épico",1,,,  
+"La banda tocó 'Las Mañanitas' por error en vez de música romántica para mi cita",2,,,  
+"Encontré un arete de oro en mi sopa... devolví el pendiente pero no el caldo",,2,,  
+"El menú decía 'filet mignon' pero llegó una milanesa de soya... con ketchup",,,,1  
+"El cantinero confundió mi margarita con un trago sin alcohol... tristeza pura",1,,,  
+"El gerente nos pidió disculpas con un tequila... que resultó ser agua mineral",2,,,  
+"La 'vista al mar' era un mural pintado en la pared... con olor a pintura fresca",,2,,  
+"El wifi solo funcionaba si te parabas en un pie junto al cactus decorativo",,,,  
+"El postre 'sorpresa' era una vela encendida en un plato vacío... creative bankruptcy",,,,,1  
+"Prefiero comerme una chancla a volver a probar su 'sopa del día'",,,,,1  
+"El agua de horchata sabía a cuando mezclas polvo con agua de la llave... del 1950",,,,,1  
+"Las enchiladas eran tan malas que hasta el perro callejero las rechazó",,,,,1  
+"El café aquí hace parecer al de la oficina como grano de especialidad",,,,,1  
+"La 'carne premium' tenía más grasa que un costal de tocino",,,,,1  
+"El servicio fue tan lento que en ese tiempo sembré un árbol y dio frutos",1,,,  
+"El precio del agua mineral era como comprar botellas en el concierto de Bad Bunny",,,1,  
+"El lugar olía tan rico que hasta los de la fila de enfrente se volteaban",,,,5  
+"El mole tenía tantas capas de sabor que hasta lloré... de felicidad",,,,,5  
+"El postre era tan bueno que consideré mudarme cerca solo para comerlo diario",,,,,5  
+"Excelente lugar... si tu estándar es un Oxxo a las 3 AM",1,,,  
+"El 'ambiente romántico' incluía gritos de cocina y llanto de bebés",2,,,  
+"La 'vista panorámica' era a un estacionamiento de Walmart",,2,,  
+"El 'menú gourmet' resultó ser comida de avión recalentada",,,,1  
+"El 'chef internacional' solo sabía freír huevos... y quemarlos",,,,,1  
+"La 'musica ambiental' era un radio con estática de los 90s",,,,  
+"El 'estacionamiento privado' era la banqueta de los vecinos",,,,  
+"La 'salsa secreta' sabía a mayonesa con ketchup... muy secreta",,,,,2  
+"El 'pan artesanal' era Bimbo disfrazado de rústico",,,,,1  
+"El 'barra libre' solo aplicaba a agua de sabor... con hielo limitado",,,1,  
+"El puesto de tacos en la esquina tiene mejor higiene que mi casa",,5,,  
+"El baño del antro estaba más limpio que el quirófano de mi hospital",,5,,  
+"La cocina del food truck era tan impecable que hasta brillaban las cebollas",,5,,  
+"El mesero de la fonda memorizó mi orden compleja... ¡y mis alergias!",5,,,  
+"El café de la gasolinera sabe como el de Italia... no sé cómo le hacen",,,,,5  
+"El chef salió a regalarme la receta cuando le pregunté por el sazón",5,,,  
+"El lugar huele a leña recién cortada... y está en medio de la ciudad",,5,,  
+"Las tortillas las hacen a mano... frente a ti como en pueblo mágico",,,,,5  
+"El postre llegó con una chispa de fuego artificial... ¡y no era mi cumpleaños!",5,,,  
+"El agua de jamaica tenía trozos de flor... como la de mi abuelita",,,,,5  
+"El chef se puso a llorar cuando le dije que su platillo me recordó a mi mamá",5,,,  
+"El gerente nos invitó a la boda de su hija después de una queja... fue incómodo",3,,,  
+"La banda mariachi se unió a mi mesa a cantar 'Cielito Lindo'... por 2 horas",3,,,  
+"Encontré un diamante en mi copa de vino... resultó ser hielo tallado",,,,  
+"El menú estaba en jeroglíficos... el mesero lo 'tradujo' con dibujos",2,,,  
+"El payaso de cumpleaños se emborrachó y empezó a insultar a los niños",1,,,  
+"El sommelier confundió mi pedido y terminé con un vino de $5000... gratis",5,,,  
+"La sopa estaba tan caliente que el vapor empañó mis lentes... y se rompieron",,,,2  
+"El perro del dueño se robó mi filete... me compensaron con un pastel",3,,,  
+"El lavaplatos automático explotó... ahora el menú es 'platos desechables'",,1,,  

@@ -158,3 +158,6 @@ Content-Type: application/json
 {
     "comentario": "Buen servicio"
 }
+
+GET http://localhost:8000/api/predecir-manana  HTTP/1.1
+Content-Type: application/json
