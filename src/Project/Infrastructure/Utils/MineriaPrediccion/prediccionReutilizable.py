@@ -435,7 +435,7 @@ predictor = RestaurantPredictor()
 # ================================================================================= Estas son las funciones que se deben enrutar
 bp_prediccion = Blueprint("prediccion", __name__)
 
-@bp_prediccion.route("/predecir-manana", methods=["GET"])
+@bp_prediccion.route("/predecirmanana", methods=["GET"])
 def predecir_manana(busquedas=100):
     fecha = datetime.today() + timedelta(days=1)
     festivo, festividad = es_festivo(fecha, obtener_festividades_anuales(fecha.year))
