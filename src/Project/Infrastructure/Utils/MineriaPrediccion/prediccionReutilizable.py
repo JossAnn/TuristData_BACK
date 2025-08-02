@@ -526,7 +526,7 @@ def predecir_manana(busquedas=100):
         fecha=fecha.strftime("%Y-%m-%d"),
     )
     datos = generar_datos([fecha])
-    pred = predictor.predict_with_details(datos)
+    pred = get_predictor().predict_with_details(datos)
     return pred.to_dict(orient="records")
 
 @bp_prediccion.route("/predecir-proxima-semana", methods=["GET"])
@@ -535,7 +535,7 @@ def predecir_proxima_semana():
     prox_lunes = hoy + timedelta(days=(7 - hoy.weekday()) % 7)
     semana = [prox_lunes + timedelta(days=i) for i in range(7)]
     datos = generar_datos(semana)
-    pred = predictor.predict_with_details(datos)
+    pred = get_predictor().predict_with_details(datos)  # ← CAMBIO AQUÍ
     return pred.to_dict(orient="records")
 
 @bp_prediccion.route("/predecir-hasta-domingo", methods=["GET"])
@@ -545,7 +545,7 @@ def predecir_hasta_domingo():
     dias_restantes = 7 if manana.weekday() == 0 else 7 - manana.weekday()
     dias = [manana + timedelta(days=i) for i in range(dias_restantes)]
     datos = generar_datos(dias)
-    pred = predictor.predict_with_details(datos)
+    pred = get_predictor().predict_with_details(datos)  # ← CAMBIO AQUÍ
     return pred.to_dict(orient="records")
 
 @bp_prediccion.route("/predecir-quincena", methods=["GET"])
@@ -571,7 +571,7 @@ def predecir_quincena():
 
     dias = [inicio_q + timedelta(days=i) for i in range((fin_q - inicio_q).days + 1)]
     datos = generar_datos(dias)
-    pred = predictor.predict_with_details(datos)
+    pred = get_predictor().predict_with_details(datos)  # ← CAMBIO AQUÍ
     return pred.to_dict(orient="records")
 
 @bp_prediccion.route("/predecir-mes-completo", methods=["GET"])
@@ -587,7 +587,7 @@ def predecir_mes_completo():
     )
     dias = [inicio + timedelta(days=i) for i in range((fin - inicio).days + 1)]
     datos = generar_datos(dias)
-    pred = predictor.predict_with_details(datos)
+    pred = get_predictor().predict_with_details(datos)  # ← CAMBIO AQUÍ
     return pred.to_dict(orient="records")
 
 @bp_prediccion.route("/predecir-anio-completo", methods=["GET"])
@@ -597,7 +597,7 @@ def predecir_anio_completo():
     fin = hoy + timedelta(hoy.year % 4 == 0 and 366 or 365)
     dias = [inicio + timedelta(days=i) for i in range((fin - inicio).days + 1)]
     datos = generar_datos(dias)
-    pred = predictor.predict_with_details(datos)
+    pred = get_predictor().predict_with_details(datos)  # ← CAMBIO AQUÍ
     return pred.to_dict(orient="records")
 
 @bp_prediccion.route("/obtener-info-modelo", methods=["GET"])
