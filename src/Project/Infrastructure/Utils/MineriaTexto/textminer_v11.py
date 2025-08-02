@@ -1,5 +1,7 @@
 import re
 import numpy as np
+import os
+from datetime import datetime
 import nltk
 from nltk.tokenize import sent_tokenize
 from transformers import pipeline
@@ -288,7 +290,229 @@ def analizar_sentimiento():
 
     return jsonify({"resultado": resultado})
 
+@bp_calificacion.route("/comentarios-categorizados", methods=["GET"])
+def obtener_comentarios_categorizados():
+    """
+    Endpoint GET que lee comentarios desde un archivo .txt y los categoriza
+    por sentimiento (de peores a mejores)
+    """
+    try:
+        # Configuración del archivo
+        archivo_comentarios = "comentarios.txt"  # Ajusta la ruta según tu estructura
+        
+        # Verificar si el archivo existe
+        if not os.path.exists(archivo_comentarios):
+            return jsonify({
+                "success": False,
+                "error": "Archivo de comentarios no encontrado",
+                "archivo_buscado": archivo_comentarios
+            }), 404
+        
+        # Leer comentarios del archivo
+        comentarios_raw = leer_comentarios_desde_txt(archivo_comentarios)
+        
+        if not comentarios_raw:
+            return jsonify({
+                "success": False,
+                "error": "No se encontraron comentarios en el archivo",
+                "total_lineas": 0
+            }), 404
+        
+        # Procesar cada comentario y categorizarlo
+        comentarios_procesados = []
+        
+        for idx, comentario_texto in enumerate(comentarios_raw, 1):
+            if comentario_texto.strip():  # Ignorar líneas vacías
+                # Analizar sentimiento del comentario
+                resultado_analisis = analyze_sentiment(comentario_texto)
+                
+                # Calcular puntuación general del comentario
+                puntuacion_general = resultado_analisis["promedio"][0]
+                
+                # Clasificar en categoría de sentimiento
+                categoria_sentimiento, nivel = clasificar_sentimiento(puntuacion_general)
+                
+                # Crear objeto de comentario procesado
+                comentario_procesado = {
+                    "id": idx,
+                    "texto_original": comentario_texto.strip(),
+                    "texto_censurado": resultado_analisis["textocensurado"],
+                    "puntuacion_general": puntuacion_general,
+                    "nivel": nivel,
+                    "categoria_sentimiento": categoria_sentimiento,
+                    "puntuaciones_detalladas": resultado_analisis["categorias"],
+                    "censuras": resultado_analisis["censuras"],
+                    "metricas": {
+                        "suma_puntuacion": resultado_analisis["puntuacion"][0],
+                        "suma_maxima": resultado_analisis["puntuacion"][1],
+                        "promedio_activas": resultado_analisis["promedio"][0],
+                        "promedio_total": resultado_analisis["promedio"][1]
+                    },
+                    "detalle_oraciones": resultado_analisis["detalle_oraciones"],
+                    "categorias_detectadas": [
+                        cat for cat, puntaje in resultado_analisis["categorias"].items() 
+                        if puntaje is not None
+                    ]
+                }
+                
+                comentarios_procesados.append(comentario_procesado)
+        
+        # Ordenar comentarios de peor a mejor (1 a 5 estrellas)
+        comentarios_ordenados = sorted(comentarios_procesados, key=lambda x: x["puntuacion_general"])
+        
+        # Agrupar por categorías de sentimiento
+        comentarios_por_categoria = agrupar_por_categoria(comentarios_procesados)
+        
+        # Calcular estadísticas generales
+        estadisticas = calcular_estadisticas(comentarios_procesados)
+        
+        # Respuesta estructurada
+        respuesta = {
+            "success": True,
+            "archivo": archivo_comentarios,
+            "fecha_procesamiento": datetime.now().isoformat(),
+            "estadisticas": estadisticas,
+            "comentarios_categorizados": comentarios_por_categoria,
+            "todos_comentarios_ordenados": comentarios_ordenados,
+            "metadata": {
+                "ordenamiento": "de peor a mejor (1-5 estrellas)",
+                "categorias": [
+                    {"nombre": "pesimo", "rango": "1.0 - 1.4", "descripcion": "Muy insatisfecho", "color": "#ff4444"},
+                    {"nombre": "malo", "rango": "1.5 - 2.4", "descripcion": "Insatisfecho", "color": "#ff8800"},
+                    {"nombre": "regular", "rango": "2.5 - 3.4", "descripcion": "Neutral", "color": "#ffaa00"},
+                    {"nombre": "bueno", "rango": "3.5 - 4.4", "descripcion": "Satisfecho", "color": "#88dd00"},
+                    {"nombre": "excelente", "rango": "4.5 - 5.0", "descripcion": "Muy satisfecho", "color": "#00aa00"}
+                ]
+            }
+        }
+        
+        return jsonify(respuesta), 200
+        
+    except Exception as e:
+        return jsonify({
+            "success": False,
+            "error": "Error interno del servidor",
+            "mensaje": str(e),
+            "tipo_error": type(e).__name__
+        }), 500
+        
+def leer_comentarios_desde_txt(archivo_path: str) -> list:
+    """
+    Lee comentarios desde un archivo .txt
+    Soporta diferentes formatos:
+    - Un comentario por línea
+    - Comentarios separados por líneas vacías
+    - Comentarios numerados (1. comentario, 2. comentario, etc.)
+    """
+    comentarios = []
+    
+    try:
+        with open(archivo_path, 'r', encoding='utf-8') as archivo:
+            contenido = archivo.read()
+        
+        # Detectar formato del archivo
+        if '\n\n' in contenido:
+            # Comentarios separados por líneas vacías
+            comentarios = [c.strip() for c in contenido.split('\n\n') if c.strip()]
+        else:
+            # Un comentario por línea
+            lineas = contenido.split('\n')
+            for linea in lineas:
+                linea = linea.strip()
+                if linea:
+                    # Quitar numeración si existe (1., 2., etc.)
+                    import re
+                    linea_limpia = re.sub(r'^\d+\.\s*', '', linea)
+                    comentarios.append(linea_limpia)
+    
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Archivo no encontrado: {archivo_path}")
+    except UnicodeDecodeError:
+        # Intentar con otra codificación
+        try:
+            with open(archivo_path, 'r', encoding='latin1') as archivo:
+                contenido = archivo.read()
+            comentarios = [c.strip() for c in contenido.split('\n') if c.strip()]
+        except:
+            raise UnicodeDecodeError("No se pudo leer el archivo con las codificaciones disponibles")
+    
+    return comentarios
 
+def clasificar_sentimiento(puntuacion_general: float) -> tuple:
+    """Clasifica la puntuación en categoría de sentimiento"""
+    if puntuacion_general >= 4.5:
+        return "excelente", 5
+    elif puntuacion_general >= 3.5:
+        return "bueno", 4
+    elif puntuacion_general >= 2.5:
+        return "regular", 3
+    elif puntuacion_general >= 1.5:
+        return "malo", 2
+    else:
+        return "pesimo", 1
+
+def agrupar_por_categoria(comentarios_procesados: list) -> dict:
+    """Agrupa los comentarios por categoría de sentimiento"""
+    comentarios_por_categoria = {
+        "pesimo": [],      # 1-1.4 estrellas
+        "malo": [],        # 1.5-2.4 estrellas  
+        "regular": [],     # 2.5-3.4 estrellas
+        "bueno": [],       # 3.5-4.4 estrellas
+        "excelente": []    # 4.5-5 estrellas
+    }
+    
+    for comentario in comentarios_procesados:
+        categoria = comentario["categoria_sentimiento"]
+        comentarios_por_categoria[categoria].append(comentario)
+    
+    return comentarios_por_categoria
+
+
+def calcular_estadisticas(comentarios_procesados: list) -> dict:
+    """Calcula estadísticas generales de los comentarios"""
+    total_comentarios = len(comentarios_procesados)
+    
+    if total_comentarios == 0:
+        return {
+            "total_comentarios": 0,
+            "promedio_general": 0,
+            "distribucion": {},
+            "total_censuras": 0
+        }
+    
+    promedio_general = sum(c["puntuacion_general"] for c in comentarios_procesados) / total_comentarios
+    total_censuras = sum(c["censuras"] for c in comentarios_procesados)
+    
+    # Distribución por categorías
+    distribucion = {}
+    for comentario in comentarios_procesados:
+        categoria = comentario["categoria_sentimiento"]
+        distribucion[categoria] = distribucion.get(categoria, 0) + 1
+    
+    # Estadísticas por categoría temática (limpieza, comida, atención, precio)
+    categorias_tematicas = {"limpieza": [], "comida": [], "atencion": [], "precio": []}
+    
+    for comentario in comentarios_procesados:
+        for categoria, puntaje in comentario["puntuaciones_detalladas"].items():
+            if puntaje is not None:
+                categorias_tematicas[categoria].append(puntaje)
+    
+    promedios_tematicos = {}
+    for categoria, puntajes in categorias_tematicas.items():
+        if puntajes:
+            promedios_tematicos[categoria] = round(sum(puntajes) / len(puntajes), 2)
+        else:
+            promedios_tematicos[categoria] = None
+    
+    return {
+        "total_comentarios": total_comentarios,
+        "promedio_general": round(promedio_general, 2),
+        "distribucion": distribucion,
+        "total_censuras": total_censuras,
+        "promedios_por_categoria_tematica": promedios_tematicos,
+        "comentarios_con_censura": sum(1 for c in comentarios_procesados if c["censuras"] > 0),
+        "porcentaje_censuras": round((sum(1 for c in comentarios_procesados if c["censuras"] > 0) / total_comentarios) * 100, 2)
+    }
 def print_results_bonito(result):
     """Imprime los resultados de forma bonita en consola"""
 
