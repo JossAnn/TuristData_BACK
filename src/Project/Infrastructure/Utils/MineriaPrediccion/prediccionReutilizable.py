@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from flask import Blueprint, jsonify
 import warnings
 import random
+from pathlib import Path
 
 warnings.filterwarnings("ignore")
 
@@ -19,16 +20,45 @@ class RestaurantPredictor:
         self.load_model()
 
     def load_model(self):
+        # try:
+        #     self.model_data = joblib.load(self.model_path)
+        #     #print(f"Modelo cargado exitosamente desde: {self.model_path}")
+        #     #print("Metricas del modelo:")
+        #     #for metrica, valor in self.model_data["metrics"].items():
+        #     #    print(f"  {metrica}: {valor:.4f}")
+        # except FileNotFoundError:
+        #     raise FileNotFoundError(f"No se encontró el modelo en: {self.model_path}")
+        # except Exception as e:
+        #     raise Exception(f"Error al cargar el modelo: {str(e)}")
         try:
+            print(f"🔍 Intentando cargar modelo desde: {self.model_path}")
+            print(f"📁 Ruta absoluta: {self.model_path.absolute()}")
+            print(f"✅ ¿Existe el archivo? {self.model_path.exists()}")
+            
+            if not self.model_path.exists():
+                # Buscar el archivo en directorios cercanos
+                possible_paths = [
+                    Path(__file__).parent / 'restaurant_visit_predictor.pkl',
+                    Path(__file__).parent.parent / 'restaurant_visit_predictor.pkl',
+                    Path('/app/src/Project/Infrastructure/Utils/MineriaPrediccion/restaurant_visit_predictor.pkl'),
+                    Path('/app/restaurant_visit_predictor.pkl')
+                ]
+                
+                for path in possible_paths:
+                    print(f"🔍 Buscando en: {path}")
+                    if path.exists():
+                        self.model_path = path
+                        print(f"✅ Modelo encontrado en: {path}")
+                        break
+                else:
+                    raise FileNotFoundError("Modelo no encontrado en ninguna ubicación")
+            
             self.model_data = joblib.load(self.model_path)
-            #print(f"Modelo cargado exitosamente desde: {self.model_path}")
-            #print("Metricas del modelo:")
-            #for metrica, valor in self.model_data["metrics"].items():
-            #    print(f"  {metrica}: {valor:.4f}")
-        except FileNotFoundError:
-            raise FileNotFoundError(f"No se encontró el modelo en: {self.model_path}")
+            print("🎉 Modelo cargado exitosamente")
+            
         except Exception as e:
-            raise Exception(f"Error al cargar el modelo: {str(e)}")
+            print(f"❌ Error al cargar el modelo: {e}")
+            raise FileNotFoundError(f"No se encontró el modelo en: {self.model_path}")
 
     def prepare_prediction_data(self, data):
         """

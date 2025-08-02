@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import joblib
 import warnings
 from datetime import datetime
+from pathlib import Path
 
 warnings.filterwarnings("ignore")
 
@@ -272,7 +273,8 @@ def main():
     predictor.ploter_predictions(test_x, test_y)
 
     # Guardar el modelo
-    model_path = "restaurant_visit_predictor.pkl"
+    current_dir = Path(__file__).parent
+    model_path = current_dir / "restaurant_visit_predictor.pkl"
     predictor.save_model(model_path)
 
     return 0
