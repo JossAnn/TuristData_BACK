@@ -14,22 +14,62 @@ warnings.filterwarnings("ignore")
 
 
 class RestaurantPredictor:
-    def __init__(self, model_path="src/Project/Infrastructure/Utils/MineriaPrediccion/restaurant_visit_predictor.pkl"):
-        self.model_path = model_path
+    # def __init__(self, model_path="src/Project/Infrastructure/Utils/MineriaPrediccion/restaurant_visit_predictor.pkl"):
+    #     self.model_path = model_path
+    #     self.model_data = None
+    #     self.load_model()
+    def __init__(self, model_path=None):
+        if model_path is None:
+            # Obtener la ruta del directorio donde está este archivo Python
+            current_dir = Path(__file__).parent
+            self.model_path = current_dir / 'restaurant_visit_predictor.pkl'
+        else:
+            self.model_path = Path(model_path)  # Convertir a Path object
+        
         self.model_data = None
-        self.load_model()
+        # NO cargar el modelo aquí, solo cuando se necesite
 
+    # def load_model(self):
+    #     # try:
+    #     #     self.model_data = joblib.load(self.model_path)
+    #     #     #print(f"Modelo cargado exitosamente desde: {self.model_path}")
+    #     #     #print("Metricas del modelo:")
+    #     #     #for metrica, valor in self.model_data["metrics"].items():
+    #     #     #    print(f"  {metrica}: {valor:.4f}")
+    #     # except FileNotFoundError:
+    #     #     raise FileNotFoundError(f"No se encontró el modelo en: {self.model_path}")
+    #     # except Exception as e:
+    #     #     raise Exception(f"Error al cargar el modelo: {str(e)}")
+    #     try:
+    #         print(f"🔍 Intentando cargar modelo desde: {self.model_path}")
+    #         print(f"📁 Ruta absoluta: {self.model_path.absolute()}")
+    #         print(f"✅ ¿Existe el archivo? {self.model_path.exists()}")
+            
+    #         if not self.model_path.exists():
+    #             # Buscar el archivo en directorios cercanos
+    #             possible_paths = [
+    #                 Path(__file__).parent / 'restaurant_visit_predictor.pkl',
+    #                 Path(__file__).parent.parent / 'restaurant_visit_predictor.pkl',
+    #                 Path('/app/src/Project/Infrastructure/Utils/MineriaPrediccion/restaurant_visit_predictor.pkl'),
+    #                 Path('/app/restaurant_visit_predictor.pkl')
+    #             ]
+                
+    #             for path in possible_paths:
+    #                 print(f"🔍 Buscando en: {path}")
+    #                 if path.exists():
+    #                     self.model_path = path
+    #                     print(f"✅ Modelo encontrado en: {path}")
+    #                     break
+    #             else:
+    #                 raise FileNotFoundError("Modelo no encontrado en ninguna ubicación")
+            
+    #         self.model_data = joblib.load(self.model_path)
+    #         print("🎉 Modelo cargado exitosamente")
+            
+    #     except Exception as e:
+    #         print(f"❌ Error al cargar el modelo: {e}")
+    #         raise FileNotFoundError(f"No se encontró el modelo en: {self.model_path}")
     def load_model(self):
-        # try:
-        #     self.model_data = joblib.load(self.model_path)
-        #     #print(f"Modelo cargado exitosamente desde: {self.model_path}")
-        #     #print("Metricas del modelo:")
-        #     #for metrica, valor in self.model_data["metrics"].items():
-        #     #    print(f"  {metrica}: {valor:.4f}")
-        # except FileNotFoundError:
-        #     raise FileNotFoundError(f"No se encontró el modelo en: {self.model_path}")
-        # except Exception as e:
-        #     raise Exception(f"Error al cargar el modelo: {str(e)}")
         try:
             print(f"🔍 Intentando cargar modelo desde: {self.model_path}")
             print(f"📁 Ruta absoluta: {self.model_path.absolute()}")
@@ -134,8 +174,10 @@ class RestaurantPredictor:
         Returns:
             array: Predicciones de visitas
         """
+        # if self.model_data is None:
+        #     raise ValueError("El modelo no está cargado")
         if self.model_data is None:
-            raise ValueError("El modelo no está cargado")
+            self.load_model()
 
         # Preparar datos
         X = self.prepare_prediction_data(data)
@@ -460,7 +502,15 @@ if __name__ == "__main__":
         print("Asegúrate de que el modelo 'restaurant_visit_predictor.pkl' existe.")
         print("Ejecuta primero el script de entrenamiento.")
 """
-predictor = RestaurantPredictor()
+# predictor = RestaurantPredictor()
+predictor = None
+
+def get_predictor():
+    """Función para obtener el predictor, cargándolo solo cuando se necesita"""
+    global predictor
+    if predictor is None:
+        predictor = RestaurantPredictor()
+    return predictor
 
 # ================================================================================= Estas son las funciones que se deben enrutar
 bp_prediccion = Blueprint("prediccion", __name__)
@@ -552,7 +602,7 @@ def predecir_anio_completo():
 
 @bp_prediccion.route("/obtener-info-modelo", methods=["GET"])
 def obtener_info_modelo():
-    return predictor.get_model_info()
+    return get_predictor().get_model_info()
 # =================================================================================
 # """
 
