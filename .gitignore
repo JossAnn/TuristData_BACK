@@ -33,9 +33,9 @@ env/
 *.tmp
 *.swp
 *.bak
-*.csv
+csv
 *.json
-*.xlsx
+xlsx
 *.pdf
 *.png
 
