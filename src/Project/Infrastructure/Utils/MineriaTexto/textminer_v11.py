@@ -298,7 +298,7 @@ def obtener_comentarios_categorizados():
     """
     try:
         # Configuración del archivo
-        archivo_comentarios = "comentarios.txt"  # Ajusta la ruta según tu estructura
+        archivo_comentarios = "opiniones.txt"  # Ajusta la ruta según tu estructura
         
         # Verificar si el archivo existe
         if not os.path.exists(archivo_comentarios):
